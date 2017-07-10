@@ -36,6 +36,10 @@ Detailed instructions:
 
 # Schedule
 
+1. Introduction: ontologies and their role in computational biology
+2. Semantic Web: basic technologies underlying ontologies; understanding ontologies through OWL
+3. Ontology-based analysis: semantic similarity and unsupervised machine learning methods
+4. Hands-on: demonstration of some basic concepts
 
 # Reading materials
 
