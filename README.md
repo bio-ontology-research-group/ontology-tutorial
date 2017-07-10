@@ -1,6 +1,8 @@
 # Ontology Tutorial at ISMB 2017
 
-intro text
+Ontologies have long provided a core foundation in the organization of biomedical entities, their attributes, and their relationships. With over 500 biomedical ontologies currently available there are a number of new and exciting new opportunities emerging in using ontologies for large scale data sharing and data analysis. This tutorial will help you understand what ontologies are and how they are being used in computational biology and bioinformatics. 
+
+Intended audience and level: The tutorial will be of interest to any researcher who will use or produce large structured datasets in computational biology. The tutorial will be at an introductory level, but will also describe current research directions and challenges that will be of broad interest to researchers in computational biology.
 
 # Before the tutorial
 
@@ -12,3 +14,8 @@ Open
 
 # Slides
 
+
+# Organizers
+Dr. Michel Dumontier is a Distinguished Professor of Data Science at Maastricht University. His research focuses on the development of computational methods for scalable integration and reproducible analysis of FAIR (Findable, Accessible, Interoperable and Reusable) data across scales - from molecules, tissues, organs, individuals, populations to the environment. His group combines semantic web technologies with effective indexing, machine learning and network analysis for drug discovery and personalized medicine. Dr. Dumontier leads a new inter-faculty Institute for Data Science at Maastricht University with a focus on accelerating discovery science, empowering communities, and improving health and well being. He is the editor-in-chief for the IOS press journal Data Science and an associate editor for the IOS press journal Semantic Web. He is the scientific director for Bio2RDF, an open source project to generate Linked Data for the Life Sciences and is a technical lead for the FAIR (Findable, Accessible, Interoperable, Re-usable) data initiative. He has published over 125 articles in top rated journals and international conferences. He is internationally recognized for his contributions in bioinformatics, biomedical informatics, and semantic technologies as evidenced by awards, keynote talks at international conferences, and collaborations on international projects.
+
+Dr. Robert Hoehndorf is an Assistant Professor in Computer Science at the King Abdullah University of Science and Technology in Thuwal. His research focuses on the applications of ontologies in biology and biomedicine, with a particular emphasis on integrating and analyzing heterogeneous, multimodal data. Dr. Hoehndorf has developed the PhenomeNET system for ontology-based prioritization of disease genes using model organism phenotypes, and contributed to the development of the AberOWL ontology repository. He is an associate editor for the Journal of Biomedical Semantics and editorial board member of the IOS press journal Data Science. He published over 80 papers in journals and international conferences, and presented previous tutorials on ontologies and their applications at ISMB, OWL-ED, and ECCB.
