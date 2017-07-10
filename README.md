@@ -28,7 +28,10 @@ is necessary.
    * [Evaluation of research in biomedical ontologies](https://academic.oup.com/bib/article-lookup/doi/10.1093/bib/bbs053) (shameless self-promotion warning)
 
  * Technical documentation and tutorials:
-   * The OWL2 Primer https://www.w3.org/TR/owl2-primer/ 
+   * The OWL2 Primer https://www.w3.org/TR/owl2-primer/
+   
+ * Books
+   [Semantic Similarity from Natural Language and Ontology Analysis](http://www.morganclaypool.com/doi/10.2200/S00639ED1V01Y201504HLT027)
 
 # Resources
 
