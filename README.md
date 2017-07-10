@@ -23,6 +23,14 @@ is necessary.
 
  * The OWL2 Primer https://www.w3.org/TR/owl2-primer/ 
 
+# Resources
+
+ * Ontology portals:
+  * BioPortal
+  * AberOWL
+  * Ontology Lookup Service
+  * OntoBee
+
 # Slides
 
 
