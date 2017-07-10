@@ -26,10 +26,10 @@ is necessary.
 # Resources
 
  * Ontology portals:
-  * BioPortal
-  * AberOWL
-  * Ontology Lookup Service
-  * OntoBee
+   * BioPortal
+   * AberOWL
+   * Ontology Lookup Service
+   * OntoBee
 
 # Slides
 
