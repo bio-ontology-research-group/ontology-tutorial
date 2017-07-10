@@ -28,8 +28,11 @@ Detailed instructions:
  * In your browser, File -> Open (.bkr) and open the file `ontology-analysis.bkr` that you downloaded
  * Below the first Groovy box, click on `Run`
    * Depending on your Internet connection, this may take some time!
+   * This code will download the libraries necessary to run the remaining code.
  * Below the second Groovy box, click on `Run`
    * Depending on your Internet connection, this may take some time!
+   * This code will download one 400MB OWL file, classify it, and store it in `/tmp/phenomenet-inferred.owl`
+   * You can skip this step, download the file http://aber-owl.net/aber-owl/diseasephenotypes/ontology/phenomenet-map.owl, and store it somewhere easy to find during the tutorial!
 
 
 # Schedule
