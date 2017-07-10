@@ -45,10 +45,9 @@ is necessary.
  * Ontology tools:
    * [Protégé](http://protege.stanford.edu/)
  * Libraries:
-   * OWL API
-   * ELK Reasoner
-   * HermiT Reasoner
-   * Semantic Measures Library
+   * [OWL API](https://github.com/owlcs/owlapi)
+   * [ELK Reasoner](https://github.com/liveontologies/elk-reasoner)
+   * [Semantic Measures Library](http://www.semantic-measures-library.org/) (and the [paper](https://academic.oup.com/bioinformatics/article-lookup/doi/10.1093/bioinformatics/btt581))
 
 # Slides
 
