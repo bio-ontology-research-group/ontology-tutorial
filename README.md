@@ -18,6 +18,7 @@ It is fine to skip this step and still follow the tutorial, but if you
 want to play with the methods yourself, and go away with some running code examples that you can build on, downloading and running the code
 is necessary.
 
+# Schedule
 
 # Reading materials
 
