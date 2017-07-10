@@ -31,7 +31,7 @@ is necessary.
    * The OWL2 Primer https://www.w3.org/TR/owl2-primer/
    
  * Books
-   [Semantic Similarity from Natural Language and Ontology Analysis](http://www.morganclaypool.com/doi/10.2200/S00639ED1V01Y201504HLT027)
+   * [Semantic Similarity from Natural Language and Ontology Analysis](http://www.morganclaypool.com/doi/10.2200/S00639ED1V01Y201504HLT027)
 
 # Resources
 
