@@ -1,7 +1,7 @@
 # ontology-tutorial
 Ontology Tutorial at ISMB 2017
 
-# Instructions
+# Before the tutorial
 
 Install http://beakernotebook.com/
 
