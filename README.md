@@ -24,6 +24,7 @@ is necessary.
  * Introductory review papers:
    * [Semantic Similarity in Biomedical Ontologies](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000443)
    * [The OBO Foundry: coordinated evolution of ontologies to support biomedical data integration](http://www.nature.com/nbt/journal/v25/n11/full/nbt1346.html)
+   * [A Review of Relational Machine Learning for Knowledge Graphs](https://arxiv.org/abs/1503.00759)
    * [The role of ontologies in biological and biomedical research: a functional perspective](https://academic.oup.com/bib/article-lookup/doi/10.1093/bib/bbv011) (shameless self-promotion warning)
    * [Evaluation of research in biomedical ontologies](https://academic.oup.com/bib/article-lookup/doi/10.1093/bib/bbs053) (shameless self-promotion warning)
 
