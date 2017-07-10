@@ -21,6 +21,8 @@ is necessary.
 
 # Reading materials
 
+ The OWL2 Primer https://www.w3.org/TR/owl2-primer/ 
+
 # Slides
 
 
