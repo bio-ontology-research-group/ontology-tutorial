@@ -9,7 +9,7 @@ Ontologies have long provided a core foundation in the organization of biomedica
 Importantly, the tutorial will contain a hands-on part. If you want to
 participate (instead of just watching the presentation), please download
 and install Beaker Notebook (http://beakernotebook.com/) and _run_ the
-code in the "ontology-analysis.bkr" file at
+code in the [ontology-analysis.bkr](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/ontology-analysis.bkr) file at
 least once. This will download the required dependencies (OWLAPI, ELK,
 SML) which are quite large, and it also downloads a 400MB OWL file which
 we will use for demonstration purposes. 
