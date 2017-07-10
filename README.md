@@ -6,9 +6,18 @@ Intended audience and level: The tutorial will be of interest to any researcher 
 
 # Before the tutorial
 
-Install http://beakernotebook.com/
+Importantly, the tutorial will contain a hands-on part. If you want to
+participate (instead of just watching the presentation), please download
+and install Beaker Notebook (http://beakernotebook.com/) and _run_ the
+code in the "ontology-analysis.bkr" file at
+least once. This will download the required dependencies (OWLAPI, ELK,
+SML) which are quite large, and it also downloads a 400MB OWL file which
+we will use for demonstration purposes.
 
-Open 
+It is fine to skip this step and still follow the tutorial, but if you
+want to play with the methods yourself, downloading and running the code
+is necessary.
+
 
 # Reading materials
 
