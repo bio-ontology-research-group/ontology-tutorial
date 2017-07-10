@@ -30,6 +30,13 @@ is necessary.
    * AberOWL
    * Ontology Lookup Service
    * OntoBee
+ * Ontology tools:
+   * Protege
+ * Libraries:
+   * OWL API
+   * ELK Reasoner
+   * HermiT Reasoner
+   * Semantic Measures Library
 
 # Slides
 
