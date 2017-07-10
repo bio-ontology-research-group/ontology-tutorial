@@ -34,7 +34,6 @@ Detailed instructions:
    * This code will download one 400MB OWL file, classify it, and store it in `/tmp/phenomenet-inferred.owl`
    * You can skip this step, download the file http://aber-owl.net/aber-owl/diseasephenotypes/ontology/phenomenet-map.owl, and store it somewhere easy to find during the tutorial!
 
-
 # Schedule
 
 # Reading materials
