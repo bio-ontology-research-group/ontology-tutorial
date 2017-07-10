@@ -33,12 +33,13 @@ is necessary.
 # Resources
 
  * Ontology portals:
-   * BioPortal
-   * AberOWL
-   * Ontology Lookup Service
-   * OntoBee
+   * [OBO Library](http://www.obofoundry.org/)
+   * [BioPortal](https://bioportal.bioontology.org/)
+   * [AberOWL](http://aber-owl.net)
+   * [Ontology Lookup Service](https://www.ebi.ac.uk/ols/)
+   * [OntoBee](http://www.ontobee.org/)
  * Ontology tools:
-   * Protege
+   * [Protégé](http://protege.stanford.edu/)
  * Libraries:
    * OWL API
    * ELK Reasoner
