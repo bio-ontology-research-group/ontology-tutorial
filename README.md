@@ -1,5 +1,6 @@
-# ontology-tutorial
-Ontology Tutorial at ISMB 2017
+# Ontology Tutorial at ISMB 2017
+
+intro text
 
 # Before the tutorial
 
