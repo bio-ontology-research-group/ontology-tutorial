@@ -50,6 +50,7 @@ Detailed instructions:
    
  * Books
    * [Semantic Similarity from Natural Language and Ontology Analysis](http://www.morganclaypool.com/doi/10.2200/S00639ED1V01Y201504HLT027)
+   * [Data Mining with Ontologies: Implementations, Findings, and Frameworks](https://www.igi-global.com/book/data-mining-ontologies/234)
 
 # Resources
 
