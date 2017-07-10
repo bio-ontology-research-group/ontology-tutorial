@@ -4,7 +4,7 @@ Ontologies have long provided a core foundation in the organization of biomedica
 
 Intended audience and level: The tutorial will be of interest to any researcher who will use or produce large structured datasets in computational biology. The tutorial will be at an introductory level, but will also describe current research directions and challenges that will be of broad interest to researchers in computational biology.
 
-# Before the tutorial
+# Before the tutorial (important)
 
 Importantly, the tutorial will contain a hands-on part. If you want to
 participate (instead of just watching the presentation), please download
@@ -12,7 +12,7 @@ and install Beaker Notebook (http://beakernotebook.com/) and _run_ the
 code in the "ontology-analysis.bkr" file at
 least once. This will download the required dependencies (OWLAPI, ELK,
 SML) which are quite large, and it also downloads a 400MB OWL file which
-we will use for demonstration purposes.
+we will use for demonstration purposes. 
 
 It is fine to skip this step and still follow the tutorial, but if you
 want to play with the methods yourself, downloading and running the code
