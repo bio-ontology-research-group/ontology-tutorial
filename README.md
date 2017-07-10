@@ -36,6 +36,8 @@ Detailed instructions:
 
 # Schedule
 
+Draft slides are in this repository. We will link to the final slides before the tutorial.
+
 # Reading materials
 
  * Introductory review papers:
