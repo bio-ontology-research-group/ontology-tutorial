@@ -6,16 +6,16 @@ Ontologies have long provided a core foundation in the organization of biomedica
 
 # Before the tutorial (important)
 
-Importantly, the tutorial will contain a hands-on part. If you want to
+The tutorial will contain a hands-on part. If you want to
 participate (instead of just watching the presentation), please download
 and install Beaker Notebook (http://beakernotebook.com/) and _run_ the
 code in the [ontology-analysis.bkr](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/ontology-analysis.bkr) file at
 least once. This will download the required dependencies (OWLAPI, ELK,
 SML) which are quite large, and it also downloads a 400MB OWL file which
-we will use for demonstration purposes. 
+we will use for demonstration purposes. Some basic Java/Groovy knowledge is beneficial but not required.
 
 It is fine to skip this step and still follow the tutorial, but if you
-want to play with the methods yourself, downloading and running the code
+want to play with the methods yourself, and go away with some running code examples that you can build on, downloading and running the code
 is necessary.
 
 
