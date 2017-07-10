@@ -36,7 +36,6 @@ Detailed instructions:
 
 # Schedule
 
-Draft slides are in this repository. We will link to the final slides before the tutorial.
 
 # Reading materials
 
@@ -71,6 +70,7 @@ Draft slides are in this repository. We will link to the final slides before the
 
 # Slides
 
+Draft slides are in this repository. We will link to the final slides before the tutorial.
 
 # Organizers
 Dr. Michel Dumontier is a Distinguished Professor of Data Science at Maastricht University. His research focuses on the development of computational methods for scalable integration and reproducible analysis of FAIR (Findable, Accessible, Interoperable and Reusable) data across scales - from molecules, tissues, organs, individuals, populations to the environment. His group combines semantic web technologies with effective indexing, machine learning and network analysis for drug discovery and personalized medicine. Dr. Dumontier leads a new inter-faculty Institute for Data Science at Maastricht University with a focus on accelerating discovery science, empowering communities, and improving health and well being. He is the editor-in-chief for the IOS press journal Data Science and an associate editor for the IOS press journal Semantic Web. He is the scientific director for Bio2RDF, an open source project to generate Linked Data for the Life Sciences and is a technical lead for the FAIR (Findable, Accessible, Interoperable, Re-usable) data initiative. He has published over 125 articles in top rated journals and international conferences. He is internationally recognized for his contributions in bioinformatics, biomedical informatics, and semantic technologies as evidenced by awards, keynote talks at international conferences, and collaborations on international projects.
