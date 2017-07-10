@@ -22,8 +22,8 @@ is necessary.
 # Reading materials
 
  * Introductory review papers:
-   * [The role of ontologies in biological and biomedical research: a functional perspective](https://academic.oup.com/bib/article-lookup/doi/10.1093/bib/bbv011) (self-promotion warning)
-   * [Evaluation of research in biomedical ontologies](https://academic.oup.com/bib/article-lookup/doi/10.1093/bib/bbs053) (self-promotion warning)
+   * [The role of ontologies in biological and biomedical research: a functional perspective](https://academic.oup.com/bib/article-lookup/doi/10.1093/bib/bbv011) (shameless self-promotion warning)
+   * [Evaluation of research in biomedical ontologies](https://academic.oup.com/bib/article-lookup/doi/10.1093/bib/bbs053) (shameless self-promotion warning)
 
  * Technical documentation and tutorials:
    * The OWL2 Primer https://www.w3.org/TR/owl2-primer/ 
