@@ -2,7 +2,7 @@
 
 Ontologies have long provided a core foundation in the organization of biomedical entities, their attributes, and their relationships. With over 500 biomedical ontologies currently available there are a number of new and exciting new opportunities emerging in using ontologies for large scale data sharing and data analysis. This tutorial will help you understand what ontologies are and how they are being used in computational biology and bioinformatics. 
 
-Intended audience and level: The tutorial will be of interest to any researcher who will use or produce large structured datasets in computational biology. The tutorial will be at an introductory level, but will also describe current research directions and challenges that will be of broad interest to researchers in computational biology.
+*Intended audience and level*: The tutorial will be of interest to any researcher who will use or produce large structured datasets in computational biology. The tutorial will be at an introductory level, but will also describe current research directions and challenges that will be of broad interest to researchers in computational biology.
 
 # Before the tutorial (important)
 
@@ -21,7 +21,7 @@ is necessary.
 
 # Reading materials
 
- The OWL2 Primer https://www.w3.org/TR/owl2-primer/ 
+ * The OWL2 Primer https://www.w3.org/TR/owl2-primer/ 
 
 # Slides
 
