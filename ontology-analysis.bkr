@@ -88,9 +88,9 @@
                     "",
                     "// Create the ontology manager",
                     "OWLOntologyManager manager = OWLManager.createOWLOntologyManager()",
-                    "// Load the latest version of the Human Phenotype Ontology from its canonical URI",
+                    "// Load the latest version of the PhenomeNET Ontology; for more information about this ontology, see http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005500",
                     "def ont = manager.loadOntologyFromOntologyDocument(new IRI(\"http://aber-owl.net/aber-owl/diseasephenotypes/ontology/phenomenet-map.owl\"))",
-                    "// Print the number of classes in HPO, including all its imports (import closure \"true\")",
+                    "// Print the number of classes in the ontology, including all its imports (import closure \"true\")",
                     "println \"Number of classes: \" + ont.getClassesInSignature(true).size()",
                     "",
                     "// create data factory (to create axioms, classes, etc.)",
@@ -114,6 +114,7 @@
                     "    }",
                     "  }",
                     "}",
+                    "// write the inferred version of the ontology to a file (/tmp/phenomenet-inferred.owl)",
                     "def outont = manager.createOntology(new IRI(\"http://aber-owl.net/ismb-tutorial/phenomenet-inferred.owl\"))",
                     "InferredOntologyGenerator generator = new InferredOntologyGenerator(reasoner, [new InferredSubClassAxiomGenerator()])",
                     "generator.fillOntology(fac, outont)",
@@ -188,7 +189,7 @@
                 "height": 3703
             },
             "evaluatorReader": true,
-            "lineCount": 53,
+            "lineCount": 54,
             "isError": false
         },
         {
@@ -197,6 +198,7 @@
             "evaluator": "Groovy",
             "input": {
                 "body": [
+                    "// Here we demonstrate the use of semantic similarity, starting with some simple examples and moving to some real data analysis",
                     "import org.openrdf.model.vocabulary.*",
                     "import slib.sglib.io.loader.*",
                     "import slib.sml.sm.core.metrics.ic.utils.*",
@@ -261,7 +263,7 @@
                     "println \"Similarity between 'ventricular septal defect' (MP) and 'tetralogy of fallot' (HP): \"+engine.compare(smConfPairwise, cl1, cl2)",
                     "",
                     "",
-                    "// now we download mouse phenotypes",
+                    "// now we download mouse phenotype annotations and add them to our graph as instances (using rdf:type)",
                     "new URL (\"http://www.informatics.jax.org/downloads/reports/MGI_GenePheno.rpt\").getText().splitEachLine(\"\\t\") { line ->",
                     "  def geneid = line[6]",
                     "  def idUri = factory.getURI(\"http://phenomebrowser.net/ismb-tutorial/gene/\"+geneid)",
@@ -274,7 +276,7 @@
                     "// now that we have instances/annotations, we switch to Resnik's information content measure",
                     "icConf = new IC_Conf_Corpus(\"ResnikIC\", SMConstants.FLAG_IC_ANNOT_RESNIK_1995_NORMALIZED)",
                     "smConfPairwise.setICconf(icConf)",
-                    "// using Best-Matching Average to merge annotations",
+                    "// using Best-Matching Average to merge annotations when comparing sets of classes",
                     "SMconf smConfGroupwise = new SMconf(\"BMA\", SMConstants.FLAG_SIM_GROUPWISE_BMA)",
                     "// and re-initialize the graph",
                     "engine = new SM_Engine(graph)",
@@ -293,12 +295,12 @@
                     "// that's our patient, with a single phenotype of an orphan disease, \"MACULAR DYSTROPHY, VITELLIFORM, 1; VMD1\" (https://www.omim.org/entry/153840)",
                     "Set patient = [ factory.getURI(\"http://purl.obolibrary.org/obo/HP_0007754\"), factory.getURI(\"http://purl.obolibrary.org/obo/HP_0007663\"), factory.getURI(\"http://purl.obolibrary.org/obo/HP_0001123\"), ",
                     "  factory.getURI(\"http://purl.obolibrary.org/obo/HP_0000505\"), factory.getURI(\"http://purl.obolibrary.org/obo/HP_0007677\") ]",
-                    "// we store the similarity values here",
+                    "// we store the similarity values in the results list",
                     "def results = new LinkedHashSet()",
                     "engine.getInstances().each { gene ->",
                     "  def phenoSet = ia.getDirectClass(gene) // gets all the annotations of each instance (gene)",
                     "  Expando exp = new Expando()",
-                    "  try { // this might fail if the version of MP we use to compute similarity and the MP used for annotation is different; we ignore this for now",
+                    "  try { // this part might fail if the version of MP we use to compute similarity and the MP used for annotation is different; we ignore all errors for now",
                     "    exp.sim = engine.compare(smConfGroupwise, smConfPairwise, phenoSet, patient)",
                     "    exp.gene = gene",
                     "    results.add(exp)",
@@ -354,7 +356,7 @@
                 "height": 295
             },
             "evaluatorReader": true,
-            "lineCount": 125,
+            "lineCount": 126,
             "isError": false
         }
     ],
