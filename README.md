@@ -5,6 +5,14 @@ Ontologies have long provided a core foundation in the organization of biomedica
 
 *Intended audience and level*: The tutorial will be of interest to any researcher who will use or produce large structured datasets in computational biology. The tutorial will be at an introductory level, but will also describe current research directions and challenges that will be of broad interest to researchers in computational biology.
 
+# Learning objectives
+
+This is an introductory-level course to ontologies and ontology-based data analysis in bioinformatics. In this tutorial, participants will learn:
+ * what ontologies are and where to find them
+ * how to understand and use ontology semantics through automated reasoning
+ * how to measure semantic similarity
+ * how to incorporate ontologies and semantic similarity measures in bioinformatics analyses
+
 # Before the tutorial (important)
 
 The tutorial will contain a hands-on part. If you want to
