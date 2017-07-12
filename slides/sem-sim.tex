@@ -1020,6 +1020,36 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{How to measure similarity: Quiz}
+  \begin{itemize}
+  \item How many semantic similarity measures are there?
+    \begin{enumerate}[a]
+    \item One (and it is called The Semantic Similarity Measure)
+    \item Three (graph-based, set-based, feature-based)
+    \item Many (depending on context, many functions can determine similarity)
+    \end{enumerate}
+    \pause
+  \item Specificity of an ontology class
+    \begin{enumerate}[a]
+    \item depends on the number of children and ancestors, and the
+      depth
+    \item depends on the number of instances (or annotations)
+    \item can improve similarity estimates significantly
+    \end{enumerate}
+    \pause
+  \item In the presence of (relations between) instances, semantic
+    similarity
+    \begin{enumerate}[a]
+    \item cannot be computed, it only works with ontologies
+    \item can be estimated using only class specificity measures
+    \item can be computed using feature learning and knowledge graph
+      embeddings
+    \end{enumerate}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
   \frametitle{Applications of semantic similarity}
   \begin{itemize}
   \item ontologies are used {\em almost everywhere} in biology
