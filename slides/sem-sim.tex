@@ -2,6 +2,7 @@
 \usepackage{booktabs}
 \usepackage{pdfpages}
 \usepackage{mathtools}
+\usepackage{enumerate}
 
 \PassOptionsToPackage{usenames,dvipsnames,svgnames}{xcolor}  
 \usepackage{tikz}
@@ -29,7 +30,13 @@
 \newcommand<>{\cgray}[3]{\only<#1>{#3}\only<#2>{\textcolor{gray}{#3}}}
 \newcommand<>{\colorize}[4]{\only<#1>{#4}\only<#2>{\textcolor{#3}{#4}}}
 
-\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{navigation symbols}{}
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
 
 \renewcommand{\em}{\itshape}
 
@@ -123,6 +130,67 @@
   \item {\tt X SubClassOf: regulates some Y}: $X \xrightarrow{\text{regulates}} Y$
   \item {\tt X DisjointWith: Y}: $X \xleftrightarrow{\text{disjoint}} Y$
   \item {\tt X EquivalentTo: Y}: $X \xleftrightarrow{\equiv} Y$, $\{X,Y\}$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Relations as patterns}
+  \begin{itemize}
+  \item OBO Relation Ontology (RO):
+    \begin{itemize}
+    \item \url{https://github.com/oborel/obo-relations}
+    \end{itemize}
+  \item Basic Formal Ontology (BFO):
+    \begin{itemize}
+    \item provides top-level classes
+      \begin{itemize}
+      \item Continuant, Process, Function, Material object, etc.
+      \end{itemize}
+    \item used for some OBO Foundry ontologies
+    \end{itemize}
+  \item RO and BFO provide a top-level system of classes and relations
+    shared across many biomedical ontologies
+    \begin{itemize}
+    \item even GO, although somewhat hidden!
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Relations as patterns}
+  \centerline{\includegraphics[height=.8\textheight]{plant-ontology-sample.png}}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Relations as patterns: Quiz}
+  \begin{itemize}
+  \item {\em classes}
+    \begin{enumerate}[a]
+    \item represent kinds of things in the world
+    \item represent ideas in people's heads
+    \item represent words
+    \end{enumerate}
+    \pause
+  \item {\em instances} of a class are individuals that
+    \begin{enumerate}[a]
+    \item satisfy the class intension
+    \item satisfy the axioms used to specify the class
+    \item are always concrete, material entities
+    \end{enumerate}
+    \pause
+  \item {\em relations} between classes are
+    \begin{enumerate}[a]
+    \item interactions between instances of the class
+    \item abbreviations of axioms that constrain two classes
+    \item relations between ideas people have about the classes
+    \end{enumerate}
+    \pause
+  \item {\em axioms} are
+    \begin{enumerate}[a]
+    \item specification of conditions that instances of classes must satisfy
+    \item rules that can be executed to produce new knowledge
+    \item statements that are considered to be true in a domain of knowledge
+    \end{enumerate}
   \end{itemize}
 \end{frame}
 
@@ -950,6 +1018,36 @@
     Learning for Knowledge Graphs, Proceedings of the IEEE, 2016.
   \end{itemize}
 \end{frame}
+
+\begin{frame}
+  \frametitle{How to measure similarity: Quiz}
+  \begin{itemize}
+  \item How many semantic similarity measures are there?
+    \begin{enumerate}[a]
+    \item One (and it is called The Semantic Similarity Measure)
+    \item Three (graph-based, set-based, feature-based)
+    \item Many (depending on context, many functions can determine similarity)
+    \end{enumerate}
+    \pause
+  \item Specificity of an ontology class
+    \begin{enumerate}[a]
+    \item depends on the number of children and ancestors, and the
+      depth
+    \item depends on the number of instances (or annotations)
+    \item can improve similarity estimates significantly
+    \end{enumerate}
+    \pause
+  \item In the presence of (relations between) instances, semantic
+    similarity
+    \begin{enumerate}[a]
+    \item cannot be computed, it only works with ontologies
+    \item can be estimated using only class specificity measures
+    \item can be computed using feature learning and knowledge graph
+      embeddings
+    \end{enumerate}
+  \end{itemize}
+\end{frame}
+
 
 \begin{frame}
   \frametitle{Applications of semantic similarity}
