@@ -17,17 +17,28 @@ This is an introductory-level course to ontologies and ontology-based data analy
 
 The tutorial will contain a hands-on part. If you want to
 participate (instead of just watching the presentation), please download
-and install Beaker Notebook (http://beakernotebook.com/) and _run_ the
-code in the [ontology-analysis.bkr](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/ontology-analysis.bkr) file at
-least once. This will download the required dependencies (OWLAPI, ELK,
-SML) which are quite large, and it also downloads a 400MB OWL file which
-we will use for demonstration purposes. Some basic Java/Groovy knowledge is beneficial but not required.
+and install Jupyter Notebook (http://jupyter.org/) with a SciJava kernel (follow instructions [here](https://github.com/scijava/scijava-jupyter-kernel)) or Beaker Notebook (http://beakernotebook.com/) and _run_ the first cell in either https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/ISMB%2BOntology%2BTutorial.ipynb (on Jupyter) or https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/ontology-analysis.bkr (on Beaker). This will download the required dependencies (OWLAPI, ELK,
+SML) which are quite large. ~~It also downloads a 400MB OWL file which
+we will use for demonstration purposes. Some basic Java/Groovy knowledge is beneficial but not required.~~ You must also download our data package from [here](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/ontology-tutorial.tar.gz).
 
 It is fine to skip this step and still follow the tutorial, but if you
 want to play with the methods yourself, and go away with some running code examples that you can build on, downloading and running the code
 is necessary.
 
-Detailed instructions:
+Detailed instructions (Jupyter Notebook):
+ * Download Jupyter Notebook from http://jupyter.org/ and install
+ * Install the SciJava Jupyter kernel following instructions on https://github.com/scijava/scijava-jupyter-kernel
+ * Download the [Jupyter Notebook file](https://github.com/bio-ontology-research-group/ontology-tutorial/blob/master/ISMB%2BOntology%2BTutorial.ipynb) file and store on your disk.
+ * Run Jupyter Notebook using `jupyter notebook`
+   * This will open a web browser, or browser window, with the Jupyter environment.
+ * In your browser, find the ISMB%2BOntology%2BTutorial.ipynb file and open
+ * In the first Groovy box, press Shift+Return
+   * Depending on your Internet connection, this may take some time!
+   * This code will download the libraries necessary to run the remaining code.
+ * Download the [data package](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/ontology-tutorial.tar.gz) and store on your disk
+
+
+Detailed instructions (Beaker Notebook):
  * Download Beaker Notebook from http://beakernotebook.com/ (for Win, Mac, or GNU/Linux)
  * Install Beaker Notebook; follow the instructions provided and download the required dependencies
    * Alternatively, download the Beaker Notebook Docker image from https://hub.docker.com/r/beakernotebook/beaker/ or using `docker pull beakernotebook/beaker`
@@ -38,10 +49,12 @@ Detailed instructions:
  * Below the first Groovy box, click on `Run`
    * Depending on your Internet connection, this may take some time!
    * This code will download the libraries necessary to run the remaining code.
- * Below the second Groovy box, click on `Run`
+ * ~~Below the second Groovy box, click on `Run`
    * Depending on your Internet connection, this may take some time!
    * This code will download one 400MB OWL file, classify it, and store it in `/tmp/phenomenet-inferred.owl`
-   * You can skip this step, download the file http://aber-owl.net/aber-owl/diseasephenotypes/ontology/phenomenet-map.owl, and store it somewhere easy to find during the tutorial!
+   * You can skip this step, download the file http://aber-owl.net/aber-owl/diseasephenotypes/ontology/phenomenet-map.owl, and store it somewhere easy to find during the tutorial!~~
+ * Download the [data package](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/ontology-tutorial.tar.gz) and store on your disk
+   
 
 # Schedule
 
