@@ -104,4 +104,4 @@ Michel Dumontier is a Distinguished Professor of Data Science at Maastricht Univ
 
 # License
 
-The tutorial materials are under a CC-BY-NC license.
+The tutorial materials are under a CC-BY license.
