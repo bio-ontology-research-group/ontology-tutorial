@@ -18,7 +18,7 @@
         pav:createdBy        <http://orcid.org/0000-0003-4727-9435> ;
         pav:createdOn        "2017-07-17T10:29:22.915Z"^^xsd:dateTime ;
         pav:createdWith      <http://voideditor.cs.man.ac.uk/> ;
-        foaf:primaryTopic    <http://www.openphacts.org/bc76dd9a-def0-4c93-a1a8-f4e70f674511> .
+        foaf:primaryTopic    <https://zenodo.org/badge/latestdoi/96812825> .
 
 <http://orcid.org/0000-0003-4727-9435>
         a                 foaf:Person ;
