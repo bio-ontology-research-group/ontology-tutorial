@@ -91,8 +91,9 @@ Detailed instructions (Beaker Notebook):
 
 # Slides
 
-Draft slides are in this repository. We will link to the final slides before the tutorial.
-
+ * [Part 1](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/slides/2017-ismb-tutorial.pdf)
+ * [Part 2](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/slides/sem-sim.pdf)
+ 
 # Questions and Requests
 
 You can use the [Issue Tracker](https://github.com/bio-ontology-research-group/ontology-tutorial/issues) for questions and requests.
