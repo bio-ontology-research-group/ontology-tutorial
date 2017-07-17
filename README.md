@@ -27,7 +27,7 @@ is necessary.
 Detailed instructions (Jupyter Notebook):
  * Download Jupyter Notebook from http://jupyter.org/ and install
  * Install the SciJava Jupyter kernel following instructions on https://github.com/scijava/scijava-jupyter-kernel
- * Download the [Jupyter Notebook file](https://github.com/bio-ontology-research-group/ontology-tutorial/blob/master/ontology-analysis.ipynb) file and store on your disk.
+ * Download the [Jupyter Notebook file](https://github.com/bio-ontology-research-group/ontology-tutorial/blob/master/ontology-analysis.ipynb) [direct download](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/ontology-analysis.ipynb): and store on your disk.
  * Run Jupyter Notebook using `jupyter notebook`
    * This will open a web browser, or browser window, with the Jupyter environment.
  * In your browser, find the ontology-analysis.ipynb file and open
