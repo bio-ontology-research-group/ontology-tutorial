@@ -206,6 +206,9 @@
   \item symmetric: $sim(x,y) = sim(y,x)$
     \pause
   \item reflexive: $sim(x,x) = max_D$
+    \begin{itemize}
+    \item weaker form: $sim(x,x) > sim(x,y)$ for all $x \not= y$
+    \end{itemize}
     \pause
   \item $sim(x,x) > sim(x,y)$ if $x\not= y$
     \pause
@@ -1406,16 +1409,34 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Acknowledgements}
+  \begin{itemize}
+  \item Mona Alsharani
+  \item Imene Boudellioua
+  \item Maxat Kulmanov
+  \item Sarah Alghamdi
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
   \frametitle{Hands-on: semantic similarity}
   \begin{itemize}
   \item if you have not done so {\em before} the tutorial, don't start now
     \begin{itemize}
     \item you need to download {\em a lot} of data
-    \item you can follow in our demonstration
+    \item you can just follow our demonstration and try later
+    \item (unless Internet is exceptionally fast for a conference Wifi)
+    \end{itemize}
+  \item Jupyter Notebook
+    \begin{itemize}
+    \item notebooks consist of code and rich text fragments
+    \item human readable (with nice figures) {\em and} executable
+    \item need to install the SciJava kernel (default: iPython)
+    \item very widely used
     \end{itemize}
   \item Beaker Notebook
     \begin{itemize}
-    \item like iPython Notebook, or Jupyter, with lots of kernels
+    \item like Jupyter notebook, with lots of kernels pre-installed
     \item Python, Groovy, Javascript, ...
     \end{itemize}
   \item
