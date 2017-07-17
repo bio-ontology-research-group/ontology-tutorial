@@ -91,8 +91,8 @@ Detailed instructions (Beaker Notebook):
 
 # Slides
 
- * [Part 1](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/slides/2017-ismb-tutorial.pdf)
- * [Part 2](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/slides/sem-sim.pdf)
+ * [Part 1](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/slides/2017-ismb-tutorial.pdf) (presented by Michel Dumontier)
+ * [Part 2](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/slides/sem-sim.pdf) (presented by Robert Hoehndorf)
  
 # Questions and Requests
 
