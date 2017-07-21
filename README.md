@@ -30,7 +30,7 @@ Detailed instructions (Jupyter Notebook):
  * Download the [Jupyter Notebook file](https://github.com/bio-ontology-research-group/ontology-tutorial/blob/master/ontology-analysis.ipynb) ([direct download](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/ontology-analysis.ipynb)): and store on your disk.
  * Run Jupyter Notebook using `jupyter notebook`
    * This will open a web browser, or browser window, with the Jupyter environment.
-   * We have received some reports of memory problems. To resolve them, try running `JAVA_OPTS="-Xmx8G" jupyter notebook` to set allowed memory for jupyter to 8GB.
+   * We have received some reports of memory problems. To resolve them, try running `JAVA_OPTS="-Xmx12G" jupyter notebook` to set allowed memory for jupyter to 12GB.
  * In your browser, find the ontology-analysis.ipynb file and open
  * In the first Groovy box, press Shift+Return
    * Depending on your Internet connection, this may take some time!
