@@ -89,6 +89,10 @@ Detailed instructions (Beaker Notebook):
    * [OWL API](https://github.com/owlcs/owlapi)
    * [ELK Reasoner](https://github.com/liveontologies/elk-reasoner)
    * [Semantic Measures Library](http://www.semantic-measures-library.org/) (and the [paper](https://academic.oup.com/bioinformatics/article-lookup/doi/10.1093/bioinformatics/btt581))
+ * Knowledge graph embeddings:
+   * https://github.com/thunlp/KB2E
+   * https://github.com/bio-ontology-research-group/walking-rdf-and-owl
+
 
 # Slides
 
