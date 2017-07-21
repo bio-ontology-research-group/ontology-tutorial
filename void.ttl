@@ -1,0 +1,53 @@
+ @prefix dc:    <http://purl.org/dc/elements/1.1/> .
+@prefix :      <#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix prov:  <http://www.w3.org/ns/prov#> .
+@prefix dcat:  <http://www.w3.org/ns/dcat#> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix pav:   <http://purl.org/pav/> .
+@prefix freq:  <http://purl.org/cld/freq/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix void:  <http://rdfs.org/ns/void#> .
+@prefix dctypes: <http://purl.org/dc/dcmitype/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<>      a                    void:DatasetDescription ;
+        dcterms:description  "The VoID description for the RDF representation of this dataset."@en ;
+        dcterms:issued       "2017-07-17T10:29:22.915Z"^^xsd:dateTime ;
+        dcterms:title        "VoID Description"@en ;
+        pav:createdBy        <http://orcid.org/0000-0003-4727-9435> ;
+        pav:createdOn        "2017-07-17T10:29:22.915Z"^^xsd:dateTime ;
+        pav:createdWith      <http://voideditor.cs.man.ac.uk/> ;
+        foaf:primaryTopic    <https://zenodo.org/badge/latestdoi/96812825> .
+
+<http://orcid.org/0000-0003-4727-9435>
+        a                 foaf:Person ;
+        foaf:family_name  "Dumontier" ;
+        foaf:givenname    "Michel" ;
+        foaf:mbox         <mailto:michel.dumontier@maastrichtuniversity.nl> .
+
+		<http://orcid.org/0000-0001-8149-5890>
+        a                 foaf:Person ;
+        foaf:family_name  "Hoehndorf" ;
+        foaf:givenname    "Robert" ;
+        foaf:mbox         <mailto:robert.hoehndorf@kaust.edu.sa> .
+ 
+<https://zenodo.org/badge/latestdoi/96812825>
+        a                           void:Dataset , dctypes:Dataset ;
+        dcterms:accrualPeriodicity  "Irregular" ;
+        dcterms:description         "This is an introductory-level course to ontologies and ontology-based data analysis in bioinformatics."@en ;
+        dcterms:issued              "2017-07-20T23:00:00.915Z"^^xsd:dateTime ;
+        dcterms:publisher           <https://github.com/bio-ontology-research-group> ;
+        dcterms:title               "ISMB 2017 Ontology Tutorial"@en ;
+        pav:authoredBy              <http://orcid.org/0000-0001-8149-5890> , <http://orcid.org/0000-0003-4727-9435> ;
+        pav:version                 "1.0" ;
+        dcat:Distribution           <https://zenodo.org/badge/latestdoi/96812825#Datadump> ;
+        dcat:landingPage            <https://github.com/bio-ontology-research-group/ontology-tutorial> .
+
+		
+<https://zenodo.org/badge/latestdoi/96812825#Datadump>
+        a                 dcat:Distribution ;
+        pav:version       "1.0"@en ;
+        dcat:downloadURL  <https://github.com/bio-ontology-research-group/ontology-tutorial/archive/v1.0.zip> ;
+        dcat:mediaType    "application/zip" .
+
