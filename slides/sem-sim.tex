@@ -61,7 +61,7 @@
 \title[Bio-Ontologies]{Introduction to ontologies}
 \subtitle{Semantic similarity}
 
-\author{Michel Dumontier \& Robert Hoehndorf}
+\author{Michel Dumontier \& \underline{Robert Hoehndorf}}
 
 
 \date{ISMB 2017}
@@ -76,10 +76,9 @@
 \frametitle{Overview}
 \begin{enumerate}
 \item Ontologies and graphs
-\item Structural similarity
-\item Information theoretic approaches
-\item Set-based
+\item Semantic similarity
 \item Applications
+\item Hand-on session
 \end{enumerate}
 \end{frame}
 
@@ -194,23 +193,36 @@
   \end{itemize}
 \end{frame}
 
+
+\begin{frame}
+  \frametitle{How to measure similarity?}
+  \begin{itemize}
+  \item semantic similarity measures similarity between classes
+  \item semantic similarity measures similarity between instances of classes
+  \item semantic similarity measures similarity between entities
+    annotated with classes
+  \item $\Rightarrow$ reduce all of this to similarity between classes
+  \end{itemize}
+\end{frame}
+
 \begin{frame}
   \frametitle{How to measure similarity?}
   What properties do we want in a similarity measure?
-  \begin{itemize}
-  \item a function $sim: D \times D$ is a similarity on $D$ if, for
-    all $x, y \in D$, the function $sim$ is:
+  \\
+  A function $sim: D \times D$ is a similarity on $D$ if, for
+  all $x, y \in D$, the function $sim$ is:  \begin{itemize}
     \pause
   \item non-negative: $sim(x,y) \geq 0$ for all $x, y$
     \pause
   \item symmetric: $sim(x,y) = sim(y,x)$
     \pause
   \item reflexive: $sim(x,x) = max_D$
+    \pause
     \begin{itemize}
     \item weaker form: $sim(x,x) > sim(x,y)$ for all $x \not= y$
     \end{itemize}
     \pause
-  \item $sim(x,x) > sim(x,y)$ if $x\not= y$
+  \item $sim(x,x) > sim(x,y)$ for $x\not= y$
     \pause
   \item $sim$ is a {\em normalized} similarity measure if it has
     values in $[0,1]$
@@ -289,7 +301,8 @@
     \end{column}
     \begin{column}{.4\textwidth}
       \begin{itemize}
-       \item distance on shortest path
+      \item distance on shortest path
+        \pause
        \item distance(green, red) = 2
        \item $sim_{Rada}(green, red) = \frac{1}{3}$
       \end{itemize}
@@ -410,7 +423,7 @@
     \pause
   \item intrinsic:
     \begin{itemize}
-    \item $\sigma(x) = depth(x)$
+    \item $\sigma(x) = f(depth(x))$
     \item $\sigma(x) = f(A(x))$ (for ancestors $A(x)$)
     \item $\sigma(x) = f(D(x))$ (for descendants $D(x)$)
     \item many more, e.g., Zhou et al.: $\sigma(x) = k \cdot \Big( 1-\frac{\log
@@ -428,7 +441,7 @@
     \item Resnik 1995: $eIC_{Resnik}(x) = -\log p(x)$ (with $p(x) =
       \frac{|I(x)|}{|I|}$)
       \begin{itemize}
-      \item in biology, the most popular specificity measure when
+      \item in biology, one of the most popular specificity measure when
         annotations are present
       \end{itemize}
     \end{itemize}
@@ -947,10 +960,12 @@
       of co-occurrence matrix)
     \item RDF2Vec:
       \url{http://data.dws.informatik.uni-mannheim.de/rdf2vec/}
-      \begin{itemize}
-      \item with support for reasoning:
+      \pause
+    \item with support for reasoning over bio-ontologies:
         \url{https://github.com/bio-ontology-research-group/walking-rdf-and-owl}
-      \end{itemize}
+        \begin{itemize}
+        \item (self-promotion warning)
+        \end{itemize}
     \end{itemize}
     \pause
   \item Translational knowledge graph embeddings: TransE, TransR, TransE, HolE, etc.
@@ -1107,12 +1122,32 @@
 
 \begin{frame}
   \frametitle{Applications of semantic similarity}
+  \begin{itemize}
+  \item no obvious choice of similarity measure
+  \item depends on application
+    \begin{itemize}
+    \item predicting PPIs in different organisms may benefit from a
+      different similarity measure!
+    \end{itemize}
+  \item different similarity measures may react differently to biases
+    in data
+  \item needs some testing and experience
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Applications of semantic similarity}
   Recommendations:
   \begin{itemize}
   \item use Resnik's information content measure
   \item use Resnik's similarity
   \item use Best Match Average
   \item use the full ontology
+  \item classify your ontology using an automated reasoner before
+    applying semantic similarity
+    \begin{itemize}
+    \item although many ontologies come pre-classified
+    \end{itemize}
   \item $\Rightarrow$ but there are many exceptions
     \begin{itemize}
     \item similar location $\Rightarrow$ use location subset of GO
@@ -1421,11 +1456,13 @@
 \begin{frame}
   \frametitle{Hands-on: semantic similarity}
   \begin{itemize}
-  \item if you have not done so {\em before} the tutorial, don't start now
+  \item if you have not done so {\em before} the tutorial, don't start
+    now
     \begin{itemize}
     \item you need to download {\em a lot} of data
     \item you can just follow our demonstration and try later
-    \item (unless Internet is exceptionally fast for a conference Wifi)
+    \item (unless Internet is exceptionally fast for a conference
+      Wifi, then just go ahead and do everything now)
     \end{itemize}
   \item Jupyter Notebook
     \begin{itemize}
@@ -1463,6 +1500,29 @@
     \item compare patients to mice
     \end{itemize}
   \item you can build on this and extend for your own research!
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Hands-on: semantic similarity}
+  Do the tutorial...
+\end{frame}
+
+\begin{frame}
+  \frametitle{Hands-on: semantic similarity}
+  \begin{itemize}
+  \item now play with the Notebook:
+    \begin{itemize}
+    \item look at the results list (check MGI)
+    \item try another disease (check OMIM)
+    \item or a drug effect (check SIDER)
+    \end{itemize}
+  \item you can also test another ontology
+    \begin{itemize}
+    \item GO for functional similarity
+    \item ChEBI for chemical (structural) similarity
+    \item or yeast phenotypes
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
