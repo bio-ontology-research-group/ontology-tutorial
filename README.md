@@ -18,8 +18,8 @@ This is an introductory-level course to ontologies and ontology-based data analy
 
 The tutorial will contain a hands-on part. If you want to
 participate (instead of just watching the presentation), please download
-and install Jupyter Notebook (http://jupyter.org/) with a SciJava kernel (follow instructions [here](https://github.com/scijava/scijava-jupyter-kernel)) or Beaker Notebook (http://beakernotebook.com/) and _run_ the first cell in either https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/ontology-analysis.ipynb (on Jupyter) or https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/ontology-analysis.bkr (on Beaker). This will download the required dependencies (OWLAPI, ELK,
-SML) which are quite large. ~~It also downloads a 400MB OWL file which we will use for demonstration purposes. Some basic Java/Groovy knowledge is beneficial but not required.~~ You must also download our data package from [here](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/ontology-tutorial.tar.gz).
+and install Jupyter Notebook (http://jupyter.org/) with a SciJava kernel (follow instructions [here](https://github.com/scijava/scijava-jupyter-kernel)), and _run_ the first cell in https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/ontology-analysis.ipynb (on Jupyter). This will download the required dependencies (OWLAPI, ELK,
+SML) which are quite large. You must also download our data package from [here](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/ontology-tutorial.tar.gz).
 
 It is fine to skip this step and still follow the tutorial, but if you
 want to play with the methods yourself, and go away with some running code examples that you can build on, downloading and running the code
