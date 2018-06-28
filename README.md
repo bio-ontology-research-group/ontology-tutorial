@@ -22,8 +22,7 @@ and install Jupyter Notebook (http://jupyter.org/) with a SciJava kernel (follow
 SML) which are quite large. You must also download our data package from [here](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/ontology-tutorial.tar.gz).
 
 It is fine to skip this step and still follow the tutorial, but if you
-want to play with the methods yourself, and go away with some running code examples that you can build on, downloading and running the code
-is necessary.
+want to play with the methods yourself, and go away with some running code examples that you can build on, downloading and running the code is necessary.
 
 Detailed instructions (Jupyter Notebook):
  * Download Jupyter Notebook from http://jupyter.org/ and install
@@ -34,20 +33,6 @@ Detailed instructions (Jupyter Notebook):
    * We have received some reports of memory problems. To resolve them, try running `JAVA_OPTS="-Xmx12G" jupyter notebook` or `_JAVA_OPTIONS="-Xmx12G" jupyter notebook` to set allowed memory for jupyter to 12GB.
  * In your browser, find the ontology-analysis.ipynb file and open
  * In the first Groovy box, press Shift+Return
-   * Depending on your Internet connection, this may take some time!
-   * This code will download the libraries necessary to run the remaining code.
- * Download the [data package](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/ontology-tutorial.tar.gz) and store on your disk
-
-
-Detailed instructions (Beaker Notebook):
- * Download Beaker Notebook from http://beakernotebook.com/ (for Win, Mac, or GNU/Linux)
- * Install Beaker Notebook; follow the instructions provided and download the required dependencies
-   * Alternatively, download the Beaker Notebook Docker image from https://hub.docker.com/r/beakernotebook/beaker/ or using `docker pull beakernotebook/beaker`
- * Download the [ontology-analysis.bkr](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/ontology-analysis.bkr) file and store on your disk.
- * Run Beaker Notebook using `beaker.command`
-   * This will open a web browser, or browser window, with the Beaker environment.
- * In your browser, File -> Open (.bkr) and open the file `ontology-analysis.bkr` that you downloaded
- * Below the first Groovy box, click on `Run`
    * Depending on your Internet connection, this may take some time!
    * This code will download the libraries necessary to run the remaining code.
  * Download the [data package](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/ontology-tutorial.tar.gz) and store on your disk
