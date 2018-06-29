@@ -82,7 +82,7 @@ Detailed instructions (Jupyter Notebook):
 
 # Slides
 
- * [Part 1](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/slides/2018-ismb-tutorial.pdf) (presented by Michel Dumontier)
+ * [Part 1](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/slides/2018-ismb-tutorial-part-1.pdf) (presented by Michel Dumontier)
  * [Part 2](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/slides/sem-sim.pdf) (presented by Robert Hoehndorf)
  
 # Questions and Requests
