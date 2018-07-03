@@ -37,7 +37,7 @@ Detailed instructions (Jupyter Notebook):
    * This code will download the libraries necessary to run the remaining code.
  * Download the [data package](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/ontology-tutorial.tar.gz) and store on your disk
  
- ## OPA2Vec
+ ### OPA2Vec
  The tutorial will also include an introduction to OPA2Vec, a method that can be used to obtain vector representations of biomedical entities (such as proteins) based on ontologies and their annotations. These vector representations can be used for a variety of applications such as training a machine learning model or visualizing the entities, etc. 
 
 The OPA2Vec package is available at: https://github.com/bio-ontology-research-group/opa2vec
