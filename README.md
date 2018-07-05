@@ -24,7 +24,7 @@ SML) which are quite large. You must also download our data package from [here](
 It is fine to skip this step and still follow the tutorial, but if you
 want to play with the methods yourself, and go away with some running code examples that you can build on, downloading and running the code is necessary.
 
-Detailed instructions (Jupyter Notebook):
+Detailed instructions:
  * Download Jupyter Notebook from http://jupyter.org/ and install
  * Install the SciJava Jupyter kernel following instructions on https://github.com/scijava/scijava-jupyter-kernel
  * Download the [Jupyter Notebook file](https://github.com/bio-ontology-research-group/ontology-tutorial/blob/master/ontology-analysis.ipynb) ([direct download](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/ontology-analysis.ipynb)): and store on your disk.
@@ -37,12 +37,10 @@ Detailed instructions (Jupyter Notebook):
    * This code will download the libraries necessary to run the remaining code.
  * Download the [data package](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/ontology-tutorial.tar.gz) and store on your disk
  
- ### OPA2Vec
- The tutorial will also include an introduction to OPA2Vec, a method that can be used to obtain vector representations of biomedical entities (such as proteins) based on ontologies and their annotations. These vector representations can be used for a variety of applications such as training a machine learning model or visualizing the entities, etc. 
+### Onto2Vec and OPA2Vec: learning similarity measures
+The tutorial will also include an introduction to recent developments in ontologies and machine learning and introduce Onto2Vec and OPA2Vec, two methods that can be used to learn semantic similarity measures in a data- and application-driven way.
 
-The OPA2Vec package is available at: https://github.com/bio-ontology-research-group/opa2vec
-
-To be able to follow the tutorial and run OPA2Vec on your own computer, please check the required dependencies described in the introduction section of the following notebook: https://github.com/bio-ontology-research-group/ontology-tutorial/blob/master/OPA2Vec-tutorial.ipynb. You can also check the readme file at: https://github.com/bio-ontology-research-group/opa2vec/blob/master/README.md for some more technical details on OPA2Vec.
+To be able to follow this part of the tutorial, please check the required dependencies described in the introduction section of https://github.com/bio-ontology-research-group/ontology-tutorial/blob/master/OPA2Vec-tutorial.ipynb before the tutorial.
 
 # Schedule
 
@@ -81,15 +79,18 @@ To be able to follow the tutorial and run OPA2Vec on your own computer, please c
    * [OWL API](https://github.com/owlcs/owlapi)
    * [ELK Reasoner](https://github.com/liveontologies/elk-reasoner)
    * [Semantic Measures Library](http://www.semantic-measures-library.org/) (and the [paper](https://academic.oup.com/bioinformatics/article-lookup/doi/10.1093/bioinformatics/btt581))
- * Knowledge graph embeddings:
-   * https://github.com/thunlp/KB2E
+ * Knowledge graph embeddings and trainable similarity measures:
    * https://github.com/bio-ontology-research-group/walking-rdf-and-owl
+   * [Onto2Vec](https://github.com/bio-ontology-research-group/onto2vec/)
+   * [OPA2Vec](https://github.com/bio-ontology-research-group/opa2vec/)
+   * https://github.com/thunlp/KB2E
 
 
 # Slides
 
  * [Part 1](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/slides/2018-ismb-tutorial-part-1.pdf) (presented by Michel Dumontier)
  * [Part 2](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/slides/sem-sim.pdf) (presented by Robert Hoehndorf)
+ * [Part 3](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/slides/OPA2Vec tutorial.pdf) (presented by Fatima Zohra Smaili)
  
 # Questions and Requests
 
