@@ -78,7 +78,7 @@
 \item Ontologies and graphs
 \item Semantic similarity
 \item Applications
-\item Hand-on session
+\item Hands-on session
 \end{enumerate}
 \end{frame}
 
@@ -966,6 +966,7 @@
         \begin{itemize}
         \item (self-promotion warning)
         \end{itemize}
+      \item Onto2Vec, OPA2Vec: \url{https://github.com/bio-ontology-research-group/onto2vec/}
     \end{itemize}
     \pause
   \item Translational knowledge graph embeddings: TransE, TransR, TransE, HolE, etc.
@@ -1066,7 +1067,6 @@
   \end{itemize}
 \end{frame}
 
-
 \begin{frame}
   \frametitle{Applications of semantic similarity}
   \begin{itemize}
@@ -1158,6 +1158,12 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Onto2Vec and OPA2Vec}
+  Using feature learning to ``learn'' semantic similarity measures in
+  a data- and application-driven way...
+\end{frame}
+
+\begin{frame}
   \frametitle{Applications of semantic similarity}
   \begin{itemize}
   \item choice of ontology determines the kind of similarity
@@ -1229,7 +1235,7 @@
 \begin{frame}
   \frametitle{Applications of semantic similarity}
   \begin{itemize}
-  \item No guilt-by-association:
+  \item No guilt-by-association (abduction):
     \begin{itemize}
     \item $x$ causes $a$
     \item $y$ has $b$
@@ -1353,37 +1359,37 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Applications of semantic similarity}
-  \centerline{http://aber-owl.net/aber-owl/diseasephenotypes/}
-  \begin{itemize}
-  \item find phenotypes (signs and symptoms) associated with common
-    diseases
-    \begin{itemize}
-    \item no resource available for comparison
-    \end{itemize}
-  \item pattern-based mining of literature with Aber-OWL: PubMed
-  \item evaluation (of genetically based disease phenotypes) with
-    experimentally validated disease genes
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Applications of semantic similarity}
+%   \centerline{http://aber-owl.net/aber-owl/diseasephenotypes/}
+%   \begin{itemize}
+%   \item find phenotypes (signs and symptoms) associated with common
+%     diseases
+%     \begin{itemize}
+%     \item no resource available for comparison
+%     \end{itemize}
+%   \item pattern-based mining of literature with Aber-OWL: PubMed
+%   \item evaluation (of genetically based disease phenotypes) with
+%     experimentally validated disease genes
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Applications of semantic similarity}
-  \framesubtitle{http://aber-owl.net/aber-owl/diseasephenotypes/}
-  \centerline{\includegraphics[width=1\textwidth]{aber-owl-plague.png}}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Applications of semantic similarity}
+%   \framesubtitle{http://aber-owl.net/aber-owl/diseasephenotypes/}
+%   \centerline{\includegraphics[width=1\textwidth]{aber-owl-plague.png}}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Applications of semantic similarity}
-  \framesubtitle{http://aber-owl.net/aber-owl/diseasephenotypes/}
-  \centerline{\includegraphics[width=1\textwidth]{pmi-auc-plot.pdf}}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Applications of semantic similarity}
+%   \framesubtitle{http://aber-owl.net/aber-owl/diseasephenotypes/}
+%   \centerline{\includegraphics[width=1\textwidth]{pmi-auc-plot.pdf}}
+% \end{frame}
 
-\begin{frame}[plain]
-  \frametitle{Applications of semantic similarity}
-  \centerline{\includegraphics[height=1\textheight]{network.eps}}
-\end{frame}
+% \begin{frame}[plain]
+%   \frametitle{Applications of semantic similarity}
+%   \centerline{\includegraphics[height=1\textheight]{network.eps}}
+% \end{frame}
 
 \begin{frame}
   \frametitle{Applications of semantic similarity}
@@ -1411,19 +1417,19 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Applications of semantic similarity}
-  \begin{tikzpicture}[remember picture,overlay]
-    \node[at=(current page.center)] {
-      \centerline{\includegraphics[height=1\textheight]{pvp.pdf}}
-    };
-  \end{tikzpicture}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Applications of semantic similarity}
+%   \begin{tikzpicture}[remember picture,overlay]
+%     \node[at=(current page.center)] {
+%       \centerline{\includegraphics[height=1\textheight]{pvp.pdf}}
+%     };
+%   \end{tikzpicture}
+% \end{frame}
 
-{
-\setbeamercolor{background canvas}{bg=}
-\includepdf[pages=1-3]{hh-pvp2.pdf}
-}
+% {
+% \setbeamercolor{background canvas}{bg=}
+% \includepdf[pages=1-3]{hh-pvp2.pdf}
+% }
 
 \begin{frame}
   \frametitle{Summary}
@@ -1446,10 +1452,12 @@
 \begin{frame}
   \frametitle{Acknowledgements}
   \begin{itemize}
+  \item Sarah Alghamdi
   \item Mona Alsharani
   \item Imene Boudellioua
+  \item Senay Kafkas
   \item Maxat Kulmanov
-  \item Sarah Alghamdi
+  \item Fatima Zohra Smaili
   \end{itemize}
 \end{frame}
 
@@ -1470,11 +1478,6 @@
     \item human readable (with nice figures) {\em and} executable
     \item need to install the SciJava kernel (default: iPython)
     \item very widely used
-    \end{itemize}
-  \item Beaker Notebook
-    \begin{itemize}
-    \item like Jupyter notebook, with lots of kernels pre-installed
-    \item Python, Groovy, Javascript, ...
     \end{itemize}
   \item
     \url{https://github.com/bio-ontology-research-group/ontology-tutorial}
@@ -1499,6 +1502,7 @@
     \item use different similarity measures
     \item compare patients to mice
     \end{itemize}
+  \item learn to use Onto2Vec and OPA2Vec
   \item you can build on this and extend for your own research!
   \end{itemize}
 \end{frame}
