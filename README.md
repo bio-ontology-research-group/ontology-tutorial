@@ -90,7 +90,7 @@ To be able to follow this part of the tutorial, please check the required depend
 
  * [Part 1](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/slides/2018-ismb-tutorial-part-1.pdf) (presented by Michel Dumontier)
  * [Part 2](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/slides/sem-sim.pdf) (presented by Robert Hoehndorf)
- * [Part 3](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/slides/OPA2Vec tutorial.pdf) (presented by Fatima Zohra Smaili)
+ * [Part 3](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/slides/OPA2Vec-tutorial.pdf) (presented by Fatima Zohra Smaili)
  
 # Questions and Requests
 
