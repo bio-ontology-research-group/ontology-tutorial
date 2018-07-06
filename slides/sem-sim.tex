@@ -953,20 +953,20 @@
     \pause
   \item e.g., iterated, edge-labeled random walk
     \begin{itemize}
-    \item over instances and classes
+%    \item over instances and classes
     \item walks form {\em sentences}
     \item sentences form a {\em corpus}
     \item feature learning on corpus through Word2Vec (or factorization
       of co-occurrence matrix)
-    \item RDF2Vec:
-      \url{http://data.dws.informatik.uni-mannheim.de/rdf2vec/}
+    % \item RDF2Vec:
+    %   \url{http://data.dws.informatik.uni-mannheim.de/rdf2vec/}
       \pause
     \item with support for reasoning over bio-ontologies:
         \url{https://github.com/bio-ontology-research-group/walking-rdf-and-owl}
-        \begin{itemize}
-        \item (self-promotion warning)
-        \end{itemize}
-      \item Onto2Vec, OPA2Vec: \url{https://github.com/bio-ontology-research-group/onto2vec/}
+        % \begin{itemize}
+        % \item (self-promotion warning)
+        % \end{itemize}
+      \item Onto2Vec: \url{https://github.com/bio-ontology-research-group/onto2vec/}
     \end{itemize}
     \pause
   \item Translational knowledge graph embeddings: TransE, TransR, TransE, HolE, etc.
@@ -980,10 +980,10 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
-  \frametitle{How to measure similarity?}
-  \centerline{\includegraphics[width=\textwidth]{workflow.png}}
-\end{frame}
+% \begin{frame}
+%   \frametitle{How to measure similarity?}
+%   \centerline{\includegraphics[width=\textwidth]{workflow.png}}
+% \end{frame}
 
 \begin{frame}
   \frametitle{How to measure similarity?}
@@ -1061,8 +1061,7 @@
     \begin{enumerate}[a]
     \item cannot be computed, it only works with ontologies
     \item can be estimated using only class specificity measures
-    \item can be computed using feature learning and knowledge graph
-      embeddings
+    \item can be computed using knowledge graph embeddings
     \end{enumerate}
   \end{itemize}
 \end{frame}
