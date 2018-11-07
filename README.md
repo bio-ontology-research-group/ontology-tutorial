@@ -1,5 +1,5 @@
 
-# Ontology Tutorial: Ontologies for biomedical data analysis
+# Tutorial: Ontologies for biomedical data analysis
 
 Ontologies have long provided a core foundation in the organization of biomedical entities, their attributes, and their relationships. With over 500 biomedical ontologies currently available there are a number of new and exciting new opportunities emerging in using ontologies for large scale data sharing and data analysis. This tutorial will help you understand what ontologies are and how they are being used in computational biology and bioinformatics. 
 
