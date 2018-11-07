@@ -1,18 +1,18 @@
 
-# Ontology Tutorial at ISMB 2018
+# Tutorial: Ontologies for biomedical data analysis
 
 Ontologies have long provided a core foundation in the organization of biomedical entities, their attributes, and their relationships. With over 500 biomedical ontologies currently available there are a number of new and exciting new opportunities emerging in using ontologies for large scale data sharing and data analysis. This tutorial will help you understand what ontologies are and how they are being used in computational biology and bioinformatics. 
 
-*Intended audience and level*: The tutorial will be of interest to any researcher who will use or produce large structured datasets in computational biology. The tutorial will be at an introductory level, but will also describe current research directions and challenges that will be of broad interest to researchers in computational biology.
+*Intended audience and level*: The tutorial will be of interest to any researcher who will use or produce large structured datasets in computational biology. The tutorial will be at an intermediate level and will describe current research directions and challenges. A particular focus will be given on the use of ontologies to compute semantic similarity, and the use of ontologies in machine learning.
 
 # Learning objectives
 
-This is an introductory-level course to ontologies and ontology-based data analysis in bioinformatics. In this tutorial, participants will learn:
- * what ontologies are and where to find them
+This is an intermediate-level course to ontologies and ontology-based data analysis in bioinformatics. In this tutorial, participants will learn:
+ * what ontologies are and where to find them (briefly)
  * how to understand and use ontology semantics through automated reasoning
  * how to measure semantic similarity
+ * how to combine ontologies and deep learning
  * how to incorporate ontologies and semantic similarity measures in bioinformatics analyses
- * recent developments in bio-ontologies
 
 # Before the tutorial (important)
 
@@ -30,7 +30,7 @@ Detailed instructions:
  * Download the [Jupyter Notebook file](https://github.com/bio-ontology-research-group/ontology-tutorial/blob/master/ontology-analysis.ipynb) ([direct download](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/ontology-analysis.ipynb)): and store on your disk.
  * Run Jupyter Notebook using `jupyter notebook`
    * This will open a web browser, or browser window, with the Jupyter environment.
-   * We have received some reports of memory problems. To resolve them, try running `JAVA_OPTS="-Xmx12G" jupyter notebook` or `_JAVA_OPTIONS="-Xmx12G" jupyter notebook` to set allowed memory for jupyter to 12GB.
+   * We have received some reports of memory problems. To resolve them, try running `JAVA_OPTS="-Xmx12G" jupyter notebook` or `_JAVA_OPTIONS="-Xmx12G" jupyter notebook` to set allowed memory for jupyter to 12GB (adjust for your particular environment).
  * In your browser, find the ontology-analysis.ipynb file and open
  * In the first Groovy box, press Shift+Return
    * Depending on your Internet connection, this may take some time!
@@ -40,14 +40,14 @@ Detailed instructions:
 ### Onto2Vec and OPA2Vec: learning similarity measures
 The tutorial will also include an introduction to recent developments in ontologies and machine learning and introduce Onto2Vec and OPA2Vec, two methods that can be used to learn semantic similarity measures in a data- and application-driven way.
 
-To be able to follow this part of the tutorial, please check the required dependencies described in the introduction section of https://github.com/bio-ontology-research-group/ontology-tutorial/blob/master/OPA2Vec-tutorial.ipynb before the tutorial.
-
 # Schedule
 
-1. Introduction: ontologies and their role in computational biology
+1. General overview: what are ontologies, where to find them (ontology portals), how they are used (for annotation)
 2. Semantic Web: basic technologies underlying ontologies; understanding ontologies through OWL
-3. Ontology-based analysis: semantic similarity and unsupervised machine learning methods
-4. Hands-on: demonstration of some basic concepts
+3. Ontologies and graphs: how to go from ontologies to graphs and back (preliminary step for computing semantic similarity)
+4. Semantic similarity: computing similarity between classes, sets of classes, and between biological entities (genes, diseases, drugs)
+5. Machine learning and ontologies: using deep learning to encode knowledge graphs, ontologies, and connections between ontologies
+4. Applications: how to apply the methods for biomedical data analysis: finding protein-protein interaction, prioritize disease genes, and more
 
 # Reading materials
 
@@ -87,19 +87,15 @@ To be able to follow this part of the tutorial, please check the required depend
 
 
 # Slides
-
- * [Part 1](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/slides/2018-ismb-tutorial-part-1.pdf) (presented by Michel Dumontier)
- * [Part 2](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/slides/sem-sim.pdf) (presented by Robert Hoehndorf)
- * [Part 3](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/slides/OPA2Vec-tutorial.pdf) (presented by Fatima Zohra Smaili)
+Slides will be updated on demand. The latest version (source and PDF) are in the (/slides/) folder.
  
 # Questions and Requests
 
 You can use the [Issue Tracker](https://github.com/bio-ontology-research-group/ontology-tutorial/issues) for questions and requests.
 
-# Organizers
-Michel Dumontier is a Distinguished Professor of Data Science at Maastricht University. His research focuses on the development of computational methods for scalable integration and reproducible analysis of FAIR (Findable, Accessible, Interoperable and Reusable) data across scales - from molecules, tissues, organs, individuals, populations to the environment. His group combines semantic web technologies with effective indexing, machine learning and network analysis for drug discovery and personalized medicine. Dr. Dumontier leads a new inter-faculty Institute for Data Science at Maastricht University with a focus on accelerating discovery science, empowering communities, and improving health and well being. He is the editor-in-chief for the IOS press journal Data Science and an associate editor for the IOS press journal Semantic Web. He is the scientific director for Bio2RDF, an open source project to generate Linked Data for the Life Sciences and is a technical lead for the FAIR (Findable, Accessible, Interoperable, Re-usable) data initiative. He has published over 125 articles in top rated journals and international conferences. He is internationally recognized for his contributions in bioinformatics, biomedical informatics, and semantic technologies as evidenced by awards, keynote talks at international conferences, and collaborations on international projects.
+# Contributors
 
-[Robert Hoehndorf](https://www.kaust.edu.sa/en/study/faculty/robert-hoehndorf) is an Assistant Professor in Computer Science at [King Abdullah University of Science and Technology](https://www.kaust.edu.sa/en) in Thuwal. His [research](https://borg.kaust.edu.sa/) focuses on the applications of ontologies in biology and biomedicine, with a particular emphasis on integrating and analyzing heterogeneous, multimodal data. Dr. Hoehndorf has developed the [PhenomeNET](https://academic.oup.com/nar/article-lookup/doi/10.1093/nar/gkr538) system for ontology-based prioritization of disease genes using model organism phenotypes, and contributed to the development of the [AberOWL](http://aber-owl.net) ontology repository. He is an associate editor for the Journal of Biomedical Semantics, BMC Bioinformatics, Applied Ontology, and editorial board member of the IOS press journal Data Science. He published over 90 papers in journals and international conferences, and presented previous tutorials on ontologies and their applications at ISMB, OWL-ED, and ECCB.
+The set of slides has been developed by Michel Dumontier (part 1) and Robert Hoehndorf (part 2).
 
 # License
 
