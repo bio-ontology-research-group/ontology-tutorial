@@ -101,6 +101,188 @@
 
 \section{General overview}
 
+\begin{frame}
+  \frametitle{Applied Ontology}
+  \begin{itemize}
+  \item builds on philosophy, cognitive science, linguistics and logic
+  \item with the purpose of understanding, clarifying, making explicit and
+    communicating {\em people's assumptions} about the nature and
+    structure of the world.
+  \item orientation towards helping people (and machines) understand each other
+    distinguishes applied ontology from philosophical ontology, and
+    motivates its unavoidable interdisciplinary nature.
+  \item Ontological analysis: study of content (of these assumptions)
+    as such (independently of their representation)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Do we know what to Represent?}
+  \begin{itemize}
+  \item First analysis, then representation
+    \begin{itemize}
+    \item that's not always the case
+    \end{itemize}
+  \item Computer scientists have focused on the structure of
+    representations and the nature of reasoning more than on the
+    content of such representations
+  \item Essential ontological promiscuity of AI: any agent creates its
+    own ontology based on its usefulness for the task at hand
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Logic}
+  Logic is neutral about content
+  \begin{itemize}
+  \item ...but very useful to describe the formal structure (i.e., the
+    invariances) of content
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Kinds of knowledge}
+  \begin{itemize}
+  \item Fido is black: assertional
+  \item Either Fido is black or Fido is not black: analytic, logical
+  \item If Jack is a bachelor, then he is not married: analytic,
+    terminological
+    \begin{itemize}
+    \item Terminological knowledge is about relationships between
+      terms and concepts
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{What is an ontology?}
+  \framesubtitle{Ontology: the philosophical discipline}
+  \begin{itemize}
+  \item Study of what there is (being {\em qua} being)
+  \item reinterpreted for computer science: content {\em qua} content,
+    independently of the way it is represented
+  \item Study of the nature and structure of ``reality'' (a domain of discourse)
+  \item A (philosophical) ontology: a structured system of entities assumed to exists,
+    organized in categories and relations
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ontologies in CS}
+  \begin{itemize}
+  \item Specific (theoretical or computational) artifacts expressing
+    the intended meaning of a vocabulary in terms of primitive
+    categories and relations describing the nature and structure of a
+    domain of discourse 
+    \begin{itemize}
+    \item in order to account for the competent use of vocabulary in
+      real situations
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ontologies in CS}
+  \begin{itemize}
+  \item Gruber: ``A specification of a conceptualization of a domain''
+  \item Studer: ``An ontology is a formal, explicit specification of a
+    shared conceptualization''
+  \item Guarino: ``An ontology is a logical theory accounting for the
+    intended meaning of a formal vocabulary, i.e. its ontological
+    commitment to a particular conceptualization of the world. The
+    intended models of a logical language using such a vocabulary are
+    constrained by its ontological commitment. An ontology indirectly
+    reflects this commitment (and the underlying conceptualization) by
+    approximating these intended models.''
+  \item Horrocks: ``an ontology [is] equivalent to a Description Logic
+    knowledge base''
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{What is a conceptualization}
+  \begin{itemize}
+  \item Formal structure of (a piece of) reality as perceived and organized by an
+    agent, independently of:
+    \begin{itemize}
+    \item the vocabulary used
+    \item the actual occurence of a specific situation
+    \end{itemize}
+  \item Different situations involving the same objects, described by
+    different vocabularies, may share the same conceptualization
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ontologies vs classifications}
+  % Ontological analysis, slide 32
+  \begin{itemize}
+  \item Classifications focus on:
+    \begin{itemize}
+    \item access, based on pre-determined criteria (encoded by
+      syntactic keys)
+    \end{itemize}
+  \item Ontologies focus on:
+    \begin{itemize}
+    \item meaning of terms
+    \item nature and structure of a domain
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ontologies vs Knowledge bases}
+  Knowledge base:
+  \begin{itemize}
+  \item Assertional component
+    \begin{itemize}
+    \item reflects specific states of affairs
+    \item designed for problem solving
+    \end{itemize}
+  \item Terminological component (ontology)
+    \begin{itemize}
+    \item independent of states of affairs
+    \item designed to support terminological services
+    \item ... but independent of the actual terminology used
+    \end{itemize}
+  \item Ontological formulas are invariant, necessary information
+    \begin{itemize}
+    \item often expressed using modal logics or Description Logics
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ontologies}
+  \begin{itemize}
+  \item {\em classes} represent kinds of things in the world
+    \begin{itemize}
+    \item {\em Arm}, {\em Apoptosis}, {\em Influenza}, {\em Homo
+        sapiens}, {\em Drinking behavior}, {\em Membrane}
+    \end{itemize}
+    \pause
+  \item {\em instances} of classes are individuals satisfying the
+    classes' intension
+    \begin{itemize}
+    \item my arm, the influenza I had last year, one ethanol molecule, etc.
+    \end{itemize}
+    \pause
+  \item {\em relations} between instances arise from interactions,
+    configurations, etc., of individuals
+    \begin{itemize}
+    \item my arm is {\bf part of} me, the {\bf duration of} my
+      influenza was 10 days
+    \end{itemize}
+    \pause
+  \item {\em axioms} specify the conditions that instances of a class
+    must satisfy
+    \begin{itemize}
+    \item every instance of {\em Hand} is a {\bf part of} an instance
+      of {\em Arm}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
 
 
 \section{Ontologies and the Semantic Web}
@@ -384,7 +566,7 @@ Class: mynamespace:Student # http://www.kaust.edu.sa#Student
   Major benefit is the large number of tools and infrastructure:
   \begin{itemize}
   \item Editors: Protege, WebProtege
-  \item Reasoners: HermiT, Pellet, FaCT++, ELK, KAON2, RACER,...
+  \item Reasoners: HermiT, Pellet, FaCT++, {\bf ELK}, KAON2, RACER,...
   \item Explanation, justification
   \item Modularization
   \item APIs (esp. the OWL API)
@@ -409,6 +591,8 @@ Class: mynamespace:Student # http://www.kaust.edu.sa#Student
 
 \begin{frame}
   \frametitle{Examples: OWL vs Databases}
+  {\tiny Based on slides by Ian Horrocks}
+  \vfill
   \begin{itemize}
   \item hasPet some owl:Thing SubclassOf: Human
   \item Phoenix SubclassOf: petOf only Wizard
@@ -522,37 +706,6 @@ Class: mynamespace:Student # http://www.kaust.edu.sa#Student
   \item Which genetic disease produces similar symptoms to ebola?
     \pause
   \item Does functional similarity correlate with phenotypic similarity?
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Ontologies (recap)}
-  \begin{itemize}
-  \item {\em classes} represent kinds of things in the world
-    \begin{itemize}
-    \item {\em Arm}, {\em Apoptosis}, {\em Influenza}, {\em Homo
-        sapiens}, {\em Drinking behavior}, {\em Membrane}
-    \end{itemize}
-    \pause
-  \item {\em instances} of classes are individuals satisfying the
-    classes' intension
-    \begin{itemize}
-    \item my arm, the influenza I had last year, one ethanol molecule, etc.
-    \end{itemize}
-    \pause
-  \item {\em relations} between instances arise from interactions,
-    configurations, etc., of individuals
-    \begin{itemize}
-    \item my arm is {\bf part of} me, the {\bf duration of} my
-      influenza was 10 days
-    \end{itemize}
-    \pause
-  \item {\em axioms} specify the conditions that instances of a class
-    must satisfy
-    \begin{itemize}
-    \item every instance of {\em Hand} is a {\bf part of} an instance
-      of {\em Arm}
-    \end{itemize}
   \end{itemize}
 \end{frame}
 
