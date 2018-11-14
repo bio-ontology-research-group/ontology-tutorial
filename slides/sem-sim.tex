@@ -69,9 +69,9 @@
 % \setbeamerfont{block title}{size={}}
 % }
 
-\title[Bio-Ontologies]{Introduction to ontologies in computational biology}
+\title[Bio-Ontologies]{Ontologies in computational biology}
 
-\author{Robert Hoehndorf}
+\author{Robert Hoehndorf and Paul Schofield}
 
 
 \date{}
@@ -728,6 +728,22 @@ Class: mynamespace:Student # http://www.kaust.edu.sa#Student
   \begin{itemize}
   \item Semantic can seem counter-intuitive (OWA, UNA)
   \item Query answering (logical entailment) much more difficult
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Hands-on part 1}
+  \begin{itemize}
+  \item start Jupyter and open the Notebook
+    \begin{itemize}
+    \item https://github.com/bio-ontology-research-group/ontology-tutorial/blob/master/ontology-analysis.ipynb
+    \end{itemize}
+  \item chose the SciJava kernel
+  \item run the ``Reasoning with ontologies'' part
+    \begin{itemize}
+    \item then modify the code and retrieve all superclasses of
+      ``increased B cell apoptosis''
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -1578,6 +1594,194 @@ Class: mynamespace:Student # http://www.kaust.edu.sa#Student
 \end{frame}
 
 \begin{frame}
+  \frametitle{Applications of semantic similarity}
+  \begin{itemize}
+  \item ontologies are used {\em almost everywhere} in biology
+  \item many applications of semantic similarity:
+    \begin{itemize}
+    \item predicting interacting proteins
+    \item predict candidate genes
+      \begin{itemize}
+      \item using the guilt-by-association principle, or without
+      \end{itemize}
+    \item predict drug targets and indications
+    \item as features in machine learning models
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Applications of semantic similarity}
+  \begin{block}{Hypothesis}
+    Interacting proteins have similar functions.
+  \end{block}
+  \begin{itemize}
+  \item relies on background knowledge about functions (encoded in GO)
+  \item ``similarity'' can mean:
+    \begin{itemize}
+    \item part of the same pathway
+    \item siblings of a common super-class
+    \item located in the same location
+    \end{itemize}
+  \item set-based comparison of GO functions
+    \begin{itemize}
+    \item single GO hierarchy or all?
+    \item which similarity measure?
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Applications of semantic similarity}
+  \centerline{\includegraphics[width=.8\textwidth]{ppi1.png}}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Applications of semantic similarity}
+  \centerline{\includegraphics[width=.8\textwidth]{ppi2.png}}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Applications of semantic similarity}
+  \centerline{\includegraphics[width=.8\textwidth]{ppi3.png}}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Applications of semantic similarity}
+  \begin{itemize}
+  \item no obvious choice of similarity measure
+  \item depends on application
+    \begin{itemize}
+    \item predicting PPIs in different organisms may benefit from a
+      different similarity measure!
+    \end{itemize}
+  \item different similarity measures may react differently to biases
+    in data
+  \item needs some testing and experience
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Applications of semantic similarity}
+  Recommendations:
+  \begin{itemize}
+  \item use Resnik's information content measure
+  \item use Resnik's similarity
+  \item use Best Match Average
+  \item use the full ontology
+  \item classify your ontology using an automated reasoner before
+    applying semantic similarity
+    \begin{itemize}
+    \item although many ontologies come pre-classified
+    \end{itemize}
+  \item $\Rightarrow$ but there are many exceptions
+    \begin{itemize}
+    \item similar location $\Rightarrow$ use location subset of GO
+    \item developmental phenotypes $\Rightarrow$ use developmental
+      branch of phenotype ontology
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Applications of semantic similarity}
+  \begin{itemize}
+  \item choice of ontology determines the kind of similarity
+  \item functional similarity: Gene Ontology
+  \item anatomical, structural similarity: anatomy ontologies (Uberon,
+    MA, FMA, etc.)
+  \item phenotypic similarity: phenotype ontology (HPO, MP, etc.)
+  \item chemical structural similarity: ChEBI
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Applications of semantic similarity}
+  \begin{itemize}
+  \item phenotypic similarity used to:
+    \begin{itemize}
+    \item diagnosis: similarity between patient phenotypes and disease
+      phenotypes
+      \begin{itemize}
+      \item also between patient phenotypes and gene--phenotype
+        associations
+      \item Phenomizer: \url{http://compbio.charite.de/phenomizer/}
+      \end{itemize}
+    \item disease modules: similarity between disease and disease
+    \item clustering/stratification: similarity between patient and patient
+    \item disease gene discovery: similarity between patient/disease
+      phenotypes and gene--phenotype associations
+      \begin{itemize}
+      \item in humans
+      \item in model organisms
+      \end{itemize}
+    \item drug repurposing: side-effect similarity; similarity between
+      side effect profile and gene--disease associations
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{How to measure similarity?}
+  Recommended reading:
+  \begin{itemize}
+  \item recommended, comprehensive overview: Sebastian Harispe et
+    al. Semantic Similarity from Natural Language and Ontology
+    Analysis. Morgan \& Claypool Publishers, 2015
+  \item Catia Pesquita et al. Semantic Similarity in Biomedical
+    Ontologies. PLoS CB, 2009.
+  \item Maximilian Nickel et al. A Review of Relational Machine
+    Learning for Knowledge Graphs, Proceedings of the IEEE, 2016.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{How to measure similarity: Quiz}
+  \begin{itemize}
+  \item How many semantic similarity measures are there?
+    \begin{enumerate}[a]
+    \item One (and it is called The Semantic Similarity Measure)
+    \item Three (graph-based, set-based, feature-based)
+    \item Many (depending on context, many functions can determine similarity)
+    \end{enumerate}
+    \pause
+  \item Specificity of an ontology class
+    \begin{enumerate}[a]
+    \item depends on the number of children and ancestors, and the
+      depth
+    \item depends on the number of instances (or annotations)
+    \item can improve similarity estimates significantly
+    \end{enumerate}
+    \pause
+  \item In the presence of (relations between) instances, semantic
+    similarity
+    \begin{enumerate}[a]
+    \item cannot be computed, it only works with ontologies
+    \item can be estimated using only class specificity measures
+    \item can be computed using knowledge graph embeddings
+    \end{enumerate}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Hands-on part 2}
+  \begin{itemize}
+  \item back to Jupyter...
+  \item run the ``Semantic Similarity'' part
+    \begin{itemize}
+    \item then find the most similar mouse gene to ``Tetralogy of
+      Fallot'' (OMIM:187500)
+    \item or: use the data from
+      \url{https://hpo.jax.org/app/download/annotation} to add more
+      diseases and query by disease (hint: a disease is really just a
+      set of phenotypes)
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\section{Machine learning and ontologies}
+
+\begin{frame}
   \frametitle{How to measure similarity?}
   \centerline{\includegraphics[height=.8\textheight]{instances.png}}
   {\tiny From Harispe et al., Semantic Similarity From Natural
@@ -1642,8 +1846,6 @@ Class: mynamespace:Student # http://www.kaust.edu.sa#Student
     instances) and relations
   \end{itemize}
 \end{frame}
-
-\section{Machine learning and ontologies}
 
 \begin{frame}
   \frametitle{Knowledge graph embeddings}
@@ -2035,210 +2237,42 @@ biological knowledge graphs. Bioinformatics, 2017.}
     \item Neural Networks can approximate {\em any} function
       (universal approximation theorem)
     \item ``trainable'' semantic similarity measures
+    \item will need training data
     \end{itemize}
   \end{itemize}
 \end{frame}
 
-\begin{frame}
-  \frametitle{How to measure similarity?}
-  \begin{itemize}
-  \item many graph based semantic similarity measures for comparing
-    two classes
-  \item several set-based measures
-    \begin{itemize}
-    \item directly set-based
-    \item merging pair-wise comparison
-    \end{itemize}
-  \item most useful when comparing instances/annotations
-  \item other approaches consider relations between instances:
-    \begin{itemize}
-    \item path-based
-    \item random-walk
-    \end{itemize}
-  \item very recent: knowledge graph embeddings
-    \begin{itemize}
-    \item and any vector-based similarity measure
-    \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{How to measure similarity?}
-  Recommended reading:
-  \begin{itemize}
-  \item recommended, comprehensive overview: Sebastian Harispe et
-    al. Semantic Similarity from Natural Language and Ontology
-    Analysis. Morgan \& Claypool Publishers, 2015
-  \item Catia Pesquita et al. Semantic Similarity in Biomedical
-    Ontologies. PLoS CB, 2009.
-  \item Maximilian Nickel et al. A Review of Relational Machine
-    Learning for Knowledge Graphs, Proceedings of the IEEE, 2016.
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{How to measure similarity: Quiz}
-  \begin{itemize}
-  \item How many semantic similarity measures are there?
-    \begin{enumerate}[a]
-    \item One (and it is called The Semantic Similarity Measure)
-    \item Three (graph-based, set-based, feature-based)
-    \item Many (depending on context, many functions can determine similarity)
-    \end{enumerate}
-    \pause
-  \item Specificity of an ontology class
-    \begin{enumerate}[a]
-    \item depends on the number of children and ancestors, and the
-      depth
-    \item depends on the number of instances (or annotations)
-    \item can improve similarity estimates significantly
-    \end{enumerate}
-    \pause
-  \item In the presence of (relations between) instances, semantic
-    similarity
-    \begin{enumerate}[a]
-    \item cannot be computed, it only works with ontologies
-    \item can be estimated using only class specificity measures
-    \item can be computed using knowledge graph embeddings
-    \end{enumerate}
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{How to measure similarity?}
+%   \begin{itemize}
+%   \item many graph based semantic similarity measures for comparing
+%     two classes
+%   \item several set-based measures
+%     \begin{itemize}
+%     \item directly set-based
+%     \item merging pair-wise comparison
+%     \end{itemize}
+%   \item most useful when comparing instances/annotations
+%   \item other approaches consider relations between instances:
+%     \begin{itemize}
+%     \item path-based
+%     \item random-walk
+%     \end{itemize}
+%   \item very recent: knowledge graph embeddings
+%     \begin{itemize}
+%     \item and any vector-based similarity measure
+%     \end{itemize}
+%   \end{itemize}
+% \end{frame}
 
 \section{Applications}
 
-\begin{frame}
-  \frametitle{Applications of semantic similarity}
-  \begin{itemize}
-  \item ontologies are used {\em almost everywhere} in biology
-  \item many applications of semantic similarity:
-    \begin{itemize}
-    \item predicting interacting proteins
-    \item predict candidate genes
-      \begin{itemize}
-      \item using the guilt-by-association principle, or without
-      \end{itemize}
-    \item predict drug targets and indications
-    \item as features in machine learning models
-    \end{itemize}
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Onto2Vec and OPA2Vec}
+%   Using feature learning to ``learn'' semantic similarity measures in
+%   a data- and application-driven way...
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Applications of semantic similarity}
-  \begin{block}{Hypothesis}
-    Interacting proteins have similar functions.
-  \end{block}
-  \begin{itemize}
-  \item relies on background knowledge about functions (encoded in GO)
-  \item ``similarity'' can mean:
-    \begin{itemize}
-    \item part of the same pathway
-    \item siblings of a common super-class
-    \item located in the same location
-    \end{itemize}
-  \item set-based comparison of GO functions
-    \begin{itemize}
-    \item single GO hierarchy or all?
-    \item which similarity measure?
-    \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Applications of semantic similarity}
-  \centerline{\includegraphics[width=.8\textwidth]{ppi1.png}}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Applications of semantic similarity}
-  \centerline{\includegraphics[width=.8\textwidth]{ppi2.png}}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Applications of semantic similarity}
-  \centerline{\includegraphics[width=.8\textwidth]{ppi3.png}}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Applications of semantic similarity}
-  \begin{itemize}
-  \item no obvious choice of similarity measure
-  \item depends on application
-    \begin{itemize}
-    \item predicting PPIs in different organisms may benefit from a
-      different similarity measure!
-    \end{itemize}
-  \item different similarity measures may react differently to biases
-    in data
-  \item needs some testing and experience
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Applications of semantic similarity}
-  Recommendations:
-  \begin{itemize}
-  \item use Resnik's information content measure
-  \item use Resnik's similarity
-  \item use Best Match Average
-  \item use the full ontology
-  \item classify your ontology using an automated reasoner before
-    applying semantic similarity
-    \begin{itemize}
-    \item although many ontologies come pre-classified
-    \end{itemize}
-  \item $\Rightarrow$ but there are many exceptions
-    \begin{itemize}
-    \item similar location $\Rightarrow$ use location subset of GO
-    \item developmental phenotypes $\Rightarrow$ use developmental
-      branch of phenotype ontology
-    \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Onto2Vec and OPA2Vec}
-  Using feature learning to ``learn'' semantic similarity measures in
-  a data- and application-driven way...
-\end{frame}
-
-\begin{frame}
-  \frametitle{Applications of semantic similarity}
-  \begin{itemize}
-  \item choice of ontology determines the kind of similarity
-  \item functional similarity: Gene Ontology
-  \item anatomical, structural similarity: anatomy ontologies (Uberon,
-    MA, FMA, etc.)
-  \item phenotypic similarity: phenotype ontology (HPO, MP, etc.)
-  \item chemical structural similarity: ChEBI
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Applications of semantic similarity}
-  \begin{itemize}
-  \item phenotypic similarity used to:
-    \begin{itemize}
-    \item diagnosis: similarity between patient phenotypes and disease
-      phenotypes
-      \begin{itemize}
-      \item also between patient phenotypes and gene--phenotype
-        associations
-      \item Phenomizer: \url{http://compbio.charite.de/phenomizer/}
-      \end{itemize}
-    \item disease modules: similarity between disease and disease
-    \item clustering/stratification: similarity between patient and patient
-    \item disease gene discovery: similarity between patient/disease
-      phenotypes and gene--phenotype associations
-      \begin{itemize}
-      \item in humans
-      \item in model organisms
-      \end{itemize}
-    \item drug repurposing: side-effect similarity; similarity between
-      side effect profile and gene--disease associations
-    \end{itemize}
-  \end{itemize}
-\end{frame}
 
 
 
