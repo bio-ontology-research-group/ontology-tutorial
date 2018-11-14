@@ -102,7 +102,7 @@
 \section{General overview}
 
 \begin{frame}
-  \frametitle{Applied Ontology}
+  \frametitle{Ontology (the discipline)}
   \begin{itemize}
   \item builds on philosophy, cognitive science, linguistics and logic
   \item with the purpose of understanding, clarifying, making explicit and
@@ -113,30 +113,6 @@
     motivates its unavoidable interdisciplinary nature.
   \item Ontological analysis: study of content (of these assumptions)
     as such (independently of their representation)
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Do we know what to Represent?}
-  \begin{itemize}
-  \item First analysis, then representation
-    \begin{itemize}
-    \item that's not always the case
-    \end{itemize}
-  \item Computer scientists have focused on the structure of
-    representations and the nature of reasoning more than on the
-    content of such representations
-  \item Essential ontological promiscuity of AI: any agent creates its
-    own ontology based on its usefulness for the task at hand
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Logic}
-  Logic is neutral about content
-  \begin{itemize}
-  \item ...but very useful to describe the formal structure (i.e., the
-    invariances) of content
   \end{itemize}
 \end{frame}
 
@@ -279,11 +255,80 @@
     \begin{itemize}
     \item every instance of {\em Hand} is a {\bf part of} an instance
       of {\em Arm}
+    \item axioms are specified using a formal language (logic)
     \end{itemize}
   \end{itemize}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Ontology repositories}
+  \begin{itemize}
+  \item BioPortal: \url{https://bioportal.bioontology.org/}
+  \item Ontology Lookup Service: \url{https://www.ebi.ac.uk/ols/}
+  \item OntoBee: \url{http://www.ontobee.org/}
+  \item AberOWL: \url{http://aber-owl.net}
+  \item OBO Foundry: \url{http://www.obofoundry.org/}
+  \item AgroPortal: \url{http://agroportal.lirmm.fr/}
+  \end{itemize}
+\end{frame}
 
+\begin{frame}
+  \frametitle{Ontology repositories}
+  Excercise:
+  \begin{itemize}
+  \item Find the ``Gene Ontology'' in BioPortal, OLS, and AberOWL
+  \item Find the ``GO-PLUS'' ontology in AberOWL
+  \item Find the Mammalian Phenotype (MP) ontology
+  \item Find the class ``B cell apoptotic process'' in GO (or
+    GO-PLUS); what are its identifiers?
+  \item Find all the axioms pertaining to ``B cell apoptotic process''
+  \item Find the class ``decreased B cell apoptosis'' in the MP; what
+    are its identifiers and all the axioms?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ontologies and annotations}
+  \begin{itemize}
+  \item database integration through ontologies:
+    \begin{itemize}
+    \item shared classes, shared identifiers
+    \item used in databases, websites, file downloads, etc.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ontologies and annotations}
+  Where to find ontology-based annotations:
+  \begin{itemize}
+  \item websites: AmiGO, model organism databases (MGI, ZFIN, FlyBase,
+    ...), UniProt, etc.
+  \item files: data files, GFF3,...
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ontologies and annotations}
+  Excercise:
+  \begin{itemize}
+  \item Use AmiGO and find all gene products in human associated with
+    ``B cell apoptotic process''; notice the difference between
+    ``direct'' and ``indirect'' annotations!
+    \begin{itemize}
+    \item \url{http://amigo.geneontology.org/amigo}
+    \end{itemize}
+  \item Download GO annotations in mouse
+    (\url{http://www.informatics.jax.org/downloads/reports/index.html},
+    {\tt gene\_association.mgi.gz})
+    and find all gene products associated with ``B cell apoptotic
+    process''
+    \begin{itemize}
+    \item notice the identifiers
+    \item how to get ``indirect'' annotations?
+    \end{itemize}
+  \end{itemize}
+\end{frame}
 
 \section{Ontologies and the Semantic Web}
 \begin{frame}
