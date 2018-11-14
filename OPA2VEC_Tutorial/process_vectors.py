@@ -3,9 +3,8 @@ import sys
 
 # process vectors
 
-output_file="processed_vectors2"
 
-input_file="sample_output"
+input_file="AllVectorResults1"
 
 inf =open (input_file)
 for line in inf:
