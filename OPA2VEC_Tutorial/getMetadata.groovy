@@ -9,7 +9,7 @@ package groovy.owl;
           @Grab(group='net.sourceforge.owlapi', module='owlapi-parsers', version='4.1.0'),
           @Grab(group='net.sourceforge.owlapi', module='org.semanticweb.hermit', version='1.3.8.413'),
 	  @Grab(group ='net.sourceforge.owlapi',module='owlapi-osgidistribution',version='4.2.6'),
-
+	  @Grab (group ='org.apache.httpcomponents', module='httpclient', version = '4.5.1'),
 	  @GrabConfig(systemClassLoader=true)
 
 		])

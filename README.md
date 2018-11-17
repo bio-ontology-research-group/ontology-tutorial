@@ -35,7 +35,7 @@ Detailed instructions:
  * In the first Groovy box, press Shift+Return
    * Depending on your Internet connection, this may take some time!
    * This code will download the libraries necessary to run the remaining code.
- * Download the [data package](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/ontology-tutorial.tar.gz) and store on your disk
+ * Download the [data package](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/ontology-tutorial.tar.gz) and store on your disk. Unzip it with gunzip: `gunzip ontology-tutorial.tar.gz`.
  
 ### Onto2Vec and OPA2Vec: learning similarity measures
 The tutorial will also include an introduction to recent developments in ontologies and machine learning and introduce Onto2Vec and OPA2Vec, two methods that can be used to learn semantic similarity measures in a data- and application-driven way.
