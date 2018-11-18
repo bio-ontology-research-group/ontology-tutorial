@@ -53,6 +53,9 @@ RUN tar xvfz ontology-tutorial.tar.gz
 
 RUN gunzip phenomenet-inferred.owl.gz
 
+# hack to clean grape directoty - as advertised at https://github.com/lappsgrid-incubator/galaxy-appliance/issues/4 and https://stackoverflow.com/questions/16871792/groovy-grab-download-failed
+# if this fails, have to remove dependency from downloadDependencies.groovy for now. 
+RUN rm -rf /home/bioonto/.groovy/grapes
 
 # install grovy dependencies
 RUN groovy /home/bioonto/ontology-tutorial/downloadDependencies.groovy
