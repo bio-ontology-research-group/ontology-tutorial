@@ -19,7 +19,7 @@ This is an intermediate-level course to ontologies and ontology-based data analy
 The tutorial will contain a hands-on part. If you want to
 participate (instead of just watching the presentation), please download
 and install Jupyter Notebook (http://jupyter.org/) with a SciJava kernel (follow instructions [here](https://github.com/scijava/scijava-jupyter-kernel)), and _run_ the first cell in https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/ontology-analysis.ipynb (on Jupyter). This will download the required dependencies (OWLAPI, ELK,
-SML) which are quite large. You must also download our data package from [here](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/ontology-tutorial.tar.gz).
+SML) which are quite large. You must also download our data package from [here](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/ontology-tutorial.tar.gz) and for the last part of the tutorial some vectors from [here](http://jagannath.pdn.cam.ac.uk/tutorial/phenome-vec-small.txt.gz).
 
 It is fine to skip this step and still follow the tutorial, but if you
 want to play with the methods yourself, and go away with some running code examples that you can build on, downloading and running the code is necessary.
@@ -36,10 +36,8 @@ Detailed instructions:
    * Depending on your Internet connection, this may take some time!
    * This code will download the libraries necessary to run the remaining code.
  * Download the [data package](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/ontology-tutorial.tar.gz) and store on your disk. Unzip it with gunzip: `gunzip ontology-tutorial.tar.gz`.
+ * Download the [ontology embeddings](http://jagannath.pdn.cam.ac.uk/tutorial/phenome-vec-small.txt.gz) and store on your disk (ideally in the `/misc` subdirectory.
  
-### Onto2Vec and OPA2Vec: learning similarity measures
-The tutorial will also include an introduction to recent developments in ontologies and machine learning and introduce Onto2Vec and OPA2Vec, two methods that can be used to learn semantic similarity measures in a data- and application-driven way.
-
 # Schedule
 
 1. General overview: what are ontologies, where to find them (ontology portals), how they are used (for annotation)
