@@ -39,7 +39,7 @@ RUN sudo apt-get install -y groovy2
 
 
 # download tutorial 
-RUN git clone --recurse-submodules git@github.com:bio-ontology-research-group/ontology-tutorial.git
+RUN git clone --recurse-submodules https://github.com/bio-ontology-research-group/ontology-tutorial.git
 
 # generally switch down to the right working directory
 WORKDIR /home/bioonto/ontology-tutorial
