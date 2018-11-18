@@ -39,20 +39,24 @@ RUN sudo apt-get install -y groovy2
 
 
 # download tutorial 
-RUN git clone https://github.com/bio-ontology-research-group/ontology-tutorial.git
+RUN git clone --recurse-submodules git@github.com:bio-ontology-research-group/ontology-tutorial.git
+
+# generally switch down to the right working directory
+WORKDIR /home/bioonto/ontology-tutorial
+
 
 # into the directory and update
-RUN cd ontology-tutorial && git pull 
+RUN git pull 
 
 # get data 
-RUN cd /home/bioonto/ontology-tutorial; wget http://aber-owl.net/aber-owl/diseasephenotypes/ontology/ontology-tutorial.tar.gz; tar xvfz ontology-tutorial.tar.gz
+RUN wget http://aber-owl.net/aber-owl/diseasephenotypes/ontology/ontology-tutorial.tar.gz
+RUN tar xvfz ontology-tutorial.tar.gz
 
-RUN cd /home/bioonto/ontology-tutorial; gunzip phenomenet-inferred.owl.gz
+RUN gunzip phenomenet-inferred.owl.gz
 
 
 # install grovy dependencies
 RUN groovy /home/bioonto/ontology-tutorial/downloadDependencies.groovy
-RUN cd ontology-tutorial && git pull 
 
 
 # # Check the kernel has been installed
