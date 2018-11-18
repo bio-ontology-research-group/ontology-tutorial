@@ -44,7 +44,6 @@ RUN git clone --recurse-submodules git@github.com:bio-ontology-research-group/on
 # generally switch down to the right working directory
 WORKDIR /home/bioonto/ontology-tutorial
 
-
 # into the directory and update
 RUN git pull 
 
@@ -64,6 +63,12 @@ RUN jupyter kernelspec list
 
 # trust the notebook
 RUN jupyter trust /home/bioonto/ontology-tutorial/ontology-analysis.ipynb
+
+# additional data (vectors)
+WORKDIR /home/bioonto/ontology-tutorial/misc
+RUN wget http://jagannath.pdn.cam.ac.uk/tutorial/phenome-vec-small.txt.gz
+
+
 
 
 # Launch in Juyter notebook
