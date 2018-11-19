@@ -57,8 +57,10 @@ RUN gunzip phenomenet-inferred.owl.gz
 # if this fails, have to remove dependency from downloadDependencies.groovy for now. 
 RUN rm -rf /home/bioonto/.groovy/grapes
 
-# install grovy dependencies
-RUN groovy /home/bioonto/ontology-tutorial/downloadDependencies.groovy
+# # hack to get the correct grapes:
+WORKDIR /home/bioonto/.groovy/
+RUN sudo wget http://www.karwath.org/wp-content/uploads/groovy/grapes_all.tgz && sudo tar xvf grapes_all.tgz
+RUN sudo chown -R bioonto:bioonto /home/bioonto/.groovy
 
 
 # # Check the kernel has been installed
@@ -70,6 +72,11 @@ RUN jupyter trust /home/bioonto/ontology-tutorial/ontology-analysis.ipynb
 # additional data (vectors)
 WORKDIR /home/bioonto/ontology-tutorial/misc
 RUN wget http://jagannath.pdn.cam.ac.uk/tutorial/phenome-vec-small.txt.gz
+
+WORKDIR /home/bioonto/ontology-tutorial
+
+# install grovy dependencies
+RUN groovy downloadDependencies.groovy
 
 
 
