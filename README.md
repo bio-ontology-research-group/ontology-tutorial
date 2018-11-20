@@ -17,7 +17,7 @@ This is an intermediate-level course to ontologies and ontology-based data analy
 # Before the tutorial (important)
 
 The tutorial will contain a hands-on part. If you want to
-participate (instead of just watching the presentation), please install the required software locally or use our Docker image. 
+participate (instead of just watching the presentation), please install the required software locally or use our Docker image (preferred/faster). 
 
 ## Local installation on your computer:
 
