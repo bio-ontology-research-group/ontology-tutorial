@@ -17,7 +17,11 @@ This is an intermediate-level course to ontologies and ontology-based data analy
 # Before the tutorial (important)
 
 The tutorial will contain a hands-on part. If you want to
-participate (instead of just watching the presentation), please download
+participate (instead of just watching the presentation), please install the required software locally or use our Doker image. 
+
+## Local installation on your computer:
+
+Download
 and install Jupyter Notebook (http://jupyter.org/) with a SciJava kernel (follow instructions [here](https://github.com/scijava/scijava-jupyter-kernel)), and _run_ the first cell in https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/ontology-analysis.ipynb (on Jupyter). This will download the required dependencies (OWLAPI, ELK,
 SML) which are quite large. You must also download our data package from [here](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/ontology-tutorial.tar.gz) and for the last part of the tutorial some vectors from [here](http://jagannath.pdn.cam.ac.uk/tutorial/phenome-vec-small.txt.gz).
 
@@ -37,7 +41,18 @@ Detailed instructions:
    * This code will download the libraries necessary to run the remaining code.
  * Download the [data package](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/ontology-tutorial.tar.gz) and store on your disk. Unzip it with gunzip: `gunzip ontology-tutorial.tar.gz`.
  * Download the [ontology embeddings](http://jagannath.pdn.cam.ac.uk/tutorial/phenome-vec-small.txt.gz) and store on your disk (ideally in the `/misc` subdirectory.
- 
+
+## Using the Doker image:
+
+* Download and install [Docker](https://www.docker.com).
+* Assign at least 8 GB (better 10 or 12GB) to the Docker engine after the installation. (the following is required in the Mac OSX version: Docker -> Preferences -> Advanced -> Memory followed by `Apply & Restart`)
+* Pull the tutorial image: altermeister/bio-ontology-ontology-tutorial-docker:latest (in Linux/OSX using a terminal: `docker pull altermeister/bio-ontology-ontology-tutorial-docker:latest`).
+* Run the image and jump directly into the Jupyter notebook: `docker run -i -t -p 8888:8888  altermeister/bio-ontology-ontology-tutorial-docker /bin/bash -c "source activate java_env && export JAVA_OPTS=-Xmx12G && _JAVA_OPTIONS=-Xmx12G jupyter notebook --notebook-dir=/home/bioonto/ontology-tutorial/ --ip='0.0.0.0' --port=8888 --no-browser"`
+* After the notebook started, copy the address and the token and paste it into you web browser. The URL should look like the following: `127.0.0.1:8888/?token=f14e6316a48016b2cf4cbed5dd7b89d9dc524da49f553dc7`.
+* All is now set up. There is no need to download and install any additional packages or data files.  Just step through the Groovy boxes. 
+
+
+
 # Schedule
 
 1. General overview: what are ontologies, where to find them (ontology portals), how they are used (for annotation)
