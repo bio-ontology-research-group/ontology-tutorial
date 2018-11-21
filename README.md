@@ -59,7 +59,8 @@ To copy a file from the running docker image to you local (host) computer, pleas
 
 1) Find out the ID of the running container: Exceute `docker container list` in a terminal. The result should look similar to the following:
 
-```CONTAINER ID        IMAGE                                                COMMAND                  CREATED             STATUS              PORTS                    NAMES
+```
+CONTAINER ID        IMAGE                                                COMMAND                  CREATED             STATUS              PORTS                    NAMES
 
 0cd1f8da3c1f        altermeister/bio-ontology-ontology-tutorial-docker   "/usr/bin/tini -- /b…"   9 seconds ago       Up 7 seconds        0.0.0.0:8888->8888/tcp   pedantic_mendeleev
 ```
