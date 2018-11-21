@@ -61,7 +61,6 @@ To copy a file from the running docker image to you local (host) computer, pleas
 
 ```
 CONTAINER ID        IMAGE                                                COMMAND                  CREATED             STATUS              PORTS                    NAMES
-
 0cd1f8da3c1f        altermeister/bio-ontology-ontology-tutorial-docker   "/usr/bin/tini -- /b…"   9 seconds ago       Up 7 seconds        0.0.0.0:8888->8888/tcp   pedantic_mendeleev
 ```
 
