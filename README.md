@@ -53,7 +53,7 @@ Detailed instructions:
 * After the notebook started, copy the address and the token and paste it into you web browser. The URL should look *similar* to the following: `127.0.0.1:8888/?token=f14e6316a48016b2cf4cbed5dd7b89d9dc524da49f553dc7`.
 * All is now set up. There is no need to download and install any additional packages or data files.  Just step through the Groovy boxes. 
 
-### To copy a file to or from a running docker image:
+### To copy a file from or to a running docker image:
 
 To copy a file from the running docker image to you local (host) computer, please use the following recepie:
 
