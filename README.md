@@ -64,7 +64,7 @@ CONTAINER ID        IMAGE                                                COMMAND
 0cd1f8da3c1f        altermeister/bio-ontology-ontology-tutorial-docker   "/usr/bin/tini -- /b…"   9 seconds ago       Up 7 seconds        0.0.0.0:8888->8888/tcp   pedantic_mendeleev
 ```
 
-2) Again in the terminal copy a file using the following command:
+2) Copy the corresponding container ID (in this example `0cd1f8da3c1f`) and in a terminal copy a file using the following command:
 
 ```docker cp 0cd1f8da3c1f:/home/bioonto/ontology-tutorial/phenomenet-inferred.owl .```
 
