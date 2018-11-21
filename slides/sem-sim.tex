@@ -99,242 +99,385 @@
 \tableofcontents
 \end{frame}
 
-\section{General overview}
+% \section{General overview}
 
-\begin{frame}
-  \frametitle{Ontology (the discipline)}
-  \begin{itemize}
-  \item builds on philosophy, cognitive science, linguistics and logic
-  \item with the purpose of understanding, clarifying, making explicit and
-    communicating {\em people's assumptions} about the nature and
-    structure of the world.
-  \item orientation towards helping people (and machines) understand each other
-    distinguishes applied ontology from philosophical ontology, and
-    motivates its unavoidable interdisciplinary nature.
-  \item Ontological analysis: study of content (of these assumptions)
-    as such (independently of their representation)
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Ontology (the discipline)}
+%   \begin{itemize}
+%   \item builds on philosophy, cognitive science, linguistics and logic
+%   \item with the purpose of understanding, clarifying, making explicit and
+%     communicating {\em people's assumptions} about the nature and
+%     structure of the world.
+%   \item orientation towards helping people (and machines) understand each other
+%     distinguishes applied ontology from philosophical ontology, and
+%     motivates its unavoidable interdisciplinary nature.
+%   \item Ontological analysis: study of content (of these assumptions)
+%     as such (independently of their representation)
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Kinds of knowledge}
-  \begin{itemize}
-  \item Fido is black: assertional
-  \item Either Fido is black or Fido is not black: analytic, logical
-  \item If Jack is a bachelor, then he is not married: analytic,
-    terminological
-    \begin{itemize}
-    \item Terminological knowledge is about relationships between
-      terms and concepts
-    \end{itemize}
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Kinds of knowledge}
+%   \begin{itemize}
+%   \item Fido is black: assertional
+%   \item Either Fido is black or Fido is not black: analytic, logical
+%   \item If Jack is a bachelor, then he is not married: analytic,
+%     terminological
+%     \begin{itemize}
+%     \item Terminological knowledge is about relationships between
+%       terms and concepts
+%     \end{itemize}
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{What is an ontology?}
-  \framesubtitle{Ontology: the philosophical discipline}
-  \begin{itemize}
-  \item Study of what there is (being {\em qua} being)
-  \item reinterpreted for computer science: content {\em qua} content,
-    independently of the way it is represented
-  \item Study of the nature and structure of ``reality'' (a domain of discourse)
-  \item A (philosophical) ontology: a structured system of entities assumed to exists,
-    organized in categories and relations
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{What is an ontology?}
+%   \framesubtitle{Ontology: the philosophical discipline}
+%   \begin{itemize}
+%   \item Study of what there is (being {\em qua} being)
+%   \item reinterpreted for computer science: content {\em qua} content,
+%     independently of the way it is represented
+%   \item Study of the nature and structure of ``reality'' (a domain of discourse)
+%   \item A (philosophical) ontology: a structured system of entities assumed to exists,
+%     organized in categories and relations
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Ontologies in CS}
-  \begin{itemize}
-  \item Specific (theoretical or computational) artifacts expressing
-    the intended meaning of a vocabulary in terms of primitive
-    categories and relations describing the nature and structure of a
-    domain of discourse 
-    \begin{itemize}
-    \item in order to account for the competent use of vocabulary in
-      real situations
-    \end{itemize}
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Ontologies in CS}
+%   \begin{itemize}
+%   \item Specific (theoretical or computational) artifacts expressing
+%     the intended meaning of a vocabulary in terms of primitive
+%     categories and relations describing the nature and structure of a
+%     domain of discourse 
+%     \begin{itemize}
+%     \item in order to account for the competent use of vocabulary in
+%       real situations
+%     \end{itemize}
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Ontologies in CS}
-  \begin{itemize}
-  \item Gruber: ``A specification of a conceptualization of a domain''
-  \item Studer: ``An ontology is a formal, explicit specification of a
-    shared conceptualization''
-  \item Guarino: ``An ontology is a logical theory accounting for the
-    intended meaning of a formal vocabulary, i.e. its ontological
-    commitment to a particular conceptualization of the world. The
-    intended models of a logical language using such a vocabulary are
-    constrained by its ontological commitment. An ontology indirectly
-    reflects this commitment (and the underlying conceptualization) by
-    approximating these intended models.''
-  \item Horrocks: ``an ontology [is] equivalent to a Description Logic
-    knowledge base''
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Ontologies in CS}
+%   \begin{itemize}
+%   \item Gruber: ``A specification of a conceptualization of a domain''
+%   \item Studer: ``An ontology is a formal, explicit specification of a
+%     shared conceptualization''
+%   \item Guarino: ``An ontology is a logical theory accounting for the
+%     intended meaning of a formal vocabulary, i.e. its ontological
+%     commitment to a particular conceptualization of the world. The
+%     intended models of a logical language using such a vocabulary are
+%     constrained by its ontological commitment. An ontology indirectly
+%     reflects this commitment (and the underlying conceptualization) by
+%     approximating these intended models.''
+%   \item Horrocks: ``an ontology [is] equivalent to a Description Logic
+%     knowledge base''
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{What is a conceptualization}
-  \begin{itemize}
-  \item Formal structure of (a piece of) reality as perceived and organized by an
-    agent, independently of:
-    \begin{itemize}
-    \item the vocabulary used
-    \item the actual occurence of a specific situation
-    \end{itemize}
-  \item Different situations involving the same objects, described by
-    different vocabularies, may share the same conceptualization
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{What is a conceptualization}
+%   \begin{itemize}
+%   \item Formal structure of (a piece of) reality as perceived and organized by an
+%     agent, independently of:
+%     \begin{itemize}
+%     \item the vocabulary used
+%     \item the actual occurence of a specific situation
+%     \end{itemize}
+%   \item Different situations involving the same objects, described by
+%     different vocabularies, may share the same conceptualization
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Ontologies vs classifications}
-  % Ontological analysis, slide 32
-  \begin{itemize}
-  \item Classifications focus on:
-    \begin{itemize}
-    \item access, based on pre-determined criteria (encoded by
-      syntactic keys)
-    \end{itemize}
-  \item Ontologies focus on:
-    \begin{itemize}
-    \item meaning of terms
-    \item nature and structure of a domain
-    \end{itemize}
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Ontologies vs classifications}
+%   % Ontological analysis, slide 32
+%   \begin{itemize}
+%   \item Classifications focus on:
+%     \begin{itemize}
+%     \item access, based on pre-determined criteria (encoded by
+%       syntactic keys)
+%     \end{itemize}
+%   \item Ontologies focus on:
+%     \begin{itemize}
+%     \item meaning of terms
+%     \item nature and structure of a domain
+%     \end{itemize}
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Ontologies vs Knowledge bases}
-  Knowledge base:
-  \begin{itemize}
-  \item Assertional component
-    \begin{itemize}
-    \item reflects specific states of affairs
-    \item designed for problem solving
-    \end{itemize}
-  \item Terminological component (ontology)
-    \begin{itemize}
-    \item independent of states of affairs
-    \item designed to support terminological services
-    \item ... but independent of the actual terminology used
-    \end{itemize}
-  \item Ontological formulas are invariant, necessary information
-    \begin{itemize}
-    \item often expressed using modal logics or Description Logics
-    \end{itemize}
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Ontologies vs Knowledge bases}
+%   Knowledge base:
+%   \begin{itemize}
+%   \item Assertional component
+%     \begin{itemize}
+%     \item reflects specific states of affairs
+%     \item designed for problem solving
+%     \end{itemize}
+%   \item Terminological component (ontology)
+%     \begin{itemize}
+%     \item independent of states of affairs
+%     \item designed to support terminological services
+%     \item ... but independent of the actual terminology used
+%     \end{itemize}
+%   \item Ontological formulas are invariant, necessary information
+%     \begin{itemize}
+%     \item often expressed using modal logics or Description Logics
+%     \end{itemize}
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Ontologies}
-  \begin{itemize}
-  \item {\em classes} represent kinds of things in the world
-    \begin{itemize}
-    \item {\em Arm}, {\em Apoptosis}, {\em Influenza}, {\em Homo
-        sapiens}, {\em Drinking behavior}, {\em Membrane}
-    \end{itemize}
-    \pause
-  \item {\em instances} of classes are individuals satisfying the
-    classes' intension
-    \begin{itemize}
-    \item my arm, the influenza I had last year, one ethanol molecule, etc.
-    \end{itemize}
-    \pause
-  \item {\em relations} between instances arise from interactions,
-    configurations, etc., of individuals
-    \begin{itemize}
-    \item my arm is {\bf part of} me, the {\bf duration of} my
-      influenza was 10 days
-    \end{itemize}
-    \pause
-  \item {\em axioms} specify the conditions that instances of a class
-    must satisfy
-    \begin{itemize}
-    \item every instance of {\em Hand} is a {\bf part of} an instance
-      of {\em Arm}
-    \item axioms are specified using a formal language (logic)
-    \end{itemize}
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Ontologies}
+%   \begin{itemize}
+%   \item {\em classes} represent kinds of things in the world
+%     \begin{itemize}
+%     \item {\em Arm}, {\em Apoptosis}, {\em Influenza}, {\em Homo
+%         sapiens}, {\em Drinking behavior}, {\em Membrane}
+%     \end{itemize}
+%     \pause
+%   \item {\em instances} of classes are individuals satisfying the
+%     classes' intension
+%     \begin{itemize}
+%     \item my arm, the influenza I had last year, one ethanol molecule, etc.
+%     \end{itemize}
+%     \pause
+%   \item {\em relations} between instances arise from interactions,
+%     configurations, etc., of individuals
+%     \begin{itemize}
+%     \item my arm is {\bf part of} me, the {\bf duration of} my
+%       influenza was 10 days
+%     \end{itemize}
+%     \pause
+%   \item {\em axioms} specify the conditions that instances of a class
+%     must satisfy
+%     \begin{itemize}
+%     \item every instance of {\em Hand} is a {\bf part of} an instance
+%       of {\em Arm}
+%     \item axioms are specified using a formal language (logic)
+%     \end{itemize}
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Ontology repositories}
-  \begin{itemize}
-  \item BioPortal: \url{https://bioportal.bioontology.org/}
-  \item Ontology Lookup Service: \url{https://www.ebi.ac.uk/ols/}
-  \item OntoBee: \url{http://www.ontobee.org/}
-  \item AberOWL: \url{http://aber-owl.net}
-  \item OBO Foundry: \url{http://www.obofoundry.org/}
-  \item AgroPortal: \url{http://agroportal.lirmm.fr/}
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Ontology repositories}
+%   \begin{itemize}
+%   \item BioPortal: \url{https://bioportal.bioontology.org/}
+%   \item Ontology Lookup Service: \url{https://www.ebi.ac.uk/ols/}
+%   \item OntoBee: \url{http://www.ontobee.org/}
+%   \item AberOWL: \url{http://aber-owl.net}
+%   \item OBO Foundry: \url{http://www.obofoundry.org/}
+%   \item AgroPortal: \url{http://agroportal.lirmm.fr/}
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Ontology repositories}
-  Excercise:
-  \begin{itemize}
-  \item Find the ``Gene Ontology'' in BioPortal, OLS, and AberOWL
-  \item Find the ``GO-PLUS'' ontology in AberOWL
-  \item Find the Mammalian Phenotype (MP) ontology
-  \item Find the class ``B cell apoptotic process'' in GO (or
-    GO-PLUS); what are its identifiers?
-  \item Find all the axioms pertaining to ``B cell apoptotic process''
-  \item Find the class ``decreased B cell apoptosis'' in the MP; what
-    are its identifiers and all the axioms?
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Ontology repositories}
+%   Excercise:
+%   \begin{itemize}
+%   \item Find the ``Gene Ontology'' in BioPortal, OLS, and AberOWL
+%   \item Find the ``GO-PLUS'' ontology in AberOWL
+%   \item Find the Mammalian Phenotype (MP) ontology
+%   \item Find the class ``B cell apoptotic process'' in GO (or
+%     GO-PLUS); what are its identifiers?
+%   \item Find all the axioms pertaining to ``B cell apoptotic process''
+%   \item Find the class ``decreased B cell apoptosis'' in the MP; what
+%     are its identifiers and all the axioms?
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Ontologies and annotations}
-  \begin{itemize}
-  \item database integration through ontologies:
-    \begin{itemize}
-    \item shared classes, shared identifiers
-    \item used in databases, websites, file downloads, etc.
-    \end{itemize}
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Ontologies and annotations}
+%   \begin{itemize}
+%   \item database integration through ontologies:
+%     \begin{itemize}
+%     \item shared classes, shared identifiers
+%     \item used in databases, websites, file downloads, etc.
+%     \end{itemize}
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Ontologies and annotations}
-  Where to find ontology-based annotations:
-  \begin{itemize}
-  \item websites: AmiGO, model organism databases (MGI, ZFIN, FlyBase,
-    ...), UniProt, etc.
-  \item files: data files, GFF3,...
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Ontologies and annotations}
+%   Where to find ontology-based annotations:
+%   \begin{itemize}
+%   \item websites: AmiGO, model organism databases (MGI, ZFIN, FlyBase,
+%     ...), UniProt, etc.
+%   \item files: data files, GFF3,...
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Ontologies and annotations}
-  Excercise:
-  \begin{itemize}
-  \item Use AmiGO and find all gene products in human associated with
-    ``B cell apoptotic process''; notice the difference between
-    ``direct'' and ``indirect'' annotations!
-    \begin{itemize}
-    \item \url{http://amigo.geneontology.org/amigo}
-    \end{itemize}
-  \item Download GO annotations in mouse
-    (\url{http://www.informatics.jax.org/downloads/reports/index.html},
-    {\tt gene\_association.mgi.gz})
-    and find all gene products associated with ``B cell apoptotic
-    process''
-    \begin{itemize}
-    \item notice the identifiers
-    \item how to get ``indirect'' annotations?
-    \end{itemize}
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Ontologies and annotations}
+%   Excercise:
+%   \begin{itemize}
+%   \item Use AmiGO and find all gene products in human associated with
+%     ``B cell apoptotic process''; notice the difference between
+%     ``direct'' and ``indirect'' annotations!
+%     \begin{itemize}
+%     \item \url{http://amigo.geneontology.org/amigo}
+%     \end{itemize}
+%   \item Download GO annotations in mouse
+%     (\url{http://www.informatics.jax.org/downloads/reports/index.html},
+%     {\tt gene\_association.mgi.gz})
+%     and find all gene products associated with ``B cell apoptotic
+%     process''
+%     \begin{itemize}
+%     \item notice the identifiers
+%     \item how to get ``indirect'' annotations?
+%     \end{itemize}
+%   \end{itemize}
+% \end{frame}
 
 \section{Ontologies and the Semantic Web}
 \begin{frame}
   \frametitle{The Semantic Web}
   \centerline{\includegraphics[width=.6\textwidth]{semwebstack.png}}
 \end{frame}
+
+\begin{frame}
+  \frametitle{Description Logics: overview}
+  \begin{itemize}
+  \item TBox: defines the terminology of the domain
+  \item ABox: states facts (assertions) about the world
+  \item Reasoning: derive implicitly represented knowledge (e.g.,
+    subsumption)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Description Logic: ALC}
+  \begin{definition}
+    Let $N_C$ be a set of concept names and $N_R$ be a set of relation
+    names, $N_C \cap N_R = \emptyset$. $\mathcal{ALC}$ concept
+    descriptions are inductively defined as:
+    \begin{itemize}
+    \item If $A \in N_C$, then $A$ is an $\mathcal{ALC}$ concept
+      description
+    \item If $C, D$ are $\mathcal{ALC}$ concept description, and $r
+      \in N_R$, then the following are $\mathcal{ALC}$ concept descriptions:
+      \begin{itemize}
+      \item $C \sqcap D$
+      \item $C \sqcup D$
+      \item $\neg C$
+      \item $\forall r.C$
+      \item $\exists r.C$
+      \end{itemize}
+    \end{itemize}
+  \end{definition}
+  \begin{itemize}
+  \item We use $\bot$ as abbreviation of $A \sqcap \neg A$, $\top$ as
+    abbreviation of $A \sqcup \neg A$
+  \end{itemize}
+\end{frame}
+% Examples of concept descriptions, dl1.pdf, p8
+
+\begin{frame}
+  \frametitle{Description Logic: ALC}
+  \begin{definition}
+    An interpretation
+    $\mathcal{I} = (\Delta^\mathcal{I}, \cdot^\mathcal{I})$ consists
+    of a non-empty domain $\Delta^\mathcal{I}$ and an interpretation
+    function $\cdot^\mathcal{I}$:
+    \begin{itemize}
+    \item $A^\mathcal{I} \subseteq \Delta^\mathcal{I}$ for all $A \in
+      N_C$,
+    \item $r^\mathcal{I} \subseteq \Delta^\mathcal{I} \times
+      \Delta^\mathcal{I}$ for all $r \in N_R$
+    \end{itemize}
+    The interpretation function is extended to $\mathcal{ALC}$ concept
+    descriptions as follows:
+    \begin{itemize}
+    \item $(C \sqcap D)^\mathcal{I} := C^\mathcal{I} \cap D^\mathcal{I}$
+    \item $(C \sqcup D)^\mathcal{I} := C^\mathcal{I} \cup D^\mathcal{I}$
+    \item $(\neg C)^\mathcal{I} := \Delta^\mathcal{I} - C^\mathcal{I}$
+    \item $(\forall r.C)^\mathcal{I} := \{ d \in \Delta^\mathcal{I} |
+      \mbox{for all } e \in \Delta^\mathcal{I}: (d,e) \in
+      r^\mathcal{I} \mbox{ implies } e \in C^\mathcal{I}\}$
+    \item $(\exists r.C)^\mathcal{I} := \{ d \in \Delta^\mathcal{I} |
+      \mbox{there is } e \in \Delta^\mathcal{I}: (d,e) \in
+      r^\mathcal{I} \mbox{ and } e \in C^\mathcal{I}\}$
+    \end{itemize}
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Description Logic: terminologies}
+  \begin{itemize}
+  \item A concept definition is of the form $A \equiv C$ where
+    \begin{itemize}
+    \item $A$ is a concept name
+    \item $C$ is a concept description
+    \end{itemize}
+  \item A TBox is a finite set of concept definitions such that it
+    \begin{itemize}
+    \item does not contain multiple definitions, % A equiv B, A equiv C
+    \item does not contain cyclic definitions
+      % A equiv B and C, B equiv A and C
+    \end{itemize}
+  \item A {\em defined concept} occurs on the left-hand side of a
+    definition
+  \item A {\em primitive concept} does not occur on the left-hand side
+    of a definition
+    % See: axiomatic-deductive method!
+  \item An interpretation $\mathcal{I}$ is a model of a TBox
+    $\mathcal{T}$ if it satisfies all its concept definitions:
+    $A^\mathcal{I} = C^\mathcal{I}$ for all $A \equiv C \in \mathcal{T}$
+  \end{itemize}
+\end{frame}
+% Example TBox, dl1.pdf, p17
+
+\begin{frame}
+  \frametitle{Description Logic: terminologies}
+  \begin{itemize}
+  \item Also possible to use more general constraints for the
+    definition of concepts
+  \item A {\em generalized concept inclusion} (GCI) is of the form $C
+    \sqsubseteq D$ where $C,D$ may be concept descriptions
+  \item An interpretation $\mathcal{I}$ is a model of a set of GCIs
+    $\mathcal{T}$ (a general TBox) if it satisfies all its concept
+    inclusion axioms: $C^\mathcal{I} \subseteq D^\mathcal{I}$ for all
+    $C \sqsubseteq D \in \mathcal{T}$
+    % Example: dl1.pdf, p18
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Description Logic: assertions}
+  \begin{itemize}
+  \item An assertion is of the form $C(a)$ (concept assertion) or
+    $r(a,b)$ (role assertion), where $C$ is a concept description, $r$
+    is a role, $a,b$ are individual names from a set $N_I$ of such
+    names
+  \item An ABox is a finite set of assertions
+  \item An interpretation $\mathcal{I}$ is a model of an ABox
+    $\mathcal{A}$ if it satisfies all its assertions:
+    \begin{itemize}
+    \item $a^\mathcal{I} \in C^\mathcal{I}$ for all $C(a) \in
+      \mathcal{A}$
+    \item $(a^\mathcal{I},b^\mathcal{I}) \in r^\mathcal{I}$ for all
+      $r(a,b) \in \mathcal{A}$
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Description Logic: ALC}
+  \begin{itemize}
+  \item $\mathcal{ALC}$ can be seen as a fragment of FOL:
+    \begin{itemize}
+    \item concept names are unary predicates, role names binary predicates
+    \item concept descriptions are formulas with one free variable
+    \end{itemize}
+  \item the formulas resulting from transformation to FOL are known to
+    be decidable (two-variable fragment)
+  \end{itemize}
+\end{frame}
+% Relationship with FOL: dl1.pdf, p11
+
 
 \begin{frame}
   \frametitle{Web Ontology Language (OWL)}
@@ -738,11 +881,12 @@ Class: mynamespace:Student # http://www.kaust.edu.sa#Student
     \begin{itemize}
     \item https://github.com/bio-ontology-research-group/ontology-tutorial/blob/master/ontology-analysis.ipynb
     \end{itemize}
-  \item chose the SciJava kernel
+%  \item chose the SciJava kernel
   \item run the ``Reasoning with ontologies'' part
     \begin{itemize}
     \item then modify the code and retrieve all superclasses of
       ``increased B cell apoptosis''
+    \item and then the superclasses of ``B cell apoptotic process''
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -801,17 +945,6 @@ Class: mynamespace:Student # http://www.kaust.edu.sa#Student
 \begin{frame}
   \frametitle{Relations as patterns}
   \begin{itemize}
-  \item {\tt X SubClassOf: Y}: $X \xrightarrow{\text{is-a}} Y$
-  \item {\tt X SubClassOf: part-of some Y}: $X \xrightarrow{\text{part-of}} Y$
-  \item {\tt X SubClassOf: regulates some Y}: $X \xrightarrow{\text{regulates}} Y$
-  \item {\tt X DisjointWith: Y}: $X \xleftrightarrow{\text{disjoint}} Y$
-  \item {\tt X EquivalentTo: Y}: $X \xleftrightarrow{\equiv} Y$, $\{X,Y\}$
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Relations as patterns}
-  \begin{itemize}
   \item OBO Relation Ontology (RO):
     \begin{itemize}
     \item \url{https://github.com/oborel/obo-relations}
@@ -829,6 +962,18 @@ Class: mynamespace:Student # http://www.kaust.edu.sa#Student
     \begin{itemize}
     \item even GO, although somewhat hidden!
     \end{itemize}
+  \item this system defines patterns used to generate graphs
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Relations as patterns}
+  \begin{itemize}
+  \item {\tt X SubClassOf: Y}: $X \xrightarrow{\text{is-a}} Y$
+  \item {\tt X SubClassOf: part-of some Y}: $X \xrightarrow{\text{part-of}} Y$
+  \item {\tt X SubClassOf: regulates some Y}: $X \xrightarrow{\text{regulates}} Y$
+  \item {\tt X DisjointWith: Y}: $X \xleftrightarrow{\text{disjoint}} Y$
+  \item {\tt X EquivalentTo: Y}: $X \xleftrightarrow{\equiv} Y$, $\{X,Y\}$
   \end{itemize}
 \end{frame}
 
@@ -837,40 +982,53 @@ Class: mynamespace:Student # http://www.kaust.edu.sa#Student
   \centerline{\includegraphics[height=.8\textheight]{plant-ontology-sample.png}}
 \end{frame}
 
+% \begin{frame}
+%   \frametitle{Relations as patterns: Quiz}
+%   \begin{itemize}
+%   \item {\em classes}
+%     \begin{enumerate}[a]
+%     \item represent kinds of things in the world
+%     \item represent ideas in people's heads
+%     \item represent words
+%     \end{enumerate}
+%     \pause
+%   \item {\em instances} of a class are individuals that
+%     \begin{enumerate}[a]
+%     \item satisfy the class intension
+%     \item satisfy the axioms used to specify the class
+%     \item are always concrete, material entities
+%     \end{enumerate}
+%     \pause
+%   \item {\em relations between classes} are
+%     \begin{enumerate}[a]
+%     \item interactions between instances of the class
+%     \item abbreviations of axioms that constrain two classes
+%     \item relations between ideas people have about the classes
+%     \end{enumerate}
+%     \pause
+%   \item {\em axioms} are
+%     \begin{enumerate}[a]
+%     \item specification of conditions that instances of classes must satisfy
+%     \item rules that can be executed to produce new knowledge
+%     \item statements that are considered to be true in a domain of knowledge
+%     \end{enumerate}
+%   \end{itemize}
+% \end{frame}
+
+\section{Semantic Similarity}
+
 \begin{frame}
-  \frametitle{Relations as patterns: Quiz}
+  Semantic similarity
   \begin{itemize}
-  \item {\em classes}
-    \begin{enumerate}[a]
-    \item represent kinds of things in the world
-    \item represent ideas in people's heads
-    \item represent words
-    \end{enumerate}
-    \pause
-  \item {\em instances} of a class are individuals that
-    \begin{enumerate}[a]
-    \item satisfy the class intension
-    \item satisfy the axioms used to specify the class
-    \item are always concrete, material entities
-    \end{enumerate}
-    \pause
-  \item {\em relations between classes} are
-    \begin{enumerate}[a]
-    \item interactions between instances of the class
-    \item abbreviations of axioms that constrain two classes
-    \item relations between ideas people have about the classes
-    \end{enumerate}
-    \pause
-  \item {\em axioms} are
-    \begin{enumerate}[a]
-    \item specification of conditions that instances of classes must satisfy
-    \item rules that can be executed to produce new knowledge
-    \item statements that are considered to be true in a domain of knowledge
-    \end{enumerate}
+  \item We want to use {\em  background knowledge} in ontologies to
+    \begin{itemize}
+    \item determine similarity between classes,
+    \item instances,
+    \item and entities with ontology annotations
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
-\section{Semantic Similarity}
 
 \begin{frame}
   \frametitle{How to measure similarity?}
@@ -878,7 +1036,7 @@ Class: mynamespace:Student # http://www.kaust.edu.sa#Student
   \item semantic similarity measures similarity between classes
   \item semantic similarity measures similarity between instances of classes
   \item semantic similarity measures similarity between entities
-    annotated with classes
+    {\em annotated} with classes
   \item $\Rightarrow$ reduce all of this to similarity between classes
   \end{itemize}
 \end{frame}
@@ -1593,22 +1751,22 @@ Class: mynamespace:Student # http://www.kaust.edu.sa#Student
   \end{itemize}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Applications of semantic similarity}
-  \begin{itemize}
-  \item ontologies are used {\em almost everywhere} in biology
-  \item many applications of semantic similarity:
-    \begin{itemize}
-    \item predicting interacting proteins
-    \item predict candidate genes
-      \begin{itemize}
-      \item using the guilt-by-association principle, or without
-      \end{itemize}
-    \item predict drug targets and indications
-    \item as features in machine learning models
-    \end{itemize}
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Applications of semantic similarity}
+%   \begin{itemize}
+%   \item ontologies are used {\em almost everywhere} in biology
+%   \item many applications of semantic similarity:
+%     \begin{itemize}
+%     \item predicting interacting proteins
+%     \item predict candidate genes
+%       \begin{itemize}
+%       \item using the guilt-by-association principle, or without
+%       \end{itemize}
+%     \item predict drug targets and indications
+%     \item as features in machine learning models
+%     \end{itemize}
+%   \end{itemize}
+% \end{frame}
 
 \begin{frame}
   \frametitle{Applications of semantic similarity}
@@ -1722,46 +1880,125 @@ Class: mynamespace:Student # http://www.kaust.edu.sa#Student
 \end{frame}
 
 \begin{frame}
-  \frametitle{How to measure similarity?}
-  Recommended reading:
+  \frametitle{Applications of semantic similarity}
   \begin{itemize}
-  \item recommended, comprehensive overview: Sebastian Harispe et
-    al. Semantic Similarity from Natural Language and Ontology
-    Analysis. Morgan \& Claypool Publishers, 2015
-  \item Catia Pesquita et al. Semantic Similarity in Biomedical
-    Ontologies. PLoS CB, 2009.
-  \item Maximilian Nickel et al. A Review of Relational Machine
-    Learning for Knowledge Graphs, Proceedings of the IEEE, 2016.
+  \item comparing entities annotated with {\em different}
+    ontologies/vocabularies of the {\em same} (or related) domains
+    \begin{itemize}
+    \item medical: UMLS, HPO, DO, ORDO, NCIT, ICD, SNOMED CT, MeSH, ...
+    \item phenotype: HPO, MP, CPO, WBPhenotype, FBCV, MeSH, ...
+    \item chemical: ChEBI, MeSH, DrOn, RXNorm, DrugBank, ...
+    \end{itemize}
+  \item needs mapping, alignment, or integration
+    \begin{itemize}
+    \item mapping: given a term $t$, find corresponding class in
+      ontology $O$
+      \begin{itemize}
+      \item can be 1:1, 1:n, n:1, n:m
+      \item $t$ can be from ontology, vocabulary, database, or text
+      \item use $O$ for analysis
+      \end{itemize}
+    \item alignment: given two ontologies or vocabularies $O_1$ and
+      $O_2$, find all mappings between classes/terms in $O_1$ and $O_2$
+      \begin{itemize}
+      \item applicable to ontologies and vocabularies
+      \item use $O_1$ or $O_2$ for analysis
+      \end{itemize}
+    \item integration: given two ontologies $O_1$ and $O_2$, combine
+      both ontologies into a single ontology $O$
+      \begin{itemize}
+      \item maintain meaning of classes
+      \item use $O$ for analysis
+      \end{itemize}
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{How to measure similarity: Quiz}
+  \frametitle{Applications of semantic similarity}
   \begin{itemize}
-  \item How many semantic similarity measures are there?
-    \begin{enumerate}[a]
-    \item One (and it is called The Semantic Similarity Measure)
-    \item Three (graph-based, set-based, feature-based)
-    \item Many (depending on context, many functions can determine similarity)
-    \end{enumerate}
-    \pause
-  \item Specificity of an ontology class
-    \begin{enumerate}[a]
-    \item depends on the number of children and ancestors, and the
-      depth
-    \item depends on the number of instances (or annotations)
-    \item can improve similarity estimates significantly
-    \end{enumerate}
-    \pause
-  \item In the presence of (relations between) instances, semantic
-    similarity
-    \begin{enumerate}[a]
-    \item cannot be computed, it only works with ontologies
-    \item can be estimated using only class specificity measures
-    \item can be computed using knowledge graph embeddings
-    \end{enumerate}
+  \item lexical mappings: use class labels (and synonyms) to find matches
+    \begin{itemize}
+    \item hypertension ({\tt HP:0000822}) and hypertension ({\tt MP:0000231})
+    \end{itemize}
+  \item semantic mappings: use class axioms to find matches
+    \begin{itemize}
+    \item pulmonary valve stenosis ({\tt MP:0006182}) and Pulmonic
+      stenosis ({\tt HP:0001642})
+    \item both definitions based on constricted ({\tt PATO:0001847})
+      and pulmonary valve ({\tt UBERON:0002146})
+    \end{itemize}
+  \item hybrid: combine lexical and semantic mappings
   \end{itemize}
 \end{frame}
+
+\begin{frame}
+  \frametitle{Applications of semantic similarity}
+  tools for ontology mapping, matching, integration:
+  \begin{itemize}
+  \item AgreementMaker Light: \url{https://github.com/AgreementMakerLight/AML-Jar}
+    \begin{itemize}
+    \item structural (semantic) and lexical matches
+    \item can use domain-specific background knowledge
+    \end{itemize}
+  \item LogMap: \url{https://github.com/ernestojimenezruiz/logmap-matcher}
+    \begin{itemize}
+    \item structural (semantic) and lexical matches
+    \item biology-themed versions
+    \end{itemize}
+  \item NCBO Annotator: \url{https://bioportal.bioontology.org/annotator}
+    \begin{itemize}
+    \item lexical matches only
+    \item can annotate full text
+    \end{itemize}
+  \item recent tools and comprehensive ongoing evaluation:
+    \begin{itemize}
+    \item OAEI: \url{http://oaei.ontologymatching.org/}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+% \begin{frame}
+%   \frametitle{How to measure similarity?}
+%   Recommended reading:
+%   \begin{itemize}
+%   \item recommended, comprehensive overview: Sebastian Harispe et
+%     al. Semantic Similarity from Natural Language and Ontology
+%     Analysis. Morgan \& Claypool Publishers, 2015
+%   \item Catia Pesquita et al. Semantic Similarity in Biomedical
+%     Ontologies. PLoS CB, 2009.
+%   \item Maximilian Nickel et al. A Review of Relational Machine
+%     Learning for Knowledge Graphs, Proceedings of the IEEE, 2016.
+%   \end{itemize}
+% \end{frame}
+
+% \begin{frame}
+%   \frametitle{How to measure similarity: Quiz}
+%   \begin{itemize}
+%   \item How many semantic similarity measures are there?
+%     \begin{enumerate}[a]
+%     \item One (and it is called The Semantic Similarity Measure)
+%     \item Three (graph-based, set-based, feature-based)
+%     \item Many (depending on context, many functions can determine similarity)
+%     \end{enumerate}
+%     \pause
+%   \item Specificity of an ontology class
+%     \begin{enumerate}[a]
+%     \item depends on the number of children and ancestors, and the
+%       depth
+%     \item depends on the number of instances (or annotations)
+%     \item can improve similarity estimates significantly
+%     \end{enumerate}
+%     \pause
+%   \item In the presence of (relations between) instances, semantic
+%     similarity
+%     \begin{enumerate}[a]
+%     \item cannot be computed, it only works with ontologies
+%     \item can be estimated using only class specificity measures
+%     \item can be computed using knowledge graph embeddings
+%     \end{enumerate}
+%   \end{itemize}
+% \end{frame}
 
 \begin{frame}
   \frametitle{Hands-on part 2}
@@ -1769,8 +2006,8 @@ Class: mynamespace:Student # http://www.kaust.edu.sa#Student
   \item back to Jupyter...
   \item run the ``Semantic Similarity'' part
     \begin{itemize}
-    \item then find the most similar mouse gene to ``Tetralogy of
-      Fallot'' (OMIM:187500)
+    \item then find the mouse genotype with the most similar set of
+      phenotypes to ``Tetralogy of Fallot'' (OMIM:187500)
     \item or: use the data from
       \url{https://hpo.jax.org/app/download/annotation} to add more
       diseases and query by disease (hint: a disease is really just a
@@ -2220,6 +2457,16 @@ biological knowledge graphs. Bioinformatics, 2017.}
 \end{frame}
 
 \begin{frame}
+  \frametitle{Hands-on part}
+  \begin{itemize}
+  \item run the machine learning with ontologies part
+  \item explore the different similarity measures
+  \item repeat what you have done with semantic similarity using the
+    ontology embeddings
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
   \frametitle{How to measure similarity?}
   \begin{itemize}
   \item vector-based similarity measure
@@ -2289,11 +2536,11 @@ biological knowledge graphs. Bioinformatics, 2017.}
 \begin{frame}
   \frametitle{Applications of semantic similarity}
   \begin{itemize}
-  \item Guilt-by-association:
+  \item same kind of entity, same ontology:
     \begin{itemize}
     \item $x$ is associated with $y$
     \item $z$ is similar to $x$
-    \item therefore: $z$ may be associated with $y$
+    \item therefore: $z$ may {\em also} be associated with $y$
     \end{itemize}
   \item candidate genes (polygenic disease):
     \begin{itemize}
@@ -2308,18 +2555,12 @@ biological knowledge graphs. Bioinformatics, 2017.}
 \begin{frame}
   \frametitle{Applications of semantic similarity}
   \begin{itemize}
-  \item No guilt-by-association (abduction):
+  \item different kind of entity, same ontology:
+%  \item candidate genes (monogenic and polygenic disease):
     \begin{itemize}
-    \item $x$ causes $a$
-    \item $y$ has $b$
-    \item $a$ similar to $b$
-    \item therefore: $b$ is caused by $x$
-    \end{itemize}
-  \item candidate genes (monogenic and polygenic disease):
-    \begin{itemize}
-    \item Phenomizer: gene $x$ causes phenotypes $a$; patient $y$ has
-      symptoms $b$; $a$ is similar to $b$; therefore: gene $x$ causes
-      the symptoms in $b$
+    \item Phenomizer: genotype $x$ associated with phenotypes $a$;
+      patient $y$ has symptoms $b$; $a$ is similar to $b$; therefore:
+      $x$ causes the symptoms in $b$
     \item PhenomeNET: similar to Phenomizer but using model organism
       phenotypes (knockouts)
     \item PhenomeDrug: knockout of gene $x$ causes phenotypes $a$;
@@ -2332,105 +2573,26 @@ biological knowledge graphs. Bioinformatics, 2017.}
   \end{itemize}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Applications of semantic similarity}
-  \begin{itemize}
-  \item comparing entities annotated with {\em different}
-    ontologies/vocabularies of the {\em same} (or related) domains
-    \begin{itemize}
-    \item medical: UMLS, HPO, DO, ORDO, NCIT, ICD, SNOMED CT, MeSH, ...
-    \item phenotype: HPO, MP, CPO, WBPhenotype, FBCV, MeSH, ...
-    \item chemical: ChEBI, MeSH, DrOn, RXNorm, DrugBank, ...
-    \end{itemize}
-  \item needs mapping, alignment, or integration
-    \begin{itemize}
-    \item mapping: given a term $t$, find corresponding class in
-      ontology $O$
-      \begin{itemize}
-      \item can be 1:1, 1:n, n:1, n:m
-      \item $t$ can be from ontology, vocabulary, database, or text
-      \item use $O$ for analysis
-      \end{itemize}
-    \item alignment: given two ontologies or vocabularies $O_1$ and
-      $O_2$, find all mappings between classes/terms in $O_1$ and $O_2$
-      \begin{itemize}
-      \item applicable to ontologies and vocabularies
-      \item use $O_1$ or $O_2$ for analysis
-      \end{itemize}
-    \item integration: given two ontologies $O_1$ and $O_2$, combine
-      both ontologies into a single ontology $O$
-      \begin{itemize}
-      \item maintain meaning of classes
-      \item use $O$ for analysis
-      \end{itemize}
-    \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Applications of semantic similarity}
-  \begin{itemize}
-  \item lexical mappings: use class labels (and synonyms) to find matches
-    \begin{itemize}
-    \item hypertension ({\tt HP:0000822}) and hypertension ({\tt MP:0000231})
-    \end{itemize}
-  \item semantic mappings: use class axioms to find matches
-    \begin{itemize}
-    \item pulmonary valve stenosis ({\tt MP:0006182}) and Pulmonic
-      stenosis ({\tt HP:0001642})
-    \item both definitions based on constricted ({\tt PATO:0001847})
-      and pulmonary valve ({\tt UBERON:0002146})
-    \end{itemize}
-  \item hybrid: combine lexical and semantic mappings
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Applications of semantic similarity}
-  tools for ontology mapping, matching, integration:
-  \begin{itemize}
-  \item AgreementMaker Light: \url{https://github.com/AgreementMakerLight/AML-Jar}
-    \begin{itemize}
-    \item structural (semantic) and lexical matches
-    \item can use domain-specific background knowledge
-    \end{itemize}
-  \item LogMap: \url{https://github.com/ernestojimenezruiz/logmap-matcher}
-    \begin{itemize}
-    \item structural (semantic) and lexical matches
-    \item biology-themed versions
-    \end{itemize}
-  \item NCBO Annotator: \url{https://bioportal.bioontology.org/annotator}
-    \begin{itemize}
-    \item lexical matches only
-    \item can annotate full text
-    \end{itemize}
-  \item recent tools and comprehensive ongoing evaluation:
-    \begin{itemize}
-    \item OAEI: \url{http://oaei.ontologymatching.org/}
-    \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Applications of semantic similarity}
-  semantic similarity and text mining:
-  \begin{itemize}
-  \item find all occurrences of classes of one (or more) ontologies in text
-    \begin{itemize}
-    \item using lexical matching or semantic annotations
-      of text
-    \item TextPresso (\url{http://www.textpresso.org/}), NCBO
-      Annotator (\url{https://bioportal.bioontology.org/annotator}),
-      WhatIzIt (\url{http://www.ebi.ac.uk/webservices/whatizit/info.jsf})
-    \item ontology-specific text normalization tools
-      \begin{itemize}
-      \item DNorm (diseases), GNorm (gene names), OSCAR (chemicals), ...
-      \end{itemize}
-    \end{itemize}
-  \item use for database construction (automatic annotation), relation
-    extraction, network construction (co-occurrence network), etc.
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Applications of semantic similarity}
+%   semantic similarity and text mining:
+%   \begin{itemize}
+%   \item find all occurrences of classes of one (or more) ontologies in text
+%     \begin{itemize}
+%     \item using lexical matching or semantic annotations
+%       of text
+%     \item TextPresso (\url{http://www.textpresso.org/}), NCBO
+%       Annotator (\url{https://bioportal.bioontology.org/annotator}),
+%       WhatIzIt (\url{http://www.ebi.ac.uk/webservices/whatizit/info.jsf})
+%     \item ontology-specific text normalization tools
+%       \begin{itemize}
+%       \item DNorm (diseases), GNorm (gene names), OSCAR (chemicals), ...
+%       \end{itemize}
+%     \end{itemize}
+%   \item use for database construction (automatic annotation), relation
+%     extraction, network construction (co-occurrence network), etc.
+%   \end{itemize}
+% \end{frame}
 
 % \begin{frame}
 %   \frametitle{Applications of semantic similarity}
@@ -2464,31 +2626,31 @@ biological knowledge graphs. Bioinformatics, 2017.}
 %   \centerline{\includegraphics[height=1\textheight]{network.eps}}
 % \end{frame}
 
-\begin{frame}
-  \frametitle{Applications of semantic similarity}
-  \begin{itemize}
-  \item semantic similarity can be used as features in machine
-    learning models
-    \begin{itemize}
-    \item when annotation space is too large
-      \begin{itemize}
-      \item e.g., GO: 50,000 classes
-      \item replace binary representation
-      \end{itemize}
-    \item to incorporate background knowledge
-      \begin{itemize}
-      \item semantic similarity encodes {\em implicitly} for ontology
-        structure and axioms
-      \item encodes for {\em specificity} of classes
-      \end{itemize}
-    \item negative: reduce all annotations to single value
-      \begin{itemize}
-      \item leads to loss of information
-      \item but is easier to use by many machine learning methods
-      \end{itemize}
-    \end{itemize}
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Applications of semantic similarity}
+%   \begin{itemize}
+%   \item semantic similarity can be used as features in machine
+%     learning models
+%     \begin{itemize}
+%     \item when annotation space is too large
+%       \begin{itemize}
+%       \item e.g., GO: 50,000 classes
+%       \item replace binary representation
+%       \end{itemize}
+%     \item to incorporate background knowledge
+%       \begin{itemize}
+%       \item semantic similarity encodes {\em implicitly} for ontology
+%         structure and axioms
+%       \item encodes for {\em specificity} of classes
+%       \end{itemize}
+%     \item negative: reduce all annotations to single value
+%       \begin{itemize}
+%       \item leads to loss of information
+%       \item but is easier to use by many machine learning methods
+%       \end{itemize}
+%     \end{itemize}
+%   \end{itemize}
+% \end{frame}
 
 % \begin{frame}
 %   \frametitle{Applications of semantic similarity}
@@ -2504,35 +2666,35 @@ biological knowledge graphs. Bioinformatics, 2017.}
 % \includepdf[pages=1-3]{hh-pvp2.pdf}
 % }
 
-\begin{frame}
-  \frametitle{Summary}
-  \begin{itemize}
-  \item many semantic similarity measures
-    \begin{itemize}
-    \item graph-based
-    \item feature-based
-    \end{itemize}
-  \item useful for similarity-based prediction
-    \begin{itemize}
-    \item similar entities $\Rightarrow$ guilt-by-association
-    \item different entities
-    \end{itemize}
-  \item combine with data and text mining
-  \item features in machine learning methods
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Summary}
+%   \begin{itemize}
+%   \item many semantic similarity measures
+%     \begin{itemize}
+%     \item graph-based
+%     \item feature-based
+%     \end{itemize}
+%   \item useful for similarity-based prediction
+%     \begin{itemize}
+%     \item similar entities $\Rightarrow$ guilt-by-association
+%     \item different entities
+%     \end{itemize}
+%   \item combine with data and text mining
+%   \item features in machine learning methods
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Acknowledgements}
-  \begin{itemize}
-  \item Sarah Alghamdi
-  \item Mona Alsharani
-  \item Imene Boudellioua
-  \item Senay Kafkas
-  \item Maxat Kulmanov
-  \item Fatima Zohra Smaili
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Acknowledgements}
+%   \begin{itemize}
+%   \item Sarah Alghamdi
+%   \item Mona Alsharani
+%   \item Imene Boudellioua
+%   \item Senay Kafkas
+%   \item Maxat Kulmanov
+%   \item Fatima Zohra Smaili
+%   \end{itemize}
+% \end{frame}
 
 \begin{frame}
   \frametitle{Hands-on: semantic similarity}
