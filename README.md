@@ -53,6 +53,27 @@ Detailed instructions:
 * After the notebook started, copy the address and the token and paste it into you web browser. The URL should look *similar* to the following: `127.0.0.1:8888/?token=f14e6316a48016b2cf4cbed5dd7b89d9dc524da49f553dc7`.
 * All is now set up. There is no need to download and install any additional packages or data files.  Just step through the Groovy boxes. 
 
+### To copy a file from or to a running docker image:
+
+To copy a file from the running docker image to you local (host) computer, please use the following recepie:
+
+1) Find out the ID of the running container: Exceute `docker container list` in a terminal. The result should look similar to the following:
+
+```
+CONTAINER ID        IMAGE                                                COMMAND                  CREATED             STATUS              PORTS                    NAMES
+0cd1f8da3c1f        altermeister/bio-ontology-ontology-tutorial-docker   "/usr/bin/tini -- /b…"   9 seconds ago       Up 7 seconds        0.0.0.0:8888->8888/tcp   pedantic_mendeleev
+```
+
+2) Copy the corresponding container ID (in this example `0cd1f8da3c1f`) and in a terminal copy a file using the following command:
+
+```docker cp 0cd1f8da3c1f:/home/bioonto/ontology-tutorial/phenomenet-inferred.owl .```
+
+The command has the following form:
+
+`docker cp <CONTAINER ID>:<SRC_PATH> <DEST_PATH>` or `docker cp <SRC_PATH> <CONTAINER ID>:<DEST_PATH:`. The first copies a file from the container to the destination directory, while the other copies a file from the source to a destination into the running container.
+
+
+
 
 
 # Schedule
