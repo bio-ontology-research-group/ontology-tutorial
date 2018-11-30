@@ -123,7 +123,7 @@ The command has the following form:
 
 
 # Slides
-Slides will be updated on demand. The latest version (source and PDF) are in the (/slides/) folder.
+Slides will be updated on demand. The latest version (source and PDF) are in the (/slides/) folder. There are introduction slides (https://github.com/bio-ontology-research-group/ontology-tutorial/blob/master/slides/introduction-slides-pns.pdf by Paul Schofield and https://github.com/bio-ontology-research-group/ontology-tutorial/blob/master/slides/2018-ismb-tutorial-part-1.pdf by Michel Dumontier) and more technical slides (https://github.com/bio-ontology-research-group/ontology-tutorial/blob/master/slides/all.pdf by Robert Hoehndorf).
  
 # Questions and Requests
 
