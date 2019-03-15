@@ -129,8 +129,17 @@ Slides will be updated on demand. The latest version (source and PDF) are in the
 
 You can use the [Issue Tracker](https://github.com/bio-ontology-research-group/ontology-tutorial/issues) for questions and requests.
 
+# Dates
+Parts of the material in this repository were taught at
+ * ECCB 2016
+ * ISMB 2017
+ * ISMB 2018
+ * University of Cambridge, Bioinformatics Training Program, 2018
+ 
+
 # Contributors
 
+ * Imane Boudellioua
  * Michel Dumontier
  * Robert Hoehndorf
  * Andreas Karwath
