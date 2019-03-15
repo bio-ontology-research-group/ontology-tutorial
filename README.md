@@ -131,7 +131,9 @@ You can use the [Issue Tracker](https://github.com/bio-ontology-research-group/o
 
 # Contributors
 
-The set of slides has been developed by Michel Dumontier (part 1) and Robert Hoehndorf (part 2).
+ * Michel Dumontier
+ * Robert Hoehndorf
+ * Paul Schofield
 
 # License
 
