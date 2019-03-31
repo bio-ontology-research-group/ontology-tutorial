@@ -1,6 +1,24 @@
 
 # Tutorial: Ontologies for biomedical data analysis
 
+## Upcoming dates
+
+Next events based on the materials in this tutorial:
+
+ * 29 July 2019, Bufallo, NY, USA: [ICBO 2019](https://sites.google.com/view/icbo2019/home): Machine learning with ontologies, Robert Hoehndorf
+ * 23 September 2019, Graz, Austria: [JOWO 2019](https://www.iaoa.org/jowo/2019/): Semantic similarity and machine learning with ontologies, Robert Hoehndorf
+
+## Past events
+
+Parts of the material in this repository were taught at
+ * ECCB 2016 (Imane Boudellioua, Robert Hoehndorf, Paul Schofield, Luke Slater)
+ * ISMB 2017 (Michel Dumontier, Robert Hoehndorf)
+ * ISMB 2018 (Michel Dumontier, Robert Hoehndorf)
+ * University of Cambridge, Bioinformatics Training Program, 2018 (Robert Hoehndorf, Paul Schofield)
+
+
+## Overview
+
 Ontologies have long provided a core foundation in the organization of biomedical entities, their attributes, and their relationships. With over 500 biomedical ontologies currently available there are a number of new and exciting new opportunities emerging in using ontologies for large scale data sharing and data analysis. This tutorial will help you understand what ontologies are and how they are being used in computational biology and bioinformatics. 
 
 *Intended audience and level*: The tutorial will be of interest to any researcher who will use or produce large structured datasets in computational biology. The tutorial will be at an intermediate level and will describe current research directions and challenges. A particular focus will be given on the use of ontologies to compute semantic similarity, and the use of ontologies in machine learning.
@@ -129,12 +147,6 @@ Slides will be updated on demand. The latest version (source and PDF) are in the
 
 You can use the [Issue Tracker](https://github.com/bio-ontology-research-group/ontology-tutorial/issues) for questions and requests.
 
-# Dates
-Parts of the material in this repository were taught at
- * ECCB 2016
- * ISMB 2017
- * ISMB 2018
- * University of Cambridge, Bioinformatics Training Program, 2018
  
 
 # Contributors
