@@ -1,3 +1,6 @@
 [submodule "opa2vec"]
 	path = opa2vec
 	url = https://github.com/bio-ontology-research-group/opa2vec
+[submodule "el-embeddings"]
+	path = elembeddings
+	url = https://github.com/bio-ontology-research-group/el-embeddings
