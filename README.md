@@ -155,6 +155,7 @@ You can use the [Issue Tracker](https://github.com/bio-ontology-research-group/o
  * Michel Dumontier
  * Robert Hoehndorf
  * Andreas Karwath
+ * Maxat Kulmanov
  * Paul Schofield
  * Fatima Smaili
 
