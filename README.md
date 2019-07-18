@@ -6,7 +6,7 @@
 Next events based on the materials in this tutorial:
 
  * 29 July 2019, Bufallo, NY, USA: [ICBO 2019](https://sites.google.com/view/icbo2019/home): Machine learning with ontologies, Robert Hoehndorf
- * 23 September 2019, Graz, Austria: [JOWO 2019](https://www.iaoa.org/jowo/2019/): Semantic similarity and machine learning with ontologies, Robert Hoehndorf
+ * 23 September 2019, Graz, Austria: [JOWO 2019](https://www.iaoa.org/jowo/2019/): Semantic similarity and machine learning with ontologies, Robert Hoehndorf, Maxat Kulmanov
 
 ## Past events
 
@@ -155,6 +155,7 @@ You can use the [Issue Tracker](https://github.com/bio-ontology-research-group/o
  * Michel Dumontier
  * Robert Hoehndorf
  * Andreas Karwath
+ * Maxat Kulmanov
  * Paul Schofield
  * Fatima Smaili
 
