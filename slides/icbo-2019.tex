@@ -318,17 +318,53 @@
 
 \begin{frame}
   \frametitle{Ontologies provide background knowledge}
-  \centerline{\includegraphics[height=.8\textheight]{t-cell-aggregation.png}}
+  \centerline{\includegraphics[width=.8\textwidth]{t-cell-aggregation.png}}
 \end{frame}
 
 \begin{frame}
   \frametitle{Ontologies provide background knowledge}
+  \centerline{\includegraphics[width=.8\textwidth]{t-cell-activation.png}}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ontologies provide background knowledge}
+  \centerline{\includegraphics[width=.95\textwidth]{moesin-1.png}}
+  \centerline{\includegraphics[width=.85\textwidth]{moesin-2.png}}
   
 \end{frame}
 
 \begin{frame}
   \frametitle{Using background knowledge}
-  problem statement:
+  \begin{block}{Problem statement (first attempt):}
+    Given a set of biological entities and their ontology-based
+    annotations. Can we discover {\em new} relations between the
+    biological entities?
+  \end{block}
+  \pause
+  \begin{itemize}
+  \item what relations, and when is a fact ``new''?
+  \pause
+  \item what features are relevant?
+    \begin{itemize}
+    \item depends on the relation!
+    \end{itemize}
+  \pause
+  \item finding new facts is only one (minor?) use case
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Semantic similarity}
+  semantic similarity measures:
+  \begin{itemize}
+  \item for words, terms, classes
+  \item role of background knowledge:
+    \begin{itemize}
+    \item statistical/distributional semantics, large corpora
+    \item ontologies: topology
+    \end{itemize}
+  \item similarity measures: hand-crafted or data-driven
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -361,8 +397,12 @@
   \item we may need to generate graphs from ontologies
     \begin{itemize}
     \item {\em is-a} relations are easy (this is just {\tt owl:subClassOf})
-    \item how about {\em part-of}, {\em regulates}, {\em precedes}, etc.?
+    \item how about {\em part-of}, {\em regulates}, {\em precedes},
+      etc.?
+    \item disjointness, universal vs. existential quantification,
+      cardinality restrictions, intersection, union, negation?
     \end{itemize}
+    \pause
   \item relational patterns are implicit in OWL axioms
     \begin{itemize}
     \item in first order logic
@@ -394,10 +434,7 @@
     \end{itemize}
   \item RO and BFO provide a top-level system of classes and relations
     shared across many biomedical ontologies
-    \begin{itemize}
-    \item even GO, although somewhat hidden!
-    \end{itemize}
-  \item this system defines patterns used to generate graphs
+  \item this system may define patterns used to generate graphs
   \end{itemize}
 \end{frame}
 
@@ -414,15 +451,23 @@
 
 \begin{frame}
   \frametitle{Asserted and inferred}
-  
+  \begin{itemize}
+  \item relation patterns can be asserted or inferred
+  \item {\tt X SubClassOf: part-of some Y}
+  \item {\tt Y SubClassOf: part-of some Z}
+  \item {\tt part-of o part-of SubPropertyOf: part-of}
+  \item $\vdash$ {\tt X SubClassOf: part-of some Z}
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Methods and tools}
-
-  ROBOT
-  
-  \url{https://github.com/bio-ontology-research-group/Onto2Graph}
+  OBO Format represents a graph:
+  \begin{itemize}
+  \item Protege/OWLAPI: OBO export
+  \item OBO toolsets (e.g., ROBOT)
+  \item \url{https://github.com/bio-ontology-research-group/Onto2Graph}
+  \end{itemize}
 \end{frame}
 
 \section{Semantic Similarity}
