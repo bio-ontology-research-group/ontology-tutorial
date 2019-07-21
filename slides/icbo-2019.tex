@@ -14,6 +14,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{color}
+\usepackage{animate}
 
 \PassOptionsToPackage{usenames,dvipsnames,svgnames}{xcolor}  
 \usepackage{tikz}
@@ -34,6 +35,10 @@
 %\usepackage{pstricks}
 \setbeamertemplate{navigation symbols}{}
 
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\el}{$\mathcal{EL}^{++}$}
+\renewcommand{\Re}{\mathbb{R}}
+\newcommand{\BigO}[1]{\ensuremath{\operatorname{O}\bigl(#1\bigr)}}
 \newcommand{\myul}[2][blue]{\sethlcolor{#1}\hl{#2}\setulcolor{black}}
 
 \newcommand<>{\cunderline}[3]{\only<#1>{#3}\only<#2>{\underline{#3}}}
@@ -120,45 +125,200 @@
   \item Introduction
   \item Ontologies, graphs, axioms, reasoning
   \item Semantic similarity
-  \item Machine learning:
-    \begin{itemize}
-    \item graph-based
-    \item syntactic
-    \item model-theoretic
-    \end{itemize}
+  \item Machine learning
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Preliminaries: ontologies}
-  
+  \begin{itemize}
+  \item Specific artifacts expressing the intended meaning of a
+    vocabulary in terms of primitive categories and relations
+    describing the nature and structure of a domain of discourse
+    \begin{itemize}
+    \item in order to account for the competent use of vocabulary in
+      real situations (such as annotations in databases, etc.)
+    \end{itemize}
+    \pause
+  \item the intended meaning of {\em primitive} categories and
+    relations is expressed through axioms (axiomatic method, Tarski)
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Preliminaries: axioms}
-  
+  \begin{itemize}
+  \item {\em classes} represent kinds of things in the world
+    \begin{itemize}
+    \item {\em Arm}, {\em Apoptosis}, {\em Influenza}, {\em Homo
+        sapiens}, {\em Drinking behavior}, {\em Membrane}
+    \end{itemize}
+    \pause
+  \item {\em instances} of classes are individuals satisfying the
+    classes' intension
+    \begin{itemize}
+    \item my arm, the influenza I had last year, one ethanol molecule, etc.
+    \end{itemize}
+    \pause
+  \item {\em relations} between instances arise from interactions,
+    configurations, etc., of individuals
+    \begin{itemize}
+    \item my arm is {\bf part of} me, the {\bf duration of} my
+      influenza was 10 days
+    \end{itemize}
+    \pause
+  \item {\em axioms} specify the conditions that instances of a class
+    must satisfy
+    \begin{itemize}
+    \item every instance of {\em Hand} is a {\bf part of} an instance
+      of {\em Arm}
+    \end{itemize}
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Preliminaries: Description Logic}
-  
+  \frametitle{Description Logics: overview}
+  \begin{itemize}
+  \item TBox: axioms pertaining to the terminology of the domain (classes)
+  \item ABox: axioms stating facts (assertions) about the world
+  \item RBox: axioms holding for relations
+    \pause
+  \item Reasoning: derive implicitly represented knowledge (e.g.,
+    subsumption)
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Preliminaries: deductive inference}
-  
+  \frametitle{Description Logic ALC: syntax}
+  \begin{definition}
+    Let $N_C$ be a set of concept names and $N_R$ be a set of relation
+    names, $N_C \cap N_R = \emptyset$. $\mathcal{ALC}$ concept
+    descriptions are inductively defined as:
+    \begin{itemize}
+    \item If $A \in N_C$, then $A$ is an $\mathcal{ALC}$ concept
+      description
+    \item If $C, D$ are $\mathcal{ALC}$ concept description, and $r
+      \in N_R$, then the following are $\mathcal{ALC}$ concept descriptions:
+      \begin{itemize}
+      \item $C \sqcap D$
+      \item $C \sqcup D$
+      \item $\neg C$
+      \item $\forall r.C$
+      \item $\exists r.C$
+      \end{itemize}
+    \end{itemize}
+  \end{definition}
+  \begin{itemize}
+  \item Use $\bot$ as abbreviation of $A \sqcap \neg A$, $\top$ as
+    abbreviation of $A \sqcup \neg A$
+  \end{itemize}
+\end{frame}
+% Examples of concept descriptions, dl1.pdf, p8
+
+\begin{frame}
+  \frametitle{Description Logic ALC: semantics}
+  \begin{definition}
+    An interpretation
+    $\mathcal{I} = (\Delta^\mathcal{I}, \cdot^\mathcal{I})$ consists
+    of a non-empty domain $\Delta^\mathcal{I}$ and an interpretation
+    function $\cdot^\mathcal{I}$:
+    \begin{itemize}
+    \item $A^\mathcal{I} \subseteq \Delta^\mathcal{I}$ for all $A \in
+      N_C$,
+    \item $r^\mathcal{I} \subseteq \Delta^\mathcal{I} \times
+      \Delta^\mathcal{I}$ for all $r \in N_R$
+    \end{itemize}
+    The interpretation function is extended to $\mathcal{ALC}$ concept
+    descriptions as follows:
+    \begin{itemize}
+    \item $(C \sqcap D)^\mathcal{I} := C^\mathcal{I} \cap D^\mathcal{I}$
+    \item $(C \sqcup D)^\mathcal{I} := C^\mathcal{I} \cup D^\mathcal{I}$
+    \item $(\neg C)^\mathcal{I} := \Delta^\mathcal{I} - C^\mathcal{I}$
+    \item $(\forall r.C)^\mathcal{I} := \{ d \in \Delta^\mathcal{I} |
+      \mbox{for all } e \in \Delta^\mathcal{I}: (d,e) \in
+      r^\mathcal{I} \mbox{ implies } e \in C^\mathcal{I}\}$
+    \item $(\exists r.C)^\mathcal{I} := \{ d \in \Delta^\mathcal{I} |
+      \mbox{there is } e \in \Delta^\mathcal{I}: (d,e) \in
+      r^\mathcal{I} \mbox{ and } e \in C^\mathcal{I}\}$
+    \end{itemize}
+  \end{definition}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Preliminaries: deductive inference}
+  \frametitle{Description Logic: terminologies}
+  \begin{itemize}
+  \item A concept definition is of the form $A \equiv C$ where
+    \begin{itemize}
+    \item $A$ is a concept name
+    \item $C$ is a concept description
+    \end{itemize}
+  \item A TBox is a finite set of concept definitions such that it
+    \begin{itemize}
+    \item does not contain multiple definitions, % A equiv B, A equiv C
+    \item does not contain cyclic definitions
+      % A equiv B and C, B equiv A and C
+    \end{itemize}
+  \item A {\em defined concept} occurs on the left-hand side of a
+    definition
+  \item A {\em primitive concept} does not occur on the left-hand side
+    of a definition
+    % See: axiomatic-deductive method!
+  \item An interpretation $\mathcal{I}$ is a model of a TBox
+    $\mathcal{T}$ if it satisfies all its concept definitions:
+    $A^\mathcal{I} = C^\mathcal{I}$ for all $A \equiv C \in \mathcal{T}$
+  \end{itemize}
+\end{frame}
 
-  limits: infinite closure, etc.
-  
+\begin{frame}
+  \frametitle{Description Logic: assertions}
+  \begin{itemize}
+  \item An assertion is of the form $C(a)$ (concept assertion) or
+    $r(a,b)$ (role assertion), where $C$ is a concept description, $r$
+    is a role, $a,b$ are individual names from a set $N_I$ of such
+    names
+  \item An ABox is a finite set of assertions
+  \item An interpretation $\mathcal{I}$ is a model of an ABox
+    $\mathcal{A}$ if it satisfies all its assertions:
+    \begin{itemize}
+    \item $a^\mathcal{I} \in C^\mathcal{I}$ for all $C(a) \in
+      \mathcal{A}$
+    \item $(a^\mathcal{I},b^\mathcal{I}) \in r^\mathcal{I}$ for all
+      $r(a,b) \in \mathcal{A}$
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Description Logic: Reasoning}
+  \begin{itemize}
+  \item Subsumption: Is $C$ a subconcept of $D$?
+    \begin{itemize}
+    \item $C \sqsubseteq_\mathcal{T} D$ iff $C^\mathcal{I} \subseteq
+      D^\mathcal{I}$ for all models $\mathcal{I}$ of $\mathcal{T}$
+    \end{itemize}
+  \item Satisfiability: Is the concept $C$ non-contradictory?
+    \begin{itemize}
+    \item $C$ is satisfiable w.r.t. $\mathcal{T}$ iff $C^\mathcal{I}
+      \not= \emptyset$ for some model $\mathcal{I}$ of $\mathcal{T}$
+    \end{itemize}
+  \item Consistency: Is the ABox $\mathcal{A}$ non-contradictory?
+    \begin{itemize}
+    \item $\mathcal{A}$ is consistent w.r.t. $\mathcal{T}$ iff it has
+      a model that is also a model of $\mathcal{T}$
+    \end{itemize}
+  \item Instantiation: Is $e$ an instance of $C$?
+    \begin{itemize}
+    \item $\mathcal{A} \models_\mathcal{T} C(e)$ iff $e^\mathcal{I}
+      \in C^\mathcal{I}$ for all models $\mathcal{I}$ of $\mathcal{T}$
+      and $\mathcal{A}$.
+    \end{itemize}
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Ontologies provide background knowledge}
-  
+  \centerline{\includegraphics[height=.8\textheight]{t-cell-aggregation.png}}
 \end{frame}
 
 \begin{frame}
@@ -1269,7 +1429,7 @@
 \section{Machine learning and ontologies}
 
 \begin{frame}
-  \frametitle{Approaches}
+  \frametitle{Machine learning with ontologies: approaches}
   \begin{itemize}
   \item graph-based
   \item syntactic
@@ -1278,7 +1438,6 @@
 \end{frame}
 
 \subsection{Graph-based methods}
-
 
 \begin{frame}
   \frametitle{How to measure similarity?}
@@ -1306,8 +1465,27 @@
       state
     \item can take multiple seed nodes
       \begin{itemize}
-      \item widely used to find disease genes
+      \item can be used to find disease genes
       \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Graph-based learning}
+  \begin{itemize}
+  \item graph-representation of the ontology
+    \begin{itemize}
+    \item taxonomy
+    \item axioms
+    \item instances (using an {\tt instance-of} edge)
+    \end{itemize}
+  \item learning with graphs:
+    \begin{itemize}
+    \item random walks (and Word2Vec)
+    \item translation embeddings
+    \item Graph Convolution Neural Networks (not discussed here)
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -1645,14 +1823,11 @@ biological knowledge graphs. Bioinformatics, 2017.}
 
 
 
+\subsection{Translating embeddings}
 
 
 
 \subsection{Syntactic approaches}
-
-
-
-
 
 \begin{frame}
   \frametitle{Ontologies: axioms, not graphs!}
@@ -1729,10 +1904,90 @@ biological knowledge graphs. Bioinformatics, 2017.}
 \end{frame}
 
 
-
-
-
 \subsection{Model-theoretic approaches}
+
+\begin{frame}
+  \frametitle{Description Logic EL++}
+  \centering
+  \resizebox{.8\textwidth}{!}{
+    
+    \begin{tabular}{|p{1.7cm}|c|p{3.7cm}|}
+      \hline
+      {\bf} Name & Syntax & Semantics \\
+      \hline
+      top & $\top$ & $\Delta^{\mathcal{I}}$ \\
+    \hline
+    bottom & $\bot$ & $\emptyset$ \\
+    \hline
+    nominal & $\{ a \} $ & $\{ a^{\mathcal{I}} \}$ \\
+    \hline
+    conjunction & $C \sqcap D$ & $ C^{\mathcal{I}} \cap
+                                 D^{\mathcal{I}}$ \\
+    \hline
+    existential restriction & $\exists r.C$ & $ \{ x \in
+                                              \Delta^{\mathcal{I}} |
+                                              \exists y \in
+                                              \Delta^{\mathcal{I}} :
+                                              (x,y) \in
+                                              r^{\mathcal{I}} \land y
+                                              \in C^{\mathcal{I}} \} $
+    \\
+    \hline
+    generalized concept inclusion & $C \sqsubseteq D$ &
+                                                        $C^{\mathcal{I}}
+                                                        \subseteq
+                                                        D^{\mathcal{I}}$
+    \\
+    \hline
+    role inclusion & $r_1 \circ ... \circ r_n \sqsubseteq r$ &
+                                                               $r_1^{\mathcal{I}}
+                                                               \circ
+                                                               ... \circ
+                                                               r_n^{\mathcal{I}}
+                                                               \subseteq
+                                                               r^{\mathcal{I}}$
+    \\
+    \hline
+    
+  \end{tabular}
+}
+\end{frame}
+
+\begin{frame}
+  \frametitle{EL Embeddings}
+  \begin{itemize}
+  \item aim: given an EL++ theory $T$, find $f_e: T \mapsto
+    \mathbb{R}^n$ s.t. $f_e(T)$ is a model of $T$ ($f_e(T) \models T$)
+    \pause
+  \item any consistent EL++ theory has models in $\mathbb{R}^n$
+    (Loewenheim-Skolem, upwards)
+    \pause
+  \item key idea:
+    \begin{itemize}
+    \item for all $r \in \Sigma(T)$ and $C \in \Sigma(T)$, define
+      $f_e(r)$ and $f_e(C)$
+    \item $f_e(C)$ maps to points in an open $n$-ball such that
+      $f_e(C) = C^{\mathcal{I}}$:
+      $C^{\mathcal{I}} = \{ x \in \mathbb{R}^n | \norm{f_e(C) - x} <
+      r_e(C) \}$
+    \item $f_e(r)$ maps a binary relation $r$ to a vector such that
+      % the set of tuples ($\mathbb{R}^n \times \mathbb{R}^n$) with
+      % $f_e(r) = r^{\mathcal{I}}$:
+      $r^{\mathcal{I}} = \{ (x,y) | x + f_e(r) = y \}$
+    \item use the axioms in $T$ as constraints
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{EL Embeddings}
+  \centerline{\animategraphics[loop,controls,width=.7\textwidth]{12}{embeds-frame-}{0}{99}}
+  \begin{itemize}
+  \item model with $\Delta = R^n$
+  \item support quantifiers, negation, conjunction,...
+  \end{itemize}
+  {\tiny IJCAI 2019}
+\end{frame}
 
 
 
