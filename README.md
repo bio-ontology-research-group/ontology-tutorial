@@ -41,14 +41,20 @@ participate (instead of just watching the presentation), please install the requ
 
 Download
 and install Jupyter Notebook (http://jupyter.org/) with a SciJava kernel (follow instructions [here](https://github.com/scijava/scijava-jupyter-kernel)), and _run_ the first cell in https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/ontology-analysis.ipynb (on Jupyter). This will download the required dependencies (OWLAPI, ELK,
-SML) which are quite large. You must also download our data package from [here](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/ontology-tutorial.tar.gz) and for the last part of the tutorial some vectors from [here](http://jagannath.pdn.cam.ac.uk/tutorial/phenome-vec-small.txt.gz).
+SML) which are quite large. You must also download our data package
+from
+[here](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/ontology-tutorial.tar.gz),
+[here](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/el-embeddings-data.zip)
+and for the last part of the tutorial some vectors from [here](http://jagannath.pdn.cam.ac.uk/tutorial/phenome-vec-small.txt.gz).
 
 It is fine to skip this step and still follow the tutorial, but if you
 want to play with the methods yourself, and go away with some running code examples that you can build on, downloading and running the code is necessary.
 
 Detailed instructions:
  * Download Jupyter Notebook from http://jupyter.org/ and install
- * Install the SciJava Jupyter kernel following instructions on https://github.com/scijava/scijava-jupyter-kernel
+ * Install the SciJava Jupyter kernel following instructions on
+   https://github.com/scijava/scijava-jupyter-kernel
+ * Install dependencies with `conda install --file requirements.txt`
  * Download the [Jupyter Notebook file](https://github.com/bio-ontology-research-group/ontology-tutorial/blob/master/ontology-analysis.ipynb) ([direct download](https://github.com/bio-ontology-research-group/ontology-tutorial/raw/master/ontology-analysis.ipynb)): and store on your disk.
  * Run Jupyter Notebook using `jupyter notebook`
    * This will open a web browser, or browser window, with the Jupyter environment.
@@ -58,6 +64,7 @@ Detailed instructions:
    * Depending on your Internet connection, this may take some time!
    * This code will download the libraries necessary to run the remaining code.
  * Download the [data package](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/ontology-tutorial.tar.gz) and store on your disk. Unzip it with gunzip: `gunzip ontology-tutorial.tar.gz`.
+ * Download the [EL-Embeddings data](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/el-embeddings-data.zip) and store on your disk. Unzip it with unzip: `unzip el-embeddings-data.zip`.
  * Download the [ontology embeddings](http://jagannath.pdn.cam.ac.uk/tutorial/phenome-vec-small.txt.gz) and store on your disk (ideally in the `/misc` subdirectory.
 
 ## Using the Docker image:
