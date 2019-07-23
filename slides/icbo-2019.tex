@@ -1265,7 +1265,7 @@
   \item no obvious choice of similarity measure
   \item depends on application
     \begin{itemize}
-    \item predicting PPIs in different organisms may benefit from a
+    \item example: predicting PPIs in different organisms may benefit from a
       different similarity measure!
     \end{itemize}
   \item different similarity measures may react differently to biases
@@ -1516,7 +1516,6 @@
   \end{itemize}
 \end{frame}
 
-
 \begin{frame}
   \frametitle{Graph-based learning}
   \begin{itemize}
@@ -1536,26 +1535,21 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{How to measure similarity?}
+  \frametitle{Graph-based learning}
   \begin{itemize}
-  \item feature learning on knowledge graph
+  \item feature learning on graphs
     \pause
   \item e.g., iterated, edge-labeled random walk
     \begin{itemize}
-%    \item over instances and classes
+      % \item over instances and classes
     \item walks form {\em sentences}
     \item sentences form a {\em corpus}
     \item feature learning on corpus through Word2Vec (or factorization
       of co-occurrence matrix)
-    % \item RDF2Vec:
-    %   \url{http://data.dws.informatik.uni-mannheim.de/rdf2vec/}
-      \pause
-    \item with support for reasoning over bio-ontologies:
-        \url{https://github.com/bio-ontology-research-group/walking-rdf-and-owl}
-        % \begin{itemize}
-        % \item (self-promotion warning)
-        % \end{itemize}
-      \item Onto2Vec: \url{https://github.com/bio-ontology-research-group/onto2vec/}
+    \item RDF2Vec:
+      \url{http://data.dws.informatik.uni-mannheim.de/rdf2vec/}
+    \item with support for reasoning over ontologies:
+      \url{https://github.com/bio-ontology-research-group/walking-rdf-and-owl}
     \end{itemize}
     \pause
   \item Translational knowledge graph embeddings: TransE, TransR, TransE, HolE, etc.
@@ -1570,20 +1564,26 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Knowledge graph embeddings}
+  \frametitle{Graph embeddings}
   \begin{definition}
     Let $KG = (V, E, L; \vdash)$ be a knowledge graph with a set of
     vertices $V$, a set of edges $E \subseteq V \times V$, a label
-    function $L: V \cup E \mapsto Lab$ that assigns labels from a
-    label set $Lab$ to vertices and edges, and an inference relation
+    function $L: V \cup E \mapsto Lab$ that assigns labels from a set
+    of labels $Lab$ to vertices and edges, and an inference relation
     $\vdash$. A knowledge graph embedding is a function
-    $f_\eta : L(V) \cup L(E) \mapsto \mathbf{R}^n$ (subject to certain
-    constraints).
+    $f_\eta : L(V) \cup L(E) \mapsto \mathbf{R}^n$.
   \end{definition}
+  \begin{itemize}
+  \item key idea: preserve {\em some} structure of the graph in
+    $\Re^n$ (under operations in $\Re^n$)
+  \item $\Re^n$ enables {\em new} operations (such as many similarity
+    measures)
+  \item useful as {\em feature} vectors
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Neuro-symbolic feature learning}
+  \frametitle{Random walks}
   \begin{columns}
     \begin{column}{.6\textwidth}
       \resizebox{1\textwidth}{!}{%
@@ -1636,10 +1636,9 @@
     \end{column}
     \begin{column}{.4\textwidth}
       \begin{itemize}
-      \item task: predict if FOXP2 is involved in disease $D$
-      \item task: what chemicals could (directly or indirectly) affect
-        FOXP2's function?
-      \item which features are relevant?
+      \item FOXP2 is characterized by {\em adjacent} and close nodes
+        and edges
+      \item different edges may ``transmit'' information differently
       \end{itemize}
     \end{column}
   \end{columns}
@@ -1647,7 +1646,8 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Neuro-symbolic feature learning}
+  \frametitle{Random walks}
+%  \frametitle{Neuro-symbolic feature learning}
   \begin{columns}
     \begin{column}{.6\textwidth}
       \resizebox{1\textwidth}{!}{%
@@ -1699,22 +1699,18 @@
       }
     \end{column}
     \begin{column}{.4\textwidth}
-      % \begin{itemize}
-      % \item task: predict if FOXP2 is involved in disease $D$
-      % \item which features are relevant?
-      %   \pause
-      % \item learn relevant features $\Rightarrow$ knowledge graph
-      %   embedding
-      %   \pause
-      % \item incorporate inferences by deductively closing the graph
-      % \end{itemize}
+      \begin{itemize}
+      \item for all $\phi$: if $\mathcal{KG} \models \phi$, add $\phi$
+        to $\mathcal{KG}$
+      \end{itemize}
     \end{column}
   \end{columns}
       
 \end{frame}
 
 \begin{frame}
-  \frametitle{Neuro-symbolic feature learning}
+  \frametitle{Random walks}
+%  \frametitle{Neuro-symbolic feature learning}
   \begin{columns}
     \begin{column}{.6\textwidth}
       \resizebox{1\textwidth}{!}{%
@@ -1780,7 +1776,8 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Neuro-symbolic feature learning}
+  \frametitle{Random walks}
+%  \frametitle{Neuro-symbolic feature learning}
   \begin{itemize}
   % \item iterated random walk from each node (in a knowledge graph
   %   consisting of instances and classes) defines sentences
@@ -1803,12 +1800,14 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Neuro-symbolic feature learning}
+  \frametitle{Random walks}
+%  \frametitle{Neuro-symbolic feature learning}
   \centerline{\includegraphics[width=\textwidth]{rdf-walking-datasets.png}}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Neuro-symbolic feature learning}
+  \frametitle{Random walks}
+%  \frametitle{Neuro-symbolic feature learning}
     \begin{table}[ht!]
   \resizebox{\textwidth}{!}{%
       \centering
@@ -1828,13 +1827,13 @@
       \end{tabular}
   }
 \end{table}
-\vfill
-{\tiny Alsharani et al. Neuro-symbolic representation learning on
-biological knowledge graphs. Bioinformatics, 2017.}
+%\vfill
+% {\tiny Alsharani et al. Neuro-symbolic representation learning on
+% biological knowledge graphs. Bioinformatics, 2017.}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Multi-modal feature learning}
+  \frametitle{Multi-modal features}
     \begin{quote}
       The \only<1,2>{\underline{forkhead-box P2 (FOXP2)}}\only<3>{\underline{:FOXP2}} gene polymorphism has been
       reported to be involved in the susceptibility to schizophrenia;
@@ -1849,28 +1848,85 @@ biological knowledge graphs. Bioinformatics, 2017.}
   \end{itemize}
 \end{frame}
 
+% \begin{frame}
+%   \frametitle{Multi-modal feature learning}
+%   \centerline{\includegraphics[width=\textwidth]{multimodal_workflow.pdf}}
+% \end{frame}
+
+
+% \begin{frame}
+%   \frametitle{Multi-modal feature learning: drug targets and indications}
+%   \centerline{
+%     \includegraphics[width=.45\textwidth]{DTI_ANN_all.pdf}
+%     \includegraphics[width=.45\textwidth]{Ind_ANN_all.pdf}
+%   }
+%   \vspace{.5cm}
+%   {\tiny Alshahrani \& H. Drug repurposing through
+%     multi-modal learning on knowledge graphs. BioRxiv, 2018.}
+% \end{frame}
+
 \begin{frame}
-  \frametitle{Multi-modal feature learning}
-  \centerline{\includegraphics[width=\textwidth]{multimodal_workflow.pdf}}
+  \frametitle{Tools and resources}
+  \begin{itemize}
+  \item RDF2Vec: random walks on {\em RDF} + Word2Vec
+  \item RDF2Vec: Weisfeiler-Lehmann kernel on {\em RDF}
+  \item \url{https://datalab.rwth-aachen.de/embedding/RDF2Vec/}
+    \pause
+  \item Walking RDF+OWL: random walks on {\em RDF} + Elk + Word2Vec
+    \begin{itemize}
+    \item inference
+    \end{itemize}
+  \item \url{https://github.com/bio-ontology-research-group/walking-rdf-and-owl}
+  \end{itemize}
 \end{frame}
-
-
-\begin{frame}
-  \frametitle{Multi-modal feature learning: drug targets and indications}
-  \centerline{
-    \includegraphics[width=.45\textwidth]{DTI_ANN_all.pdf}
-    \includegraphics[width=.45\textwidth]{Ind_ANN_all.pdf}
-  }
-  \vspace{.5cm}
-  {\tiny Alshahrani \& H. Drug repurposing through
-    multi-modal learning on knowledge graphs. BioRxiv, 2018.}
-\end{frame}
-
-
 
 \subsection{Translating embeddings}
+\begin{frame}
+  \frametitle{Translating embeddings}
+  \begin{definition}
+    Let $KG = (V, E, L; \vdash)$ be a knowledge graph with a set of
+    vertices $V$, a set of edges $E \subseteq V \times V$, a label
+    function $L: V \cup E \mapsto Lab$ that assigns labels from a set
+    of labels $Lab$ to vertices and edges, and an inference relation
+    $\vdash$. A knowledge graph embedding is a function
+    $f_\eta : L(V) \cup L(E) \mapsto \mathbf{R}^n$.
+  \end{definition}
+  \pause
+  Graph as edgelist: set of $(s,p,o)$ statements\\
+  \pause
+  Idea: $\mu (s) + \mu (p) \approx \mu (o)$\\
+  \pause
+  Minimize: $\sum_t | \mu (s) + \mu (p) - \mu (o) |$ (chose your norm)
+\end{frame}
 
+\begin{frame}
+  \frametitle{Translating embeddings}
+  \centerline{\includegraphics[width=.7\textwidth]{transe-figure.png}}
+\end{frame}
 
+\begin{frame}
+  \frametitle{Translating embeddings}
+  \centerline{\includegraphics[width=1\textwidth]{transe-algorithm.png}}
+
+  {\tiny Bordes et al. (2013). Translating Embeddings for
+    ModelingMulti-relational Data.}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Some properties}
+  \begin{itemize}
+  \item graph-based
+    \begin{itemize}
+    \item no axioms
+    \item but RDF graphs!
+    \end{itemize}
+  \item 1:1 relations only
+    \begin{itemize}
+    \item hierarchy badly captured
+    \item many--many relations badly captured
+    \end{itemize}
+  \end{itemize}
+\end{frame}
 
 \subsection{Syntactic approaches}
 
