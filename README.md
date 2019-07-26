@@ -44,7 +44,7 @@ and install Jupyter Notebook (http://jupyter.org/) with a SciJava kernel (follow
 SML) which are quite large. You must also download our data package
 from
 [here](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/ontology-tutorial.tar.gz),
-[here](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/el-embeddings-data.zip)
+[here](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/embeddings-data.tar.gz)
 and for the last part of the tutorial some vectors from [here](http://jagannath.pdn.cam.ac.uk/tutorial/phenome-vec-small.txt.gz).
 
 It is fine to skip this step and still follow the tutorial, but if you
@@ -63,8 +63,8 @@ Detailed instructions:
  * In the first Groovy box, press Shift+Return
    * Depending on your Internet connection, this may take some time!
    * This code will download the libraries necessary to run the remaining code.
- * Download the [data package](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/ontology-tutorial.tar.gz) and store on your disk. Unzip it with gunzip: `gunzip ontology-tutorial.tar.gz`.
- * Download the [EL-Embeddings data](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/el-embeddings-data.zip) and store on your disk. Unzip it with unzip: `unzip el-embeddings-data.zip`.
+ * Download the [data package](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/ontology-tutorial.tar.gz) and store on your disk. Unzip it with gunzip: `tar xvzf ontology-tutorial.tar.gz`.
+ * Download the [EL-Embeddings data](http://aber-owl.net/aber-owl/diseasephenotypes/ontology/embeddings-data.tar.gz) and store on your disk. Unzip it with unzip: `tar xvzf embeddings-data.tar.gz`.
  * Download the [ontology embeddings](http://jagannath.pdn.cam.ac.uk/tutorial/phenome-vec-small.txt.gz) and store on your disk (ideally in the `/misc` subdirectory.
 
 ## Using the Docker image:
