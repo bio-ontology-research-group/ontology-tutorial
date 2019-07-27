@@ -185,6 +185,8 @@
     \pause
   \item Reasoning: derive implicitly represented knowledge (e.g.,
     subsumption)
+    \pause
+  \item remark: a knowledge graph is ABox + RBox
   \end{itemize}
 \end{frame}
 
@@ -215,114 +217,114 @@
 \end{frame}
 % Examples of concept descriptions, dl1.pdf, p8
 
-\begin{frame}
-  \frametitle{Description Logic ALC: semantics}
-  \begin{definition}
-    An interpretation
-    $\mathcal{I} = (\Delta^\mathcal{I}, \cdot^\mathcal{I})$ consists
-    of a non-empty domain $\Delta^\mathcal{I}$ and an interpretation
-    function $\cdot^\mathcal{I}$:
-    \begin{itemize}
-    \item $A^\mathcal{I} \subseteq \Delta^\mathcal{I}$ for all $A \in
-      N_C$,
-    \item $r^\mathcal{I} \subseteq \Delta^\mathcal{I} \times
-      \Delta^\mathcal{I}$ for all $r \in N_R$
-    \end{itemize}
-    The interpretation function is extended to $\mathcal{ALC}$ concept
-    descriptions as follows:
-    \begin{itemize}
-    \item $(C \sqcap D)^\mathcal{I} := C^\mathcal{I} \cap D^\mathcal{I}$
-    \item $(C \sqcup D)^\mathcal{I} := C^\mathcal{I} \cup D^\mathcal{I}$
-    \item $(\neg C)^\mathcal{I} := \Delta^\mathcal{I} - C^\mathcal{I}$
-    \item $(\forall r.C)^\mathcal{I} := \{ d \in \Delta^\mathcal{I} |
-      \mbox{for all } e \in \Delta^\mathcal{I}: (d,e) \in
-      r^\mathcal{I} \mbox{ implies } e \in C^\mathcal{I}\}$
-    \item $(\exists r.C)^\mathcal{I} := \{ d \in \Delta^\mathcal{I} |
-      \mbox{there is } e \in \Delta^\mathcal{I}: (d,e) \in
-      r^\mathcal{I} \mbox{ and } e \in C^\mathcal{I}\}$
-    \end{itemize}
-  \end{definition}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Description Logic ALC: semantics}
+%   \begin{definition}
+%     An interpretation
+%     $\mathcal{I} = (\Delta^\mathcal{I}, \cdot^\mathcal{I})$ consists
+%     of a non-empty domain $\Delta^\mathcal{I}$ and an interpretation
+%     function $\cdot^\mathcal{I}$:
+%     \begin{itemize}
+%     \item $A^\mathcal{I} \subseteq \Delta^\mathcal{I}$ for all $A \in
+%       N_C$,
+%     \item $r^\mathcal{I} \subseteq \Delta^\mathcal{I} \times
+%       \Delta^\mathcal{I}$ for all $r \in N_R$
+%     \end{itemize}
+%     The interpretation function is extended to $\mathcal{ALC}$ concept
+%     descriptions as follows:
+%     \begin{itemize}
+%     \item $(C \sqcap D)^\mathcal{I} := C^\mathcal{I} \cap D^\mathcal{I}$
+%     \item $(C \sqcup D)^\mathcal{I} := C^\mathcal{I} \cup D^\mathcal{I}$
+%     \item $(\neg C)^\mathcal{I} := \Delta^\mathcal{I} - C^\mathcal{I}$
+%     \item $(\forall r.C)^\mathcal{I} := \{ d \in \Delta^\mathcal{I} |
+%       \mbox{for all } e \in \Delta^\mathcal{I}: (d,e) \in
+%       r^\mathcal{I} \mbox{ implies } e \in C^\mathcal{I}\}$
+%     \item $(\exists r.C)^\mathcal{I} := \{ d \in \Delta^\mathcal{I} |
+%       \mbox{there is } e \in \Delta^\mathcal{I}: (d,e) \in
+%       r^\mathcal{I} \mbox{ and } e \in C^\mathcal{I}\}$
+%     \end{itemize}
+%   \end{definition}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Description Logic: terminologies}
-  \begin{itemize}
-  \item A concept definition is of the form $A \equiv C$ where
-    \begin{itemize}
-    \item $A$ is a concept name
-    \item $C$ is a concept description
-    \end{itemize}
-  \item A TBox is a finite set of concept definitions such that it
-    \begin{itemize}
-    \item does not contain multiple definitions, % A equiv B, A equiv C
-    \item does not contain cyclic definitions
-      % A equiv B and C, B equiv A and C
-    \end{itemize}
-  \item A {\em defined concept} occurs on the left-hand side of a
-    definition
-  \item A {\em primitive concept} does not occur on the left-hand side
-    of a definition
-    % See: axiomatic-deductive method!
-  \item An interpretation $\mathcal{I}$ is a model of a TBox
-    $\mathcal{T}$ if it satisfies all its concept definitions:
-    $A^\mathcal{I} = C^\mathcal{I}$ for all $A \equiv C \in \mathcal{T}$
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Description Logic: terminologies}
+%   \begin{itemize}
+%   \item A concept definition is of the form $A \equiv C$ where
+%     \begin{itemize}
+%     \item $A$ is a concept name
+%     \item $C$ is a concept description
+%     \end{itemize}
+%   \item A TBox is a finite set of concept definitions such that it
+%     \begin{itemize}
+%     \item does not contain multiple definitions, % A equiv B, A equiv C
+%     \item does not contain cyclic definitions
+%       % A equiv B and C, B equiv A and C
+%     \end{itemize}
+%   \item A {\em defined concept} occurs on the left-hand side of a
+%     definition
+%   \item A {\em primitive concept} does not occur on the left-hand side
+%     of a definition
+%     % See: axiomatic-deductive method!
+%   \item An interpretation $\mathcal{I}$ is a model of a TBox
+%     $\mathcal{T}$ if it satisfies all its concept definitions:
+%     $A^\mathcal{I} = C^\mathcal{I}$ for all $A \equiv C \in \mathcal{T}$
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Description Logic: assertions}
-  \begin{itemize}
-  \item An assertion is of the form $C(a)$ (concept assertion) or
-    $r(a,b)$ (role assertion), where $C$ is a concept description, $r$
-    is a role, $a,b$ are individual names from a set $N_I$ of such
-    names
-  \item An ABox is a finite set of assertions
-  \item An interpretation $\mathcal{I}$ is a model of an ABox
-    $\mathcal{A}$ if it satisfies all its assertions:
-    \begin{itemize}
-    \item $a^\mathcal{I} \in C^\mathcal{I}$ for all $C(a) \in
-      \mathcal{A}$
-    \item $(a^\mathcal{I},b^\mathcal{I}) \in r^\mathcal{I}$ for all
-      $r(a,b) \in \mathcal{A}$
-    \end{itemize}
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Description Logic: assertions}
+%   \begin{itemize}
+%   \item An assertion is of the form $C(a)$ (concept assertion) or
+%     $r(a,b)$ (role assertion), where $C$ is a concept description, $r$
+%     is a role, $a,b$ are individual names from a set $N_I$ of such
+%     names
+%   \item An ABox is a finite set of assertions
+%   \item An interpretation $\mathcal{I}$ is a model of an ABox
+%     $\mathcal{A}$ if it satisfies all its assertions:
+%     \begin{itemize}
+%     \item $a^\mathcal{I} \in C^\mathcal{I}$ for all $C(a) \in
+%       \mathcal{A}$
+%     \item $(a^\mathcal{I},b^\mathcal{I}) \in r^\mathcal{I}$ for all
+%       $r(a,b) \in \mathcal{A}$
+%     \end{itemize}
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Description Logic: Reasoning}
-  \begin{itemize}
-  \item Subsumption: Is $C$ a subconcept of $D$?
-    \begin{itemize}
-    \item $C \sqsubseteq_\mathcal{T} D$ iff $C^\mathcal{I} \subseteq
-      D^\mathcal{I}$ for all models $\mathcal{I}$ of $\mathcal{T}$
-    \end{itemize}
-  \item Satisfiability: Is the concept $C$ non-contradictory?
-    \begin{itemize}
-    \item $C$ is satisfiable w.r.t. $\mathcal{T}$ iff $C^\mathcal{I}
-      \not= \emptyset$ for some model $\mathcal{I}$ of $\mathcal{T}$
-    \end{itemize}
-  \item Consistency: Is the ABox $\mathcal{A}$ non-contradictory?
-    \begin{itemize}
-    \item $\mathcal{A}$ is consistent w.r.t. $\mathcal{T}$ iff it has
-      a model that is also a model of $\mathcal{T}$
-    \end{itemize}
-  \item Instantiation: Is $e$ an instance of $C$?
-    \begin{itemize}
-    \item $\mathcal{A} \models_\mathcal{T} C(e)$ iff $e^\mathcal{I}
-      \in C^\mathcal{I}$ for all models $\mathcal{I}$ of $\mathcal{T}$
-      and $\mathcal{A}$.
-    \end{itemize}
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Description Logic: Reasoning}
+%   \begin{itemize}
+%   \item Subsumption: Is $C$ a subconcept of $D$?
+%     \begin{itemize}
+%     \item $C \sqsubseteq_\mathcal{T} D$ iff $C^\mathcal{I} \subseteq
+%       D^\mathcal{I}$ for all models $\mathcal{I}$ of $\mathcal{T}$
+%     \end{itemize}
+%   \item Satisfiability: Is the concept $C$ non-contradictory?
+%     \begin{itemize}
+%     \item $C$ is satisfiable w.r.t. $\mathcal{T}$ iff $C^\mathcal{I}
+%       \not= \emptyset$ for some model $\mathcal{I}$ of $\mathcal{T}$
+%     \end{itemize}
+%   \item Consistency: Is the ABox $\mathcal{A}$ non-contradictory?
+%     \begin{itemize}
+%     \item $\mathcal{A}$ is consistent w.r.t. $\mathcal{T}$ iff it has
+%       a model that is also a model of $\mathcal{T}$
+%     \end{itemize}
+%   \item Instantiation: Is $e$ an instance of $C$?
+%     \begin{itemize}
+%     \item $\mathcal{A} \models_\mathcal{T} C(e)$ iff $e^\mathcal{I}
+%       \in C^\mathcal{I}$ for all models $\mathcal{I}$ of $\mathcal{T}$
+%       and $\mathcal{A}$.
+%     \end{itemize}
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Offtopic: knowledge graphs}
-  My favorite definition of ``knowledge graph'':\\
-  A knowledge graph is an ABox + RBox.
-  \begin{itemize}
-  \item ontologies are (mostly) the TBox!
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Offtopic: knowledge graphs}
+%   My favorite definition of ``knowledge graph'':\\
+%   A knowledge graph is an ABox + RBox.
+%   \begin{itemize}
+%   \item ontologies are (mostly) the TBox!
+%   \end{itemize}
+% \end{frame}
 
 \begin{frame}
   \frametitle{Ontologies provide background knowledge}
@@ -375,27 +377,27 @@
   \end{itemize}
 \end{frame}
 
-% \begin{frame}
-%   \frametitle{Semantic similarity: some examples}
-%   \begin{itemize}
-%   \item Are cyclin dependent kinases {\em functionally} more similar
-%     to lipid kinases or to riboflavin kinases? How about {\em
-%       phenotypically}?
-%     \pause
-%   \item Which protein in the {\em mouse} is functionally most similar
-%     to the zebrafish {\em gustducin} protein?
-%     \pause
-%   \item Which mouse knockout resembles {\em Bardet-Biedl Syndrome 8}?
-%     \pause
-%   \item Are there mouse knockouts that resemble the side effects of
-%     diclofenac?
-%     \pause
-%   \item Which genetic disease produces similar symptoms to ebola?
-%     \pause
-%   \item Does functional similarity correlate with phenotypic
-%     similarity?
-%   \end{itemize}
-% \end{frame}
+\begin{frame}
+  \frametitle{Semantic similarity: some examples}
+  \begin{itemize}
+  \item Are cyclin dependent kinases {\em functionally} more similar
+    to lipid kinases or to riboflavin kinases? How about {\em
+      phenotypically}?
+    \pause
+  \item Which protein in the {\em mouse} is functionally most similar
+    to the zebrafish {\em gustducin} protein?
+    \pause
+  \item Which mouse knockout resembles {\em Bardet-Biedl Syndrome 8}?
+    \pause
+  \item Are there mouse knockouts that resemble the side effects of
+    diclofenac?
+    \pause
+  \item Which genetic disease produces similar symptoms to ebola?
+    \pause
+  \item Does functional similarity correlate with phenotypic
+    similarity?
+  \end{itemize}
+\end{frame}
 
 \begin{frame}
   \frametitle{Ontologies and graphs}
@@ -478,6 +480,10 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}
+  \frametitle{An example: protein--protein interactions and GO functions}
+  whiteboard...
+\end{frame}
 
 \section{Machine learning and ontologies}
 
@@ -524,23 +530,6 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Graph-based learning}
-  \begin{itemize}
-  \item graph-representation of the ontology
-    \begin{itemize}
-    \item taxonomy
-    \item axioms
-    \item instances (using an {\tt instance-of} edge)
-    \end{itemize}
-  \item learning with graphs:
-    \begin{itemize}
-    \item random walks (and Word2Vec)
-    \item translation embeddings
-    \item Graph Convolution Neural Networks (not discussed here)
-    \end{itemize}
-  \end{itemize}
-\end{frame}
 
 \begin{frame}
   \frametitle{Graph-based learning}
@@ -568,6 +557,24 @@
     \pause
   \item generates (dense) feature vectors for nodes (classes,
     instances) and relations
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Graph-based learning}
+  \begin{itemize}
+  \item graph-representation of the ontology
+    \begin{itemize}
+    \item taxonomy
+    \item axioms
+    \item instances (using an {\tt instance-of} edge)
+    \end{itemize}
+  \item learning with graphs:
+    \begin{itemize}
+    \item random walks (and Word2Vec)
+    \item translation embeddings
+    \item Graph Convolution Neural Networks (not discussed here)
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -860,6 +867,11 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Jupyter excercise}
+  
+\end{frame}
+
+\begin{frame}
   \frametitle{Ontologies, graphs, and text}
     \begin{quote}
       The \only<1,2>{\underline{forkhead-box P2 (FOXP2)}}\only<3>{\underline{:FOXP2}} gene polymorphism has been
@@ -954,8 +966,6 @@
     \end{itemize}
   \end{itemize}
 \end{frame}
-
-
 
 \begin{frame}
   \frametitle{Translating embeddings}
@@ -1295,7 +1305,10 @@
   {\tiny IJCAI 2019}
 \end{frame}
 
-
+\begin{frame}
+  \frametitle{Jupyter excercise}
+  
+\end{frame}
 
 % \begin{frame}
 %   \frametitle{Hands-on part}
@@ -1306,6 +1319,8 @@
 %     ontology embeddings
 %   \end{itemize}
 % \end{frame}
+
+\section{Applications}
 
 \begin{frame}
   \frametitle{How to measure similarity?}
@@ -1330,7 +1345,6 @@
   \end{itemize}
 \end{frame}
 
-\section{Applications}
 
 
 \begin{frame}
