@@ -996,6 +996,11 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Jupyter excercise}
+  
+\end{frame}
+
 \subsection{Syntactic approaches}
 
 \begin{frame}
@@ -1034,7 +1039,7 @@
     classes $C$, a set of relations $R$, a set of instances $I$, a set
     of axioms $ax$ and an inference relation $\vdash$. An ontology
     embedding is a function $f_\eta : C \cup R \cup I \mapsto
-    \mathbf{R}^n$ (subject to certain constraints).
+    \mathbf{R}^n$. % (subject to certain constraints).
   \end{definition}
   \pause For example, we can use co-occurrence within $ax^\vdash$ to
   constrain the embedding function, where the constraints on
@@ -1050,8 +1055,8 @@
   \frametitle{Predicting PPIs: trainable similarity measures}
   \centerline{\includegraphics[width=.45\textwidth]{YSTUnsuper1.png}\includegraphics[width=.45\textwidth]{YstUnsup2.png}}
   \vfill
-  {\tiny Smaili et al. Onto2Vec: joint vector-based representation of
-    biological entities and their ontology-based annotations, Bioinformatics, 2018.}
+  % {\tiny Smaili et al. Onto2Vec: joint vector-based representation of
+  %   biological entities and their ontology-based annotations, Bioinformatics, 2018.}
 \end{frame}
 
 \begin{frame}
@@ -1060,18 +1065,49 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Combination with text}
+  \begin{itemize}
+  \item ontologies contain more than axioms:
+    \begin{itemize}
+    \item labels, synonyms, definitions, authors, etc.
+    \end{itemize}
+  \item Description Logic axioms != natural language
+  \item transfer learning: learn on one domain/task, apply to another
+    \begin{itemize}
+    \item e.g.: learn on literature, apply to ontologies
+    \item words have ``meaning'' in literature, Description Logic
+      symbols have ``meaning'' in ontology axioms
+    \end{itemize}
+  \item Ontologies Plus Annotations 2 Vec (OPA2Vec) combines both
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
   \frametitle{Ontologies Plus Annotations 2 Vec}
   \centerline{\includegraphics[width=1\textwidth]{opaworkflow16.png}}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Phenotype-based prediction of candidate genes}
-  \centerline{
-    \includegraphics[width=.45\textwidth]{Human_Disease.png}
-    \includegraphics[width=.45\textwidth]{HD.png}
-  }
+  \frametitle{OPA2Vec}
+  \begin{itemize}
+  \item \url{https://github.com/bio-ontology-research-group/opa2vec}
+  \item command line tool
+    \begin{itemize}
+    \item input: OWL ontology, set of entities with annotations/associations
+    \item output: vectors for each class and entity
+    \end{itemize}
+  \item includes Elk and HermiT
+  \item limitations: word-based
+    \begin{itemize}
+    \item still ignores semantics!
+    \end{itemize}
+  \end{itemize}
 \end{frame}
 
+\begin{frame}
+  \frametitle{OPA2Vec Jupyter excercise}
+  
+\end{frame}
 
 \subsection{Model-theoretic approaches}
 
@@ -1125,28 +1161,129 @@
 \begin{frame}
   \frametitle{EL Embeddings}
   \begin{itemize}
-  \item aim: given an EL++ theory $T$, find $f_e: T \mapsto
-    \mathbb{R}^n$ s.t. $f_e(T)$ is a model of $T$ ($f_e(T) \models T$)
+  \item given a theory/ontology $T$ with signature $\Sigma(T)$
+  \item aim: find $f_e: \Sigma(T) \mapsto \Re^n$ s.t. $f_e(\Sigma(T))$
+    is a model of $T$ ($f_e(\Sigma(T)) \models T$)
+    \pause
+  \item more general: find an algorithm that maps symbols (signatures)
+    into $\Re^n$ so that the {\em semantics} of the symbol (expressed
+    through axioms and explicit in model structures) is preserved
+    \pause
+  \item any consistent \el theory has infinite models
     \pause
   \item any consistent EL++ theory has models in $\mathbb{R}^n$
     (Loewenheim-Skolem, upwards)
-    \pause
-  \item key idea:
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Key idea}
+  \begin{itemize}
+  \item for all $r \in \Sigma(T)$ and $C \in \Sigma(T)$, define
+    $f_e(r)$ and $f_e(C)$
+  \item $f_e(C)$ maps to points in an open $n$-ball such that
+    $f_e(C) = C^{\mathcal{I}}$:
+    $C^{\mathcal{I}} = \{ x \in \mathbb{R}^n | \norm{f_e(C) - x} <
+    r_e(C) \}$
     \begin{itemize}
-    \item for all $r \in \Sigma(T)$ and $C \in \Sigma(T)$, define
-      $f_e(r)$ and $f_e(C)$
-    \item $f_e(C)$ maps to points in an open $n$-ball such that
-      $f_e(C) = C^{\mathcal{I}}$:
-      $C^{\mathcal{I}} = \{ x \in \mathbb{R}^n | \norm{f_e(C) - x} <
-      r_e(C) \}$
-    \item $f_e(r)$ maps a binary relation $r$ to a vector such that
-      % the set of tuples ($\mathbb{R}^n \times \mathbb{R}^n$) with
-      % $f_e(r) = r^{\mathcal{I}}$:
-      $r^{\mathcal{I}} = \{ (x,y) | x + f_e(r) = y \}$
-    \item use the axioms in $T$ as constraints
+    \item these are the {\em extension} of a class in $\Re^n$
+    \end{itemize}
+  \item $f_e(r)$ maps a binary relation $r$ to a vector such that
+    % the set of tuples ($\mathbb{R}^n \times \mathbb{R}^n$) with
+    % $f_e(r) = r^{\mathcal{I}}$:
+    $r^{\mathcal{I}} = \{ (x,y) | x + f_e(r) = y \}$
+    \begin{itemize}
+    \item that's the TransE property for {\em individuals}
+    \end{itemize}
+  \item use the axioms in $T$ as constraints
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Algorithm}
+  \begin{itemize}
+  \item normalize the theory:
+    \begin{itemize}
+    \item every \el theory can be expressed using four normal forms
+      (Baader et al., 2005)
+    \end{itemize}
+  \item eliminate the ABox: replace each individual symbol with a
+    singleton class: $a$ becomes $\{a\}$
+  \item rewrite relation assertions $r(a,b)$ and class
+    assertions $C(a)$ as $\{ a \} \sqsubseteq \exists r.\{ b \}$ and
+    $\{ a \} \sqsubseteq C$
+    \begin{itemize}
+    \item something to remember for the next class-vs-instance discussion?
+    \end{itemize}
+  \item normalization rules to generate:
+    \begin{itemize}
+    \item $C \sqsubseteq D$
+    \item $C \sqcap D \sqsubseteq E$
+    \item $C \sqsubseteq \exists R.D$
+    \item $\exists R.C \sqsubseteq D$
     \end{itemize}
   \end{itemize}
 \end{frame}
+
+\begin{frame}
+  \frametitle{Algorithm: loss functions}
+  \begin{equation}
+    \label{eqn:nf1}
+    \begin{split}
+      & loss_{C \sqsubseteq D}(c,d) = \\
+      & \max(0, \norm{f_\eta(c) - f_\eta(d)} + r_\eta(c) - r_\eta(d) - \gamma) \\
+      & + |\norm{f_\eta(c)} - 1| + |\norm{f_\eta(d)} - 1|
+    \end{split}
+  \end{equation}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Algorithm: loss functions}
+  Let
+  $h=\frac{r_\eta(c)^2-r_\eta(d)^2+\norm{f_\eta(c) -
+      f_\eta(d)}^2}{2\norm{f_\eta(c) - f_\eta(d)}}$, then the center and
+  radius of the smallest $n$-ball containing the intersection of
+  $\eta(C)$ and $\eta(D)$ are
+  $f_\eta(c)+\frac{h}{\norm{f_\eta(c) -
+      f_\eta(d)}}(f_\eta(d)-f_\eta(c))$ and $\sqrt{r_\eta(c)^2-h^2}$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Algorithm: loss functions}
+  \begin{equation}
+    \label{eqn:nf3}
+    \begin{split}
+      & loss_{C \sqsubseteq \exists R.D}(c,d,r) = \\
+      & \max(0, \norm{f_\eta(c) + f_\eta(r) - f_\eta(d)}  + r_\eta(c) - r_\eta(d) - \gamma) \\
+      & + |\norm{f_\eta(c)} - 1| + |\norm{f_\eta(d)} - 1|
+    \end{split}
+  \end{equation}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Algorithm: loss functions}
+  \begin{equation}
+    \label{eqn:nf4}
+    \begin{split}
+      & loss_{\exists R.C \sqsubseteq D}(c,d,r) = \\
+      & \max(0, \norm{f_\eta(c) - f_\eta(r) - f_\eta(d)} - r_\eta(c) - r_\eta(d) - \gamma) \\
+      & + |\norm{f_\eta(c)} - 1| + |\norm{f_\eta(d)} - 1|
+    \end{split}
+  \end{equation}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Algorithm: loss functions}
+  \begin{equation}
+    \label{eqn:disjoint}
+    \begin{split} 
+      &loss_{C \sqcap D \sqsubseteq \bot}(c,d,e) = \\
+      & \max(0, r_\eta(c) + r_\eta(d) - \norm{f_\eta(c) - f_\eta(d)} + \gamma) \\
+      & + |\norm{f_\eta(c)} - 1| + |\norm{f_\eta(d)} - 1|
+    \end{split}
+  \end{equation}
+\end{frame}
+
 
 \begin{frame}
   \frametitle{EL Embeddings}
