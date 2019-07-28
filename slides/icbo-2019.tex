@@ -87,18 +87,6 @@
   \titlepage
 \end{frame}
 
-% What ontologies are
-
-% How to find ontology => excercise
-
-% Axioms in ontologies => excercise in AberOWL
-
-% OWL basics, and reasoning; OBO-style and OWL-style identifiers
-
-% How ontologies are used; Gene Ontology; Phenotypes => excercise:
-% find annotations
-
-
 \begin{frame}
 \frametitle{Overview}
 \tableofcontents
@@ -120,12 +108,42 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Learning goals}
+  \begin{itemize}
+  \item machine learning with ontologies as {\em features} (or
+    background knowledge)
+  \item unsupervised or supervised:
+    \begin{itemize}
+    \item here: mostly unsupervised {\em feature} learning
+    \end{itemize}
+  \item focus on existing tools and methods
+    \begin{itemize}
+    \item Jupyter Notebooks and code examples
+    \end{itemize}
+  \item not covered:
+    \begin{itemize}
+    \item learning ontologies (axioms, definitions) from data
+    \item basic machine learning
+    \item learning on ``knowledge graphs''
+    \item reasoning with ontologies
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
   \frametitle{Agenda}
   \begin{itemize}
-  \item Introduction
   \item Ontologies, graphs, axioms, reasoning
-  \item Machine learning
+  \item Machine learning:
+    \begin{itemize}
+    \item graph-based
+    \item syntactic
+    \item model-theoretic
+    \end{itemize}
   \item (Semantic similarity)
+    \begin{itemize}
+    \item probably not
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -186,7 +204,7 @@
   \item Reasoning: derive implicitly represented knowledge (e.g.,
     subsumption)
     \pause
-  \item remark: a knowledge graph is ABox + RBox
+  \item remark: my definition of ``knowledge graph'': ABox + RBox
   \end{itemize}
 \end{frame}
 
@@ -348,7 +366,8 @@
   \begin{block}{Problem statement (first attempt):}
     Given a set of biological entities and their ontology-based
     annotations. Can we discover {\em new} relations between the
-    biological entities?
+    biological entities, or between entities and classes in the
+    ontology?
   \end{block}
   \pause
   \begin{itemize}
@@ -396,6 +415,24 @@
     \pause
   \item Does functional similarity correlate with phenotypic
     similarity?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Semantic similarity or machine learning}
+  \begin{itemize}
+  \item semantic similarity measures are hand-crafted
+    \begin{itemize}
+    \item capture certain intuition about what constitutes
+      ``similarity''
+    \item different measures for different kinds of similarity
+    \item usually interpretable (and explainable)
+    \end{itemize}
+  \item machine learning methods are data-driven
+    \begin{itemize}
+    \item the architecture of the model is still hand-crafted
+    \item usually hard to interpret
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
