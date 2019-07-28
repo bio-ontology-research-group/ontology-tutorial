@@ -15,6 +15,7 @@
 \usepackage{amssymb}
 \usepackage{color}
 \usepackage{animate}
+\usepackage{xr}
 
 \PassOptionsToPackage{usenames,dvipsnames,svgnames}{xcolor}  
 \usepackage{tikz}
@@ -873,7 +874,15 @@
     vectors
     \begin{itemize}
     \item supervised: edge prediction (e.g., SVM, ANN)
+      \begin{itemize}
+      \item e.g.: find a function $f:\Re^n \times \Re^n \mapsto [0,1]$
+        s.t. $\sqrt \frac{\sum_{t=1}^T (\hat{y_t} - y_t)^2}{T}$ (RMSE)
+        is minimized for a set of true labels $\hat{y_k}$
+      \end{itemize}
     \item unsupervised: clustering, similarity, visualization
+      \begin{itemize}
+      \item cosine similarity (for L2-normalized features)
+      \end{itemize}
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -1132,6 +1141,63 @@
 \begin{frame}
   \frametitle{Ontologies Plus Annotations 2 Vec}
   \centerline{\includegraphics[width=1\textwidth]{opaworkflow16.png}}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Axioms contribute to prediction}
+    % \processtable
+    % \caption{AUC values of ROC curves for PPI prediction for
+    %   GO-Plus and GO using Onto2Vec (cosine similiarity) and
+    %   Onto2Vec-NN (neural network).\label{Tab:GOplus}}
+    { \begin{tabularx}{\columnwidth}{XXXXXXX}\toprule & {}& {} &
+                                                                 Human & Yeast & Arabidopsis\\\midrule
+        $GO\_Onto2Vec$ & {} &{}& 0.7660 & 0.7701 & 0.7559 \\
+        $GO\_Onto2Vec\_NN$ & {} & {}& 0.8779& 0.8711 & 0.8364 \\
+        $GO\_plus\_Onto2Vec$ & {} & {}& 0.7880& 0.7943 & 0.7889 \\
+        $GO\_plus\_Onto2Vec\_NN$ &{} & {}& \textbf{0.9021}&\textbf{0.8937} & \textbf{0.8834}\\
+        \hline
+      \end{tabularx}}{}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Evaluating individual axioms}
+%  Testing how much each ontologies' axioms contribute to predictions:
+%  \begin{resizebox}{\textwidth}{!}{
+  Testing how much each ontologies' axioms contribute to predictions:
+  \tiny
+      \begin{tabularx}{\linewidth}{X|XX|XX}
+        \toprule
+        {} & \multicolumn{2}{c}{\textbf{Human}} & \multicolumn{2}{c}{\textbf{Arabidopsis}}\\
+        \midrule
+        {} & \textbf{Onto2Vec}&\textbf{Onto2Vec\_NN} &\textbf{Onto2Vec}&\textbf{Onto2Vec\_NN} \\
+        \midrule
+        GO (Baseline) &0.7660 &0.8779  & 0.7559 & 0.8364 \\
+        ChEBI &0.7899\textcolor{blue}{(+0.0239)}& 0.8914\textcolor{blue}{(+0.0135)}  & 0.7703\textcolor{blue}{(+0.0144)}& 0.8518\textcolor{blue}{(+0.0154)} \\
+        PO &0.7752\textcolor{blue}{(+0.0092)} & 0.8776\textcolor{red}{(-0.0003)} & 0.7671\textcolor{blue}{(+0.0112)} & 0.8469\textcolor{blue}{(+0.0105)}\\
+        CL & 0.7743\textcolor{blue}{(+0.0083)} & 0.8810\textcolor{blue}{(+0.0031)} & 0.7612\textcolor{blue}{(+0.0053)}& 0.8371\textcolor{blue}{(+0.0007)}\\
+        PATO & 0.7657\textcolor{red}{(-0.0003)} & 0.8768\textcolor{red}{(-0.0011)} & 0.7563\textcolor{blue}{(+0.0004)} & 0.8380\textcolor{blue}{(+0.0016)}\\
+      \end{tabularx}
+%    }
+%  \centerline{\includegraphics[width=1\textwidth]{pato-eval1.png}}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Evaluating definitions}
+  Testing how much each ontologies' annotation properties contribute to predictions:
+  \tiny
+      \begin{tabularx}{\linewidth}{X|XX|XX}
+        \toprule
+        {} & \multicolumn{2}{c}{\textbf{Human}} & \multicolumn{2}{c}{\textbf{Arabidopsis}}\\
+        \midrule
+        {} & \textbf{Onto2Vec}&\textbf{Onto2Vec\_NN} &\textbf{Onto2Vec}&\textbf{Onto2Vec\_NN} \\
+        \midrule
+        GO (Baseline)&0.8727 &0.9033  & 0.8613 & 0.8903 \\
+        ChEBI & 0.8571\textcolor{red}{(-0.0156)} &0.8801\textcolor{red}{(-0.0232)} &0.8601\textcolor{red}{(-0.0012)}& 0.8880\textcolor{red}{(-0.0023)}\\
+        PO & 0.8680\textcolor{red}{(-0.0047)}&0.8824\textcolor{red}{(-0.0209)} & 0.8632\textcolor{blue}{(+0.0019)} & 0.8908\textcolor{blue}{(+0.0005)}\\
+        CL & 0.8811\textcolor{blue}{(+0.0084)}&0.9037\textcolor{blue}{(+0.0004)}  & 0.8614\textcolor{blue}{(+0.0001)} & 0.8899\textcolor{red}{(-0.0004)}\\
+        PATO & 0.8562\textcolor{red}{(-0.0165)}& 0.8711\textcolor{red}{(-0.0322)} & 0.8544\textcolor{red}{(-0.0069)}& 0.8860\textcolor{red}{(-0.0043)} \\
+      \end{tabularx}
+%  \centerline{\includegraphics[width=1\textwidth]{pato-eval2.png}}
 \end{frame}
 
 \begin{frame}
