@@ -7,8 +7,8 @@ RUN apt-get update && yes|apt-get upgrade
 RUN apt-get install -y emacs
 
 
-# # Adding wget and bzip2
-RUN apt-get install -y wget bzip2
+# # Adding wget and bzip2 and python and pip
+RUN apt-get install -y wget bzip2 python3-pip python3
 
 # # Add sudo
 RUN apt-get -y install sudo
@@ -79,6 +79,7 @@ WORKDIR /home/bioonto/ontology-tutorial
 RUN groovy downloadDependencies.groovy
 
 
+RUN pip3 install torch torchvision numpy pykeen jupyter
 
 
 # Launch in Juyter notebook

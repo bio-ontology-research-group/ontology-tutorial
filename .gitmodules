@@ -4,3 +4,9 @@
 [submodule "elembeddings"]
 	path = elembeddings
 	url = https://github.com/bio-ontology-research-group/el-embeddings
+[submodule "walking-rdf-and-owl"]
+	path = walking-rdf-and-owl
+	url = https://github.com/bio-ontology-research-group/walking-rdf-and-owl
+[submodule "fastText"]
+	path = fastText
+	url = https://github.com/facebookresearch/fastText

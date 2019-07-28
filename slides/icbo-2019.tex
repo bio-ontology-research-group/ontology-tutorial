@@ -87,18 +87,6 @@
   \titlepage
 \end{frame}
 
-% What ontologies are
-
-% How to find ontology => excercise
-
-% Axioms in ontologies => excercise in AberOWL
-
-% OWL basics, and reasoning; OBO-style and OWL-style identifiers
-
-% How ontologies are used; Gene Ontology; Phenotypes => excercise:
-% find annotations
-
-
 \begin{frame}
 \frametitle{Overview}
 \tableofcontents
@@ -120,12 +108,42 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Learning goals}
+  \begin{itemize}
+  \item machine learning with ontologies as {\em features} (or
+    background knowledge)
+  \item unsupervised or supervised:
+    \begin{itemize}
+    \item here: mostly unsupervised {\em feature} learning
+    \end{itemize}
+  \item focus on existing tools and methods
+    \begin{itemize}
+    \item Jupyter Notebooks and code examples
+    \end{itemize}
+  \item not covered:
+    \begin{itemize}
+    \item learning ontologies (axioms, definitions) from data
+    \item basic machine learning
+    \item learning on ``knowledge graphs''
+    \item reasoning with ontologies
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
   \frametitle{Agenda}
   \begin{itemize}
-  \item Introduction
   \item Ontologies, graphs, axioms, reasoning
-  \item Machine learning
+  \item Machine learning:
+    \begin{itemize}
+    \item graph-based
+    \item syntactic
+    \item model-theoretic
+    \end{itemize}
   \item (Semantic similarity)
+    \begin{itemize}
+    \item probably not
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -185,6 +203,8 @@
     \pause
   \item Reasoning: derive implicitly represented knowledge (e.g.,
     subsumption)
+    \pause
+  \item remark: my definition of ``knowledge graph'': ABox + RBox
   \end{itemize}
 \end{frame}
 
@@ -215,114 +235,114 @@
 \end{frame}
 % Examples of concept descriptions, dl1.pdf, p8
 
-\begin{frame}
-  \frametitle{Description Logic ALC: semantics}
-  \begin{definition}
-    An interpretation
-    $\mathcal{I} = (\Delta^\mathcal{I}, \cdot^\mathcal{I})$ consists
-    of a non-empty domain $\Delta^\mathcal{I}$ and an interpretation
-    function $\cdot^\mathcal{I}$:
-    \begin{itemize}
-    \item $A^\mathcal{I} \subseteq \Delta^\mathcal{I}$ for all $A \in
-      N_C$,
-    \item $r^\mathcal{I} \subseteq \Delta^\mathcal{I} \times
-      \Delta^\mathcal{I}$ for all $r \in N_R$
-    \end{itemize}
-    The interpretation function is extended to $\mathcal{ALC}$ concept
-    descriptions as follows:
-    \begin{itemize}
-    \item $(C \sqcap D)^\mathcal{I} := C^\mathcal{I} \cap D^\mathcal{I}$
-    \item $(C \sqcup D)^\mathcal{I} := C^\mathcal{I} \cup D^\mathcal{I}$
-    \item $(\neg C)^\mathcal{I} := \Delta^\mathcal{I} - C^\mathcal{I}$
-    \item $(\forall r.C)^\mathcal{I} := \{ d \in \Delta^\mathcal{I} |
-      \mbox{for all } e \in \Delta^\mathcal{I}: (d,e) \in
-      r^\mathcal{I} \mbox{ implies } e \in C^\mathcal{I}\}$
-    \item $(\exists r.C)^\mathcal{I} := \{ d \in \Delta^\mathcal{I} |
-      \mbox{there is } e \in \Delta^\mathcal{I}: (d,e) \in
-      r^\mathcal{I} \mbox{ and } e \in C^\mathcal{I}\}$
-    \end{itemize}
-  \end{definition}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Description Logic ALC: semantics}
+%   \begin{definition}
+%     An interpretation
+%     $\mathcal{I} = (\Delta^\mathcal{I}, \cdot^\mathcal{I})$ consists
+%     of a non-empty domain $\Delta^\mathcal{I}$ and an interpretation
+%     function $\cdot^\mathcal{I}$:
+%     \begin{itemize}
+%     \item $A^\mathcal{I} \subseteq \Delta^\mathcal{I}$ for all $A \in
+%       N_C$,
+%     \item $r^\mathcal{I} \subseteq \Delta^\mathcal{I} \times
+%       \Delta^\mathcal{I}$ for all $r \in N_R$
+%     \end{itemize}
+%     The interpretation function is extended to $\mathcal{ALC}$ concept
+%     descriptions as follows:
+%     \begin{itemize}
+%     \item $(C \sqcap D)^\mathcal{I} := C^\mathcal{I} \cap D^\mathcal{I}$
+%     \item $(C \sqcup D)^\mathcal{I} := C^\mathcal{I} \cup D^\mathcal{I}$
+%     \item $(\neg C)^\mathcal{I} := \Delta^\mathcal{I} - C^\mathcal{I}$
+%     \item $(\forall r.C)^\mathcal{I} := \{ d \in \Delta^\mathcal{I} |
+%       \mbox{for all } e \in \Delta^\mathcal{I}: (d,e) \in
+%       r^\mathcal{I} \mbox{ implies } e \in C^\mathcal{I}\}$
+%     \item $(\exists r.C)^\mathcal{I} := \{ d \in \Delta^\mathcal{I} |
+%       \mbox{there is } e \in \Delta^\mathcal{I}: (d,e) \in
+%       r^\mathcal{I} \mbox{ and } e \in C^\mathcal{I}\}$
+%     \end{itemize}
+%   \end{definition}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Description Logic: terminologies}
-  \begin{itemize}
-  \item A concept definition is of the form $A \equiv C$ where
-    \begin{itemize}
-    \item $A$ is a concept name
-    \item $C$ is a concept description
-    \end{itemize}
-  \item A TBox is a finite set of concept definitions such that it
-    \begin{itemize}
-    \item does not contain multiple definitions, % A equiv B, A equiv C
-    \item does not contain cyclic definitions
-      % A equiv B and C, B equiv A and C
-    \end{itemize}
-  \item A {\em defined concept} occurs on the left-hand side of a
-    definition
-  \item A {\em primitive concept} does not occur on the left-hand side
-    of a definition
-    % See: axiomatic-deductive method!
-  \item An interpretation $\mathcal{I}$ is a model of a TBox
-    $\mathcal{T}$ if it satisfies all its concept definitions:
-    $A^\mathcal{I} = C^\mathcal{I}$ for all $A \equiv C \in \mathcal{T}$
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Description Logic: terminologies}
+%   \begin{itemize}
+%   \item A concept definition is of the form $A \equiv C$ where
+%     \begin{itemize}
+%     \item $A$ is a concept name
+%     \item $C$ is a concept description
+%     \end{itemize}
+%   \item A TBox is a finite set of concept definitions such that it
+%     \begin{itemize}
+%     \item does not contain multiple definitions, % A equiv B, A equiv C
+%     \item does not contain cyclic definitions
+%       % A equiv B and C, B equiv A and C
+%     \end{itemize}
+%   \item A {\em defined concept} occurs on the left-hand side of a
+%     definition
+%   \item A {\em primitive concept} does not occur on the left-hand side
+%     of a definition
+%     % See: axiomatic-deductive method!
+%   \item An interpretation $\mathcal{I}$ is a model of a TBox
+%     $\mathcal{T}$ if it satisfies all its concept definitions:
+%     $A^\mathcal{I} = C^\mathcal{I}$ for all $A \equiv C \in \mathcal{T}$
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Description Logic: assertions}
-  \begin{itemize}
-  \item An assertion is of the form $C(a)$ (concept assertion) or
-    $r(a,b)$ (role assertion), where $C$ is a concept description, $r$
-    is a role, $a,b$ are individual names from a set $N_I$ of such
-    names
-  \item An ABox is a finite set of assertions
-  \item An interpretation $\mathcal{I}$ is a model of an ABox
-    $\mathcal{A}$ if it satisfies all its assertions:
-    \begin{itemize}
-    \item $a^\mathcal{I} \in C^\mathcal{I}$ for all $C(a) \in
-      \mathcal{A}$
-    \item $(a^\mathcal{I},b^\mathcal{I}) \in r^\mathcal{I}$ for all
-      $r(a,b) \in \mathcal{A}$
-    \end{itemize}
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Description Logic: assertions}
+%   \begin{itemize}
+%   \item An assertion is of the form $C(a)$ (concept assertion) or
+%     $r(a,b)$ (role assertion), where $C$ is a concept description, $r$
+%     is a role, $a,b$ are individual names from a set $N_I$ of such
+%     names
+%   \item An ABox is a finite set of assertions
+%   \item An interpretation $\mathcal{I}$ is a model of an ABox
+%     $\mathcal{A}$ if it satisfies all its assertions:
+%     \begin{itemize}
+%     \item $a^\mathcal{I} \in C^\mathcal{I}$ for all $C(a) \in
+%       \mathcal{A}$
+%     \item $(a^\mathcal{I},b^\mathcal{I}) \in r^\mathcal{I}$ for all
+%       $r(a,b) \in \mathcal{A}$
+%     \end{itemize}
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Description Logic: Reasoning}
-  \begin{itemize}
-  \item Subsumption: Is $C$ a subconcept of $D$?
-    \begin{itemize}
-    \item $C \sqsubseteq_\mathcal{T} D$ iff $C^\mathcal{I} \subseteq
-      D^\mathcal{I}$ for all models $\mathcal{I}$ of $\mathcal{T}$
-    \end{itemize}
-  \item Satisfiability: Is the concept $C$ non-contradictory?
-    \begin{itemize}
-    \item $C$ is satisfiable w.r.t. $\mathcal{T}$ iff $C^\mathcal{I}
-      \not= \emptyset$ for some model $\mathcal{I}$ of $\mathcal{T}$
-    \end{itemize}
-  \item Consistency: Is the ABox $\mathcal{A}$ non-contradictory?
-    \begin{itemize}
-    \item $\mathcal{A}$ is consistent w.r.t. $\mathcal{T}$ iff it has
-      a model that is also a model of $\mathcal{T}$
-    \end{itemize}
-  \item Instantiation: Is $e$ an instance of $C$?
-    \begin{itemize}
-    \item $\mathcal{A} \models_\mathcal{T} C(e)$ iff $e^\mathcal{I}
-      \in C^\mathcal{I}$ for all models $\mathcal{I}$ of $\mathcal{T}$
-      and $\mathcal{A}$.
-    \end{itemize}
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Description Logic: Reasoning}
+%   \begin{itemize}
+%   \item Subsumption: Is $C$ a subconcept of $D$?
+%     \begin{itemize}
+%     \item $C \sqsubseteq_\mathcal{T} D$ iff $C^\mathcal{I} \subseteq
+%       D^\mathcal{I}$ for all models $\mathcal{I}$ of $\mathcal{T}$
+%     \end{itemize}
+%   \item Satisfiability: Is the concept $C$ non-contradictory?
+%     \begin{itemize}
+%     \item $C$ is satisfiable w.r.t. $\mathcal{T}$ iff $C^\mathcal{I}
+%       \not= \emptyset$ for some model $\mathcal{I}$ of $\mathcal{T}$
+%     \end{itemize}
+%   \item Consistency: Is the ABox $\mathcal{A}$ non-contradictory?
+%     \begin{itemize}
+%     \item $\mathcal{A}$ is consistent w.r.t. $\mathcal{T}$ iff it has
+%       a model that is also a model of $\mathcal{T}$
+%     \end{itemize}
+%   \item Instantiation: Is $e$ an instance of $C$?
+%     \begin{itemize}
+%     \item $\mathcal{A} \models_\mathcal{T} C(e)$ iff $e^\mathcal{I}
+%       \in C^\mathcal{I}$ for all models $\mathcal{I}$ of $\mathcal{T}$
+%       and $\mathcal{A}$.
+%     \end{itemize}
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Offtopic: knowledge graphs}
-  My favorite definition of ``knowledge graph'':\\
-  A knowledge graph is an ABox + RBox.
-  \begin{itemize}
-  \item ontologies are (mostly) the TBox!
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Offtopic: knowledge graphs}
+%   My favorite definition of ``knowledge graph'':\\
+%   A knowledge graph is an ABox + RBox.
+%   \begin{itemize}
+%   \item ontologies are (mostly) the TBox!
+%   \end{itemize}
+% \end{frame}
 
 \begin{frame}
   \frametitle{Ontologies provide background knowledge}
@@ -346,7 +366,8 @@
   \begin{block}{Problem statement (first attempt):}
     Given a set of biological entities and their ontology-based
     annotations. Can we discover {\em new} relations between the
-    biological entities?
+    biological entities, or between entities and classes in the
+    ontology?
   \end{block}
   \pause
   \begin{itemize}
@@ -375,27 +396,45 @@
   \end{itemize}
 \end{frame}
 
-% \begin{frame}
-%   \frametitle{Semantic similarity: some examples}
-%   \begin{itemize}
-%   \item Are cyclin dependent kinases {\em functionally} more similar
-%     to lipid kinases or to riboflavin kinases? How about {\em
-%       phenotypically}?
-%     \pause
-%   \item Which protein in the {\em mouse} is functionally most similar
-%     to the zebrafish {\em gustducin} protein?
-%     \pause
-%   \item Which mouse knockout resembles {\em Bardet-Biedl Syndrome 8}?
-%     \pause
-%   \item Are there mouse knockouts that resemble the side effects of
-%     diclofenac?
-%     \pause
-%   \item Which genetic disease produces similar symptoms to ebola?
-%     \pause
-%   \item Does functional similarity correlate with phenotypic
-%     similarity?
-%   \end{itemize}
-% \end{frame}
+\begin{frame}
+  \frametitle{Semantic similarity: some examples}
+  \begin{itemize}
+  \item Are cyclin dependent kinases {\em functionally} more similar
+    to lipid kinases or to riboflavin kinases? How about {\em
+      phenotypically}?
+    \pause
+  \item Which protein in the {\em mouse} is functionally most similar
+    to the zebrafish {\em gustducin} protein?
+    \pause
+  \item Which mouse knockout resembles {\em Bardet-Biedl Syndrome 8}?
+    \pause
+  \item Are there mouse knockouts that resemble the side effects of
+    diclofenac?
+    \pause
+  \item Which genetic disease produces similar symptoms to ebola?
+    \pause
+  \item Does functional similarity correlate with phenotypic
+    similarity?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Semantic similarity or machine learning}
+  \begin{itemize}
+  \item semantic similarity measures are hand-crafted
+    \begin{itemize}
+    \item capture certain intuition about what constitutes
+      ``similarity''
+    \item different measures for different kinds of similarity
+    \item usually interpretable (and explainable)
+    \end{itemize}
+  \item machine learning methods are data-driven
+    \begin{itemize}
+    \item the architecture of the model is still hand-crafted
+    \item usually hard to interpret
+    \end{itemize}
+  \end{itemize}
+\end{frame}
 
 \begin{frame}
   \frametitle{Ontologies and graphs}
@@ -478,6 +517,10 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}
+  \frametitle{An example: protein--protein interactions and GO functions}
+  whiteboard...
+\end{frame}
 
 \section{Machine learning and ontologies}
 
@@ -524,23 +567,6 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Graph-based learning}
-  \begin{itemize}
-  \item graph-representation of the ontology
-    \begin{itemize}
-    \item taxonomy
-    \item axioms
-    \item instances (using an {\tt instance-of} edge)
-    \end{itemize}
-  \item learning with graphs:
-    \begin{itemize}
-    \item random walks (and Word2Vec)
-    \item translation embeddings
-    \item Graph Convolution Neural Networks (not discussed here)
-    \end{itemize}
-  \end{itemize}
-\end{frame}
 
 \begin{frame}
   \frametitle{Graph-based learning}
@@ -568,6 +594,24 @@
     \pause
   \item generates (dense) feature vectors for nodes (classes,
     instances) and relations
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Graph-based learning}
+  \begin{itemize}
+  \item graph-representation of the ontology
+    \begin{itemize}
+    \item taxonomy
+    \item axioms
+    \item instances (using an {\tt instance-of} edge)
+    \end{itemize}
+  \item learning with graphs:
+    \begin{itemize}
+    \item random walks (and Word2Vec)
+    \item translation embeddings
+    \item Graph Convolution Neural Networks (not discussed here)
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -860,6 +904,11 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Jupyter excercise}
+  
+\end{frame}
+
+\begin{frame}
   \frametitle{Ontologies, graphs, and text}
     \begin{quote}
       The \only<1,2>{\underline{forkhead-box P2 (FOXP2)}}\only<3>{\underline{:FOXP2}} gene polymorphism has been
@@ -955,8 +1004,6 @@
   \end{itemize}
 \end{frame}
 
-
-
 \begin{frame}
   \frametitle{Translating embeddings}
   \centerline{\includegraphics[width=.7\textwidth]{transh-figure.png}}
@@ -994,6 +1041,11 @@
     \item no axioms, no definitions
     \end{itemize}
   \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Jupyter excercise}
+  
 \end{frame}
 
 \subsection{Syntactic approaches}
@@ -1034,7 +1086,7 @@
     classes $C$, a set of relations $R$, a set of instances $I$, a set
     of axioms $ax$ and an inference relation $\vdash$. An ontology
     embedding is a function $f_\eta : C \cup R \cup I \mapsto
-    \mathbf{R}^n$ (subject to certain constraints).
+    \mathbf{R}^n$. % (subject to certain constraints).
   \end{definition}
   \pause For example, we can use co-occurrence within $ax^\vdash$ to
   constrain the embedding function, where the constraints on
@@ -1050,8 +1102,8 @@
   \frametitle{Predicting PPIs: trainable similarity measures}
   \centerline{\includegraphics[width=.45\textwidth]{YSTUnsuper1.png}\includegraphics[width=.45\textwidth]{YstUnsup2.png}}
   \vfill
-  {\tiny Smaili et al. Onto2Vec: joint vector-based representation of
-    biological entities and their ontology-based annotations, Bioinformatics, 2018.}
+  % {\tiny Smaili et al. Onto2Vec: joint vector-based representation of
+  %   biological entities and their ontology-based annotations, Bioinformatics, 2018.}
 \end{frame}
 
 \begin{frame}
@@ -1060,18 +1112,49 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Combination with text}
+  \begin{itemize}
+  \item ontologies contain more than axioms:
+    \begin{itemize}
+    \item labels, synonyms, definitions, authors, etc.
+    \end{itemize}
+  \item Description Logic axioms != natural language
+  \item transfer learning: learn on one domain/task, apply to another
+    \begin{itemize}
+    \item e.g.: learn on literature, apply to ontologies
+    \item words have ``meaning'' in literature, Description Logic
+      symbols have ``meaning'' in ontology axioms
+    \end{itemize}
+  \item Ontologies Plus Annotations 2 Vec (OPA2Vec) combines both
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
   \frametitle{Ontologies Plus Annotations 2 Vec}
   \centerline{\includegraphics[width=1\textwidth]{opaworkflow16.png}}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Phenotype-based prediction of candidate genes}
-  \centerline{
-    \includegraphics[width=.45\textwidth]{Human_Disease.png}
-    \includegraphics[width=.45\textwidth]{HD.png}
-  }
+  \frametitle{OPA2Vec}
+  \begin{itemize}
+  \item \url{https://github.com/bio-ontology-research-group/opa2vec}
+  \item command line tool
+    \begin{itemize}
+    \item input: OWL ontology, set of entities with annotations/associations
+    \item output: vectors for each class and entity
+    \end{itemize}
+  \item includes Elk and HermiT
+  \item limitations: word-based
+    \begin{itemize}
+    \item still ignores semantics!
+    \end{itemize}
+  \end{itemize}
 \end{frame}
 
+\begin{frame}
+  \frametitle{OPA2Vec Jupyter excercise}
+  
+\end{frame}
 
 \subsection{Model-theoretic approaches}
 
@@ -1125,28 +1208,129 @@
 \begin{frame}
   \frametitle{EL Embeddings}
   \begin{itemize}
-  \item aim: given an EL++ theory $T$, find $f_e: T \mapsto
-    \mathbb{R}^n$ s.t. $f_e(T)$ is a model of $T$ ($f_e(T) \models T$)
+  \item given a theory/ontology $T$ with signature $\Sigma(T)$
+  \item aim: find $f_e: \Sigma(T) \mapsto \Re^n$ s.t. $f_e(\Sigma(T))$
+    is a model of $T$ ($f_e(\Sigma(T)) \models T$)
+    \pause
+  \item more general: find an algorithm that maps symbols (signatures)
+    into $\Re^n$ so that the {\em semantics} of the symbol (expressed
+    through axioms and explicit in model structures) is preserved
+    \pause
+  \item any consistent \el theory has infinite models
     \pause
   \item any consistent EL++ theory has models in $\mathbb{R}^n$
     (Loewenheim-Skolem, upwards)
-    \pause
-  \item key idea:
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Key idea}
+  \begin{itemize}
+  \item for all $r \in \Sigma(T)$ and $C \in \Sigma(T)$, define
+    $f_e(r)$ and $f_e(C)$
+  \item $f_e(C)$ maps to points in an open $n$-ball such that
+    $f_e(C) = C^{\mathcal{I}}$:
+    $C^{\mathcal{I}} = \{ x \in \mathbb{R}^n | \norm{f_e(C) - x} <
+    r_e(C) \}$
     \begin{itemize}
-    \item for all $r \in \Sigma(T)$ and $C \in \Sigma(T)$, define
-      $f_e(r)$ and $f_e(C)$
-    \item $f_e(C)$ maps to points in an open $n$-ball such that
-      $f_e(C) = C^{\mathcal{I}}$:
-      $C^{\mathcal{I}} = \{ x \in \mathbb{R}^n | \norm{f_e(C) - x} <
-      r_e(C) \}$
-    \item $f_e(r)$ maps a binary relation $r$ to a vector such that
-      % the set of tuples ($\mathbb{R}^n \times \mathbb{R}^n$) with
-      % $f_e(r) = r^{\mathcal{I}}$:
-      $r^{\mathcal{I}} = \{ (x,y) | x + f_e(r) = y \}$
-    \item use the axioms in $T$ as constraints
+    \item these are the {\em extension} of a class in $\Re^n$
+    \end{itemize}
+  \item $f_e(r)$ maps a binary relation $r$ to a vector such that
+    % the set of tuples ($\mathbb{R}^n \times \mathbb{R}^n$) with
+    % $f_e(r) = r^{\mathcal{I}}$:
+    $r^{\mathcal{I}} = \{ (x,y) | x + f_e(r) = y \}$
+    \begin{itemize}
+    \item that's the TransE property for {\em individuals}
+    \end{itemize}
+  \item use the axioms in $T$ as constraints
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Algorithm}
+  \begin{itemize}
+  \item normalize the theory:
+    \begin{itemize}
+    \item every \el theory can be expressed using four normal forms
+      (Baader et al., 2005)
+    \end{itemize}
+  \item eliminate the ABox: replace each individual symbol with a
+    singleton class: $a$ becomes $\{a\}$
+  \item rewrite relation assertions $r(a,b)$ and class
+    assertions $C(a)$ as $\{ a \} \sqsubseteq \exists r.\{ b \}$ and
+    $\{ a \} \sqsubseteq C$
+    \begin{itemize}
+    \item something to remember for the next class-vs-instance discussion?
+    \end{itemize}
+  \item normalization rules to generate:
+    \begin{itemize}
+    \item $C \sqsubseteq D$
+    \item $C \sqcap D \sqsubseteq E$
+    \item $C \sqsubseteq \exists R.D$
+    \item $\exists R.C \sqsubseteq D$
     \end{itemize}
   \end{itemize}
 \end{frame}
+
+\begin{frame}
+  \frametitle{Algorithm: loss functions}
+  \begin{equation}
+    \label{eqn:nf1}
+    \begin{split}
+      & loss_{C \sqsubseteq D}(c,d) = \\
+      & \max(0, \norm{f_\eta(c) - f_\eta(d)} + r_\eta(c) - r_\eta(d) - \gamma) \\
+      & + |\norm{f_\eta(c)} - 1| + |\norm{f_\eta(d)} - 1|
+    \end{split}
+  \end{equation}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Algorithm: loss functions}
+  Let
+  $h=\frac{r_\eta(c)^2-r_\eta(d)^2+\norm{f_\eta(c) -
+      f_\eta(d)}^2}{2\norm{f_\eta(c) - f_\eta(d)}}$, then the center and
+  radius of the smallest $n$-ball containing the intersection of
+  $\eta(C)$ and $\eta(D)$ are
+  $f_\eta(c)+\frac{h}{\norm{f_\eta(c) -
+      f_\eta(d)}}(f_\eta(d)-f_\eta(c))$ and $\sqrt{r_\eta(c)^2-h^2}$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Algorithm: loss functions}
+  \begin{equation}
+    \label{eqn:nf3}
+    \begin{split}
+      & loss_{C \sqsubseteq \exists R.D}(c,d,r) = \\
+      & \max(0, \norm{f_\eta(c) + f_\eta(r) - f_\eta(d)}  + r_\eta(c) - r_\eta(d) - \gamma) \\
+      & + |\norm{f_\eta(c)} - 1| + |\norm{f_\eta(d)} - 1|
+    \end{split}
+  \end{equation}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Algorithm: loss functions}
+  \begin{equation}
+    \label{eqn:nf4}
+    \begin{split}
+      & loss_{\exists R.C \sqsubseteq D}(c,d,r) = \\
+      & \max(0, \norm{f_\eta(c) - f_\eta(r) - f_\eta(d)} - r_\eta(c) - r_\eta(d) - \gamma) \\
+      & + |\norm{f_\eta(c)} - 1| + |\norm{f_\eta(d)} - 1|
+    \end{split}
+  \end{equation}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Algorithm: loss functions}
+  \begin{equation}
+    \label{eqn:disjoint}
+    \begin{split} 
+      &loss_{C \sqcap D \sqsubseteq \bot}(c,d,e) = \\
+      & \max(0, r_\eta(c) + r_\eta(d) - \norm{f_\eta(c) - f_\eta(d)} + \gamma) \\
+      & + |\norm{f_\eta(c)} - 1| + |\norm{f_\eta(d)} - 1|
+    \end{split}
+  \end{equation}
+\end{frame}
+
 
 \begin{frame}
   \frametitle{EL Embeddings}
@@ -1158,7 +1342,10 @@
   {\tiny IJCAI 2019}
 \end{frame}
 
-
+\begin{frame}
+  \frametitle{Jupyter excercise}
+  
+\end{frame}
 
 % \begin{frame}
 %   \frametitle{Hands-on part}
@@ -1169,6 +1356,8 @@
 %     ontology embeddings
 %   \end{itemize}
 % \end{frame}
+
+\section{Applications}
 
 \begin{frame}
   \frametitle{How to measure similarity?}
@@ -1193,7 +1382,6 @@
   \end{itemize}
 \end{frame}
 
-\section{Applications}
 
 
 \begin{frame}
