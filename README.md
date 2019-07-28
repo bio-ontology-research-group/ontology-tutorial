@@ -78,6 +78,16 @@ Detailed instructions:
 * After the notebook started, copy the address and the token and paste it into you web browser. The URL should look *similar* to the following: `127.0.0.1:8888/?token=f14e6316a48016b2cf4cbed5dd7b89d9dc524da49f553dc7`.
 * All is now set up. There is no need to download and install any additional packages or data files.  Just step through the Groovy boxes. 
 
+## Using the Docker image for embeddings tutorial:
+
+* Download and install [Docker](https://www.docker.com).
+* Build docker image in  Linux/OSX using a terminal:
+`docker build -t embeddings -f Dockerfile-embeddings .` 
+* Run the image and jump directly into the Jupyter notebook:
+`docker run -i -t -p 8888:8888 embeddings /bin/bash -c "jupyter notebook --notebook-dir=/usr/src/app/ --ip='0.0.0.0' --port=8888 --no-browser --allow-root"`
+* After the notebook started, copy the address and the token and paste it into you web browser. The URL should look *similar* to the following: `127.0.0.1:8888/?token=f14e6316a48016b2cf4cbed5dd7b89d9dc524da49f553dc7`.
+* All is now set up. There is no need to download and install any additional packages or data files. 
+
 ### To copy a file from or to a running docker image:
 
 To copy a file from the running docker image to you local (host) computer, please use the following recepie:
