@@ -104,6 +104,7 @@
     \begin{itemize}
     \item ``fuzzy'', similarity-based search
     \item predictive analysis and machine learning
+    \item background knowledge
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -124,9 +125,10 @@
   \item not covered:
     \begin{itemize}
     \item learning ontologies (axioms, definitions) from data
-    \item basic machine learning
-    \item learning on ``knowledge graphs''
+    \item natural language processing
     \item reasoning with ontologies
+    \item learning on ``knowledge graphs''
+    \item machine learning theory
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -134,7 +136,7 @@
 \begin{frame}
   \frametitle{Agenda}
   \begin{itemize}
-  \item Ontologies, graphs, axioms, reasoning
+  \item Introduction: ontologies, axioms, reasoning, graphs
   \item Machine learning:
     \begin{itemize}
     \item graph-based
@@ -158,7 +160,6 @@
     \item in order to account for the competent use of vocabulary in
       real situations (such as annotations in databases, etc.)
     \end{itemize}
-    \pause
   \item the intended meaning of {\em primitive} categories and
     relations is expressed through axioms (axiomatic method, Tarski)
   \end{itemize}
@@ -172,20 +173,17 @@
     \item {\em Arm}, {\em Apoptosis}, {\em Influenza}, {\em Homo
         sapiens}, {\em Drinking behavior}, {\em Membrane}
     \end{itemize}
-    \pause
   \item {\em instances} of classes are individuals satisfying the
     classes' intension
     \begin{itemize}
     \item my arm, the influenza I had last year, one ethanol molecule, etc.
     \end{itemize}
-    \pause
   \item {\em relations} between instances arise from interactions,
     configurations, etc., of individuals
     \begin{itemize}
     \item my arm is {\bf part of} me, the {\bf duration of} my
       influenza was 10 days
     \end{itemize}
-    \pause
   \item {\em axioms} specify the conditions that instances of a class
     must satisfy
     \begin{itemize}
@@ -201,39 +199,38 @@
   \item TBox: axioms pertaining to the terminology of the domain (classes)
   \item ABox: axioms stating facts (assertions) about the world
   \item RBox: axioms holding for relations
-    \pause
   \item Reasoning: derive implicitly represented knowledge (e.g.,
     subsumption)
-    \pause
-  \item remark: my definition of ``knowledge graph'': ABox + RBox
+  \item a ``knowledge graph'' is an ABox + RBox
   \end{itemize}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Description Logic ALC: syntax}
-  \begin{definition}
-    Let $N_C$ be a set of concept names and $N_R$ be a set of relation
-    names, $N_C \cap N_R = \emptyset$. $\mathcal{ALC}$ concept
-    descriptions are inductively defined as:
-    \begin{itemize}
-    \item If $A \in N_C$, then $A$ is an $\mathcal{ALC}$ concept
-      description
-    \item If $C, D$ are $\mathcal{ALC}$ concept description, and $r
-      \in N_R$, then the following are $\mathcal{ALC}$ concept descriptions:
-      \begin{itemize}
-      \item $C \sqcap D$
-      \item $C \sqcup D$
-      \item $\neg C$
-      \item $\forall r.C$
-      \item $\exists r.C$
-      \end{itemize}
-    \end{itemize}
-  \end{definition}
-  \begin{itemize}
-  \item Use $\bot$ as abbreviation of $A \sqcap \neg A$, $\top$ as
-    abbreviation of $A \sqcup \neg A$
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Description Logic ALC: syntax}
+%   \begin{definition}
+%     Let $N_C$ be a set of concept names and $N_R$ be a set of relation
+%     names, $N_C \cap N_R = \emptyset$. $\mathcal{ALC}$ concept
+%     descriptions are inductively defined as:
+%     \begin{itemize}
+%     \item If $A \in N_C$, then $A$ is an $\mathcal{ALC}$ concept
+%       description
+%     \item If $C, D$ are $\mathcal{ALC}$ concept description, and $r
+%       \in N_R$, then the following are $\mathcal{ALC}$ concept descriptions:
+%       \begin{itemize}
+%       \item $C \sqcap D$
+%       \item $C \sqcup D$
+%       \item $\neg C$
+%       \item $\forall r.C$
+%       \item $\exists r.C$
+%       \end{itemize}
+%     \end{itemize}
+%   \end{definition}
+%   \begin{itemize}
+%   \item Use $\bot$ as abbreviation of $A \sqcap \neg A$, $\top$ as
+%     abbreviation of $A \sqcup \neg A$
+%   \end{itemize}
+% \end{frame}
+
 % Examples of concept descriptions, dl1.pdf, p8
 
 % \begin{frame}
@@ -380,6 +377,11 @@
     \end{itemize}
   \pause
   \item finding new facts is only one (minor?) use case
+    \begin{itemize}
+    \item other uses: encode background knowledge for machine learning
+      models (e.g., function prediction); add new classes; expand
+      definition; etc.
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -440,8 +442,8 @@
 \begin{frame}
   \frametitle{Ontologies and graphs}
   \begin{itemize}
-  \item machine learning method and semantic similarity measures can
-    be graph-based, feature-based, or model-based
+  \item semantic similarity measures and machine learning models on
+    ontologies can be graph-based, feature-based, or model-based
   \item we may need to generate graphs from ontologies
     \begin{itemize}
     \item {\em is-a} relations are easy (this is just {\tt owl:subClassOf})
@@ -514,7 +516,17 @@
   \begin{itemize}
   \item Protege/OWLAPI: OBO export
   \item OBO toolsets (e.g., ROBOT)
-  \item \url{https://github.com/bio-ontology-research-group/Onto2Graph}
+  \item
+    \url{https://github.com/bio-ontology-research-group/Onto2Graph}
+    \pause
+  \item a conversion of an ontologies into a graph will almost always
+    lead to a loss of information
+  \item edges should be ``meaningful'': not merely syntax
+    \begin{itemize}
+    \item the RDF serialization of OWL is a graph and contains all
+      information but is a bad idea for semantic similarity or machine
+      learning (more later)
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -589,41 +601,39 @@
     \pause
   \item Translational knowledge graph embeddings: TransE, TransR, TransE, HolE, etc.
     \begin{itemize}
-    \item analogy-based
-    \item \url{https://github.com/thunlp/KB2E}
+    \item analogy- or translation-based
+    \item \url{https://github.com/SmartDataAnalytics/PyKEEN}
     \end{itemize}
     \pause
-  \item generates (dense) feature vectors for nodes (classes,
-    instances) and relations
+  \item Graph Convolution Neural Networks (not discussed here)
   \end{itemize}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Graph-based learning}
-  \begin{itemize}
-  \item graph-representation of the ontology
-    \begin{itemize}
-    \item taxonomy
-    \item axioms
-    \item instances (using an {\tt instance-of} edge)
-    \end{itemize}
-  \item learning with graphs:
-    \begin{itemize}
-    \item random walks (and Word2Vec)
-    \item translation embeddings
-    \item Graph Convolution Neural Networks (not discussed here)
-    \end{itemize}
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Graph-based learning}
+%   \begin{itemize}
+%   \item graph-representation of the ontology
+%     \begin{itemize}
+%     \item taxonomy
+%     \item axioms
+%     \item instances (using an {\tt instance-of} edge)
+%     \end{itemize}
+%   \item learning with graphs:
+%     \begin{itemize}
+%     \item random walks (and Word2Vec)
+%     \item translation embeddings
+%     \end{itemize}
+%   \end{itemize}
+% \end{frame}
 
 \begin{frame}
   \frametitle{Graph embeddings}
   \begin{definition}
-    Let $KG = (V, E, L; \vdash)$ be a knowledge graph with a set of
+    Let $KG = (V, E, L; \vdash)$ be an ontology graph with a set of
     vertices $V$, a set of edges $E \subseteq V \times V$, a label
     function $L: V \cup E \mapsto Lab$ that assigns labels from a set
     of labels $Lab$ to vertices and edges, and an inference relation
-    $\vdash$. A knowledge graph embedding is a function
+    $\vdash$. An ontology graph embedding is a function
     $f_\eta : L(V) \cup L(E) \mapsto \mathbf{R}^n$.
   \end{definition}
   \begin{itemize}
@@ -877,7 +887,7 @@
       \begin{itemize}
       \item e.g.: find a function $f:\Re^n \times \Re^n \mapsto [0,1]$
         s.t. $\sqrt \frac{\sum_{t=1}^T (\hat{y_t} - y_t)^2}{T}$ (RMSE)
-        is minimized for a set of true labels $\hat{y_k}$
+        is minimized for a set of true labels $y_k$
       \end{itemize}
     \item unsupervised: clustering, similarity, visualization
       \begin{itemize}
@@ -910,11 +920,6 @@
   \frametitle{Visualizing feature vectors}
 %  \frametitle{Neuro-symbolic feature learning}
   \centerline{\includegraphics[width=\textwidth]{graph-tsne.png}}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Jupyter excercise}
-  
 \end{frame}
 
 \begin{frame}
@@ -965,6 +970,34 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Some limitations}
+  \begin{itemize}
+  \item ``word''-based (Word2Vec):
+    \begin{itemize}
+    \item semantics is reduced to co-occurrence (in ABox/TBox
+      statements)
+    \item ``disjointWith'' vs. ``part-of'' vs. ``subClassOf''
+    \end{itemize}
+  % \item graph-based:
+  %   \begin{itemize}
+  %   \item ontologies are not graphs!
+  %   \item converting ontologies to graphs loses information
+  %   \item no axioms, no definitions
+  %   \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Jupyter excercise}
+  \begin{itemize}
+  \item Open the Jupyter notebook
+  \item Follow the examples in the first part of the notebook (random
+    walks)
+  \end{itemize}
+\end{frame}
+
+
 \subsection{Translating embeddings}
 \begin{frame}
   \frametitle{Translating embeddings}
@@ -981,12 +1014,140 @@
   \pause
   Idea: $\mu (s) + \mu (p) \approx \mu (o)$\\
   \pause
-  Minimize: $\sum_t | \mu (s) + \mu (p) - \mu (o) |$ (chose your norm)
+  Minimize: $\sum_t \norm{ \mu (s) + \mu (p) - \mu (o) }$ (chose your norm)
 \end{frame}
 
 \begin{frame}
   \frametitle{Translating embeddings}
   \centerline{\includegraphics[width=.7\textwidth]{transe-figure.png}}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Translating embeddings}
+  \begin{columns}
+    \begin{column}{.6\textwidth}
+      \resizebox{1\textwidth}{!}{%
+        \begin{tikzpicture}
+%          \SetUpEdge[lw = 1pt, color = black]
+          \GraphInit[vstyle=Shade]
+          \tikzset{
+            LabelStyle/.style = { rectangle, rounded corners, draw,
+              minimum width = 2em, fill = yellow!50,
+              text = black },
+            VertexStyle/.append style = { inner sep=5pt,
+              font = \Large\bfseries},
+            EdgeStyle/.append style = {->} }
+          
+          \SetGraphUnit{5}
+          % \tikzset{VertexStyle/.append style={fill}}
+          % \tikzset{EdgeStyle/.style={->}}
+          \node[draw, color=cyan] (FOXP2) at (0,0) {FOXP2};
+          \node[draw] (MET) at (3,0) {MET};
+          \node[draw] (ST7) at (1.5,3) {ST7};
+          \node[draw] (MAPK3) at (3,-3) {MAPK3};
+          \node[draw] (GO0071625) at (-2,2.5) {GO:0071625};
+          \node[draw] (GO0044708) at (-1,4.5) {GO:0044708};
+          \node[draw] (TBR1) at (-3,1.5) {TBR1};
+          \node[draw] (NKX2-1) at (-3,-1.5) {NKX2-1};
+          \begin{scope}[/tikz/handle active characters in nodes=false]
+          \Edge[label=activates](MET)(MAPK3)
+          \Edge[label=hasFunction](FOXP2)(GO0071625)
+          \Edge[label=hasFunction](ST7)(GO0044708)
+          \Edge[label=$\sqsubseteq$](GO0071625)(GO0044708)
+
+          \tikzset{EdgeStyle/.append style={<->}}
+          \Edge[label=binds](FOXP2)(MET)
+          \Edge[label=binds](FOXP2)(MAPK3)
+          \Edge[label=coex](FOXP2)(TBR1)
+          \Edge[label=coex](FOXP2)(NKX2-1)
+          \Edge[label=coex](FOXP2)(ST7)
+          \Edge[label=coex](MET)(ST7)
+          \Edge[label=coex](NKX2-1)(TBR1)
+          \end{scope}
+          % \tikzset{EdgeStyle/.style={->}}
+          % \Edge[label=hf](FOXP2)(GO0044708)
+          % \draw[label=binds] (FOXP2) to (MET);
+          % \Edge[label=binds](FOXP2)(MET)
+          % \Edge[label=activates](MET)(MAPK3)
+          % \Edge[label=coexpressed-with](FOXP2)(FOXP4)
+          
+        \end{tikzpicture}
+      }
+    \end{column}
+    \begin{column}{.4\textwidth}
+      \begin{itemize}
+      \item FOXP2 + binds = MET
+      \item MAP + activates = MAPK3
+      \item MET + binds = FOXP2
+      \item ST7 + hasFunction = {\tt GO:0044708}
+      \item ...
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Translating embeddings}
+  \begin{columns}
+    \begin{column}{.6\textwidth}
+      \resizebox{1\textwidth}{!}{%
+        \begin{tikzpicture}
+%          \SetUpEdge[lw = 1pt, color = black]
+          \GraphInit[vstyle=Shade]
+          \tikzset{
+            LabelStyle/.style = { rectangle, rounded corners, draw,
+              minimum width = 2em, fill = yellow!50,
+              text = black },
+            VertexStyle/.append style = { inner sep=5pt,
+              font = \Large\bfseries},
+            EdgeStyle/.append style = {->} }
+          
+          \SetGraphUnit{5}
+          % \tikzset{VertexStyle/.append style={fill}}
+          % \tikzset{EdgeStyle/.style={->}}
+          \node[draw, color=cyan] (FOXP2) at (0,0) {FOXP2};
+          \node[draw] (MET) at (3,0) {MET};
+          \node[draw] (ST7) at (1.5,3) {ST7};
+          \node[draw] (MAPK3) at (3,-3) {MAPK3};
+          \node[draw] (GO0071625) at (-2,2.5) {GO:0071625};
+          \node[draw] (GO0044708) at (-1,4.5) {GO:0044708};
+          \node[draw] (TBR1) at (-3,1.5) {TBR1};
+          \node[draw] (NKX2-1) at (-3,-1.5) {NKX2-1};
+          \begin{scope}[/tikz/handle active characters in nodes=false]
+          \Edge[label=activates](MET)(MAPK3)
+          \Edge[label=hasFunction](FOXP2)(GO0071625)
+          \Edge[label=hasFunction](ST7)(GO0044708)
+          \Edge[label=$\sqsubseteq$](GO0071625)(GO0044708)
+
+          \tikzset{EdgeStyle/.append style={<->}}
+          \Edge[label=binds](FOXP2)(MET)
+          \Edge[label=binds](FOXP2)(MAPK3)
+          \Edge[label=coex](FOXP2)(TBR1)
+          \Edge[label=coex](FOXP2)(NKX2-1)
+          \Edge[label=coex](FOXP2)(ST7)
+          \Edge[label=coex](MET)(ST7)
+          \Edge[label=coex](NKX2-1)(TBR1)
+          \end{scope}
+          % \tikzset{EdgeStyle/.style={->}}
+          % \Edge[label=hf](FOXP2)(GO0044708)
+          % \draw[label=binds] (FOXP2) to (MET);
+          % \Edge[label=binds](FOXP2)(MET)
+          % \Edge[label=activates](MET)(MAPK3)
+          % \Edge[label=coexpressed-with](FOXP2)(FOXP4)
+          
+        \end{tikzpicture}
+      }
+    \end{column}
+    \begin{column}{.4\textwidth}
+      \begin{itemize}
+      \item FOXP2 + binds - MET = 0
+      \item MAP + activates - MAPK3 = 0
+      \item MET + binds - FOXP2 = 0
+      \item ST7 + hasFunction - {\tt GO:0044708} = 0
+      \item ...
+      \end{itemize}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \begin{frame}
@@ -998,11 +1159,12 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Some properties}
+  \frametitle{Some properties of TransE}
   \begin{itemize}
   \item graph-based
     \begin{itemize}
-    \item works on RDF graphs!
+    \item works well on RDF graphs
+    \item and ontology graphs
     \end{itemize}
   \item 1:1 relations only
     \begin{itemize}
@@ -1024,6 +1186,11 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Translating embeddings}
+  Overview of loss functions:
+\end{frame}
+
+\begin{frame}
   \frametitle{PyKEEN}
   \begin{itemize}
   \item Python package to generate knowledge graph embeddings
@@ -1037,12 +1204,6 @@
 \begin{frame}
   \frametitle{Some limitations}
   \begin{itemize}
-  \item ``word''-based (Word2Vec):
-    \begin{itemize}
-    \item semantics is reduced to co-occurrence (in ABox/TBox
-      statements)
-    \item ``disjointWith'' vs. ``part-of'' vs. ``subClassOf''
-    \end{itemize}
   \item graph-based:
     \begin{itemize}
     \item ontologies are not graphs!
@@ -1091,11 +1252,11 @@
 \begin{frame}
   \frametitle{Ontology embeddings}
   \begin{definition}
-    Let $O = (C, R, I; ax; \vdash)$ be an ontology with a set of
+    Let $O = (\Sigma = (C, R, I); ax; \vdash)$ be an ontology with a set of
     classes $C$, a set of relations $R$, a set of instances $I$, a set
     of axioms $ax$ and an inference relation $\vdash$. An ontology
     embedding is a function $f_\eta : C \cup R \cup I \mapsto
-    \mathbf{R}^n$. % (subject to certain constraints).
+    \Re^n$ (or $\Sigma(O) \mapsto \Re^n$. % (subject to certain constraints).
   \end{definition}
   \pause For example, we can use co-occurrence within $ax^\vdash$ to
   constrain the embedding function, where the constraints on
@@ -1110,7 +1271,7 @@
 \begin{frame}
   \frametitle{Predicting PPIs: trainable similarity measures}
   \centerline{\includegraphics[width=.45\textwidth]{YSTUnsuper1.png}\includegraphics[width=.45\textwidth]{YstUnsup2.png}}
-  \vfill
+
   % {\tiny Smaili et al. Onto2Vec: joint vector-based representation of
   %   biological entities and their ontology-based annotations, Bioinformatics, 2018.}
 \end{frame}
@@ -1144,7 +1305,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Axioms contribute to prediction}
+  \frametitle{Axioms contribute to prediction tasks}
     % \processtable
     % \caption{AUC values of ROC curves for PPI prediction for
     %   GO-Plus and GO using Onto2Vec (cosine similiarity) and
@@ -1423,82 +1584,82 @@
 %   \end{itemize}
 % \end{frame}
 
-\section{Applications}
+% \section{Applications}
 
-\begin{frame}
-  \frametitle{How to measure similarity?}
-  \begin{itemize}
-  \item vector-based similarity measure
-  \item cosine similarity: $sim(X,Y) = \frac{\sum_{i=1}^n X_i
-      Y_i}{\sqrt{\sum_{i=1}^n X_i^2} \sqrt{\sum_{i=1}^n Y_i^2}} $
-    \begin{itemize}
-    \item bounded between $[-1,1]$
-    \end{itemize}
-  \item Euclidean distance: $sim(X,Y) = \sqrt{\sum_{i=1}^n (X_i - Y_i)^2}$
-    \begin{itemize}
-    \item not bounded (and rarely used)
-    \end{itemize}
-  \item any other kind of function
-    \begin{itemize}
-    \item Neural Networks can approximate {\em any} function
-      (universal approximation theorem)
-    \item ``trainable'' semantic similarity measures
-    \item will need training data
-    \end{itemize}
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{How to measure similarity?}
+%   \begin{itemize}
+%   \item vector-based similarity measure
+%   \item cosine similarity: $sim(X,Y) = \frac{\sum_{i=1}^n X_i
+%       Y_i}{\sqrt{\sum_{i=1}^n X_i^2} \sqrt{\sum_{i=1}^n Y_i^2}} $
+%     \begin{itemize}
+%     \item bounded between $[-1,1]$
+%     \end{itemize}
+%   \item Euclidean distance: $sim(X,Y) = \sqrt{\sum_{i=1}^n (X_i - Y_i)^2}$
+%     \begin{itemize}
+%     \item not bounded (and rarely used)
+%     \end{itemize}
+%   \item any other kind of function
+%     \begin{itemize}
+%     \item Neural Networks can approximate {\em any} function
+%       (universal approximation theorem)
+%     \item ``trainable'' semantic similarity measures
+%     \item will need training data
+%     \end{itemize}
+%   \end{itemize}
+% \end{frame}
 
 
 
-\begin{frame}
-  \frametitle{Applications of semantic similarity}
-  \centerline{\includegraphics[height=\textheight]{vision1.pdf}}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Applications of semantic similarity}
+%   \centerline{\includegraphics[height=\textheight]{vision1.pdf}}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Applications of semantic similarity}
-  \centerline{\includegraphics[height=\textheight]{similarity.eps}}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Applications of semantic similarity}
+%   \centerline{\includegraphics[height=\textheight]{similarity.eps}}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Applications of semantic similarity}
-  \begin{itemize}
-  \item same kind of entity, same ontology:
-    \begin{itemize}
-    \item $x$ is associated with $y$
-    \item $z$ is similar to $x$
-    \item therefore: $z$ may {\em also} be associated with $y$
-    \end{itemize}
-  \item candidate genes (polygenic disease):
-    \begin{itemize}
-    \item FunSimMat: similar function $\Rightarrow$ similar/same
-      disease
-    \item side effect similarity: similar side effects $\Rightarrow$
-      similar targets/indications
-    \end{itemize}
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Applications of semantic similarity}
+%   \begin{itemize}
+%   \item same kind of entity, same ontology:
+%     \begin{itemize}
+%     \item $x$ is associated with $y$
+%     \item $z$ is similar to $x$
+%     \item therefore: $z$ may {\em also} be associated with $y$
+%     \end{itemize}
+%   \item candidate genes (polygenic disease):
+%     \begin{itemize}
+%     \item FunSimMat: similar function $\Rightarrow$ similar/same
+%       disease
+%     \item side effect similarity: similar side effects $\Rightarrow$
+%       similar targets/indications
+%     \end{itemize}
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Applications of semantic similarity}
-  \begin{itemize}
-  \item different kind of entity, same ontology:
-%  \item candidate genes (monogenic and polygenic disease):
-    \begin{itemize}
-    \item Phenomizer: genotype $x$ associated with phenotypes $a$;
-      patient $y$ has symptoms $b$; $a$ is similar to $b$; therefore:
-      $x$ causes the symptoms in $b$
-    \item PhenomeNET: similar to Phenomizer but using model organism
-      phenotypes (knockouts)
-    \item PhenomeDrug: knockout of gene $x$ causes phenotypes $a$;
-      drug $y$ causes side effects $b$; $a$ is similar to $b$;
-      therefore: drug $y$ inhibits $x$ (or: phenotypes $b$ are caused
-      by inhibition of $x$)
-    \item needs to compare model organism phenotypes and human
-      phenotypes $\Rightarrow$ ontology alignment/integration/mapping
-    \end{itemize}
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Applications of semantic similarity}
+%   \begin{itemize}
+%   \item different kind of entity, same ontology:
+% %  \item candidate genes (monogenic and polygenic disease):
+%     \begin{itemize}
+%     \item Phenomizer: genotype $x$ associated with phenotypes $a$;
+%       patient $y$ has symptoms $b$; $a$ is similar to $b$; therefore:
+%       $x$ causes the symptoms in $b$
+%     \item PhenomeNET: similar to Phenomizer but using model organism
+%       phenotypes (knockouts)
+%     \item PhenomeDrug: knockout of gene $x$ causes phenotypes $a$;
+%       drug $y$ causes side effects $b$; $a$ is similar to $b$;
+%       therefore: drug $y$ inhibits $x$ (or: phenotypes $b$ are caused
+%       by inhibition of $x$)
+%     \item needs to compare model organism phenotypes and human
+%       phenotypes $\Rightarrow$ ontology alignment/integration/mapping
+%     \end{itemize}
+%   \end{itemize}
+% \end{frame}
 
 % \begin{frame}
 %   \frametitle{Applications of semantic similarity}
@@ -1623,74 +1784,74 @@
 %   \end{itemize}
 % \end{frame}
 
-\begin{frame}
-  \frametitle{Hands-on: semantic similarity}
-  \begin{itemize}
-  \item if you have not done so {\em before} the tutorial, don't start
-    now
-    \begin{itemize}
-    \item you need to download {\em a lot} of data
-    \item you can just follow our demonstration and try later
-    \item (unless Internet is exceptionally fast for a conference
-      Wifi, then just go ahead and do everything now)
-    \end{itemize}
-  \item Jupyter Notebook
-    \begin{itemize}
-    \item notebooks consist of code and rich text fragments
-    \item human readable (with nice figures) {\em and} executable
-    \item need to install the SciJava kernel (default: iPython)
-    \item very widely used
-    \end{itemize}
-  \item
-    \url{https://github.com/bio-ontology-research-group/ontology-tutorial}
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Hands-on: semantic similarity}
+%   \begin{itemize}
+%   \item if you have not done so {\em before} the tutorial, don't start
+%     now
+%     \begin{itemize}
+%     \item you need to download {\em a lot} of data
+%     \item you can just follow our demonstration and try later
+%     \item (unless Internet is exceptionally fast for a conference
+%       Wifi, then just go ahead and do everything now)
+%     \end{itemize}
+%   \item Jupyter Notebook
+%     \begin{itemize}
+%     \item notebooks consist of code and rich text fragments
+%     \item human readable (with nice figures) {\em and} executable
+%     \item need to install the SciJava kernel (default: iPython)
+%     \item very widely used
+%     \end{itemize}
+%   \item
+%     \url{https://github.com/bio-ontology-research-group/ontology-tutorial}
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Hands-on: semantic similarity}
-  In the tutorial, we will
-  \begin{itemize}
-  \item download an ontology
-  \item explore the ontology with OWLAPI
-  \item classify the ontology with an OWL reasoner
-    \begin{itemize}
-    \item and query using an OWL reasoner
-    \end{itemize}
-  \item store the inferred version locally
-  \item use the Semantic Measures Library to:
-    \begin{itemize}
-    \item explore the ontology as graph
-    \item compute similarity between classes
-    \item use different similarity measures
-    \item compare patients to mice
-    \end{itemize}
-  \item learn to use Onto2Vec and OPA2Vec
-  \item you can build on this and extend for your own research!
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Hands-on: semantic similarity}
+%   In the tutorial, we will
+%   \begin{itemize}
+%   \item download an ontology
+%   \item explore the ontology with OWLAPI
+%   \item classify the ontology with an OWL reasoner
+%     \begin{itemize}
+%     \item and query using an OWL reasoner
+%     \end{itemize}
+%   \item store the inferred version locally
+%   \item use the Semantic Measures Library to:
+%     \begin{itemize}
+%     \item explore the ontology as graph
+%     \item compute similarity between classes
+%     \item use different similarity measures
+%     \item compare patients to mice
+%     \end{itemize}
+%   \item learn to use Onto2Vec and OPA2Vec
+%   \item you can build on this and extend for your own research!
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Hands-on: semantic similarity}
-  Do the tutorial...
-\end{frame}
+% \begin{frame}
+%   \frametitle{Hands-on: semantic similarity}
+%   Do the tutorial...
+% \end{frame}
 
-\begin{frame}
-  \frametitle{Hands-on: semantic similarity}
-  \begin{itemize}
-  \item now play with the Notebook:
-    \begin{itemize}
-    \item look at the results list (check MGI)
-    \item try another disease (check OMIM)
-    \item or a drug effect (check SIDER)
-    \end{itemize}
-  \item you can also test another ontology
-    \begin{itemize}
-    \item GO for functional similarity
-    \item ChEBI for chemical (structural) similarity
-    \item or yeast phenotypes
-    \end{itemize}
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Hands-on: semantic similarity}
+%   \begin{itemize}
+%   \item now play with the Notebook:
+%     \begin{itemize}
+%     \item look at the results list (check MGI)
+%     \item try another disease (check OMIM)
+%     \item or a drug effect (check SIDER)
+%     \end{itemize}
+%   \item you can also test another ontology
+%     \begin{itemize}
+%     \item GO for functional similarity
+%     \item ChEBI for chemical (structural) similarity
+%     \item or yeast phenotypes
+%     \end{itemize}
+%   \end{itemize}
+% \end{frame}
 
 \end{document}
 %%% Local Variables:
