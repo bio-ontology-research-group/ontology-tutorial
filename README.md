@@ -1,21 +1,6 @@
 
 # Tutorial: Ontologies for biomedical data analysis
 
-## Upcoming dates
-
-Next events based on the materials in this tutorial:
-
- * 29 July 2019, Bufallo, NY, USA: [ICBO 2019](https://sites.google.com/view/icbo2019/home): Machine learning with ontologies, Robert Hoehndorf
- * 23 September 2019, Graz, Austria: [JOWO 2019](https://www.iaoa.org/jowo/2019/): Semantic similarity and machine learning with ontologies, Robert Hoehndorf, Maxat Kulmanov
-
-## Past events
-
-Parts of the material in this repository were taught at
- * ECCB 2016 (Imane Boudellioua, Robert Hoehndorf, Paul Schofield, Luke Slater)
- * ISMB 2017 (Michel Dumontier, Robert Hoehndorf)
- * ISMB 2018 (Michel Dumontier, Robert Hoehndorf)
- * University of Cambridge, Bioinformatics Training Program, 2018 (Robert Hoehndorf, Paul Schofield)
-
 ## Preparations for ICBO 2019
 
 Please follow these steps *before* the tutorial:
@@ -34,6 +19,22 @@ and
 `docker run -i -t -p 8888:8888 leechuck/ontology-ml /bin/bash -c "jupyter notebook --notebook-dir=/home/borg/ontology-tutorial/ --ip='0.0.0.0' --port=8888 --no-browser --allow-root"`
 * After the notebook started, copy the address and the token and paste it into you web browser. The URL should look *similar* to the following: `127.0.0.1:8888/?token=f14e6316a48016b2cf4cbed5dd7b89d9dc524da49f553dc7`.
 * All is now set up. There is no need to download and install any additional packages or data files.
+
+## Upcoming dates
+
+Next events based on the materials in this tutorial:
+
+ * 29 July 2019, Bufallo, NY, USA: [ICBO 2019](https://sites.google.com/view/icbo2019/home): Machine learning with ontologies, Robert Hoehndorf
+ * 23 September 2019, Graz, Austria: [JOWO 2019](https://www.iaoa.org/jowo/2019/): Semantic similarity and machine learning with ontologies, Robert Hoehndorf, Maxat Kulmanov
+
+## Past events
+
+Parts of the material in this repository were taught at
+ * ECCB 2016 (Imane Boudellioua, Robert Hoehndorf, Paul Schofield, Luke Slater)
+ * ISMB 2017 (Michel Dumontier, Robert Hoehndorf)
+ * ISMB 2018 (Michel Dumontier, Robert Hoehndorf)
+ * University of Cambridge, Bioinformatics Training Program, 2018 (Robert Hoehndorf, Paul Schofield)
+
 
 ## Overview
 
