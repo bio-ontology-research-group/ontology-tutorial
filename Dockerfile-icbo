@@ -95,8 +95,12 @@ RUN wget https://bio2vec.cbrc.kaust.edu.sa/data/pubmed_model/RepresentationModel
 # Test run to download grapes
 RUN groovy ProcessOntology.groovy
 
+WORKDIR /home/borg/ontology-tutorial/
+
 # Download tutorial data package
-RUN wget http://aber-owl.net/aber-owl/diseasephenotypes/ontology/embeddings-data.tar.gz
+RUN wget http://jagannath.pdn.cam.ac.uk/tutorial/data-light.tar.gz
+
+RUN tar xvjf data-light.tar.gz
 
 # trust the notebook
 RUN jupyter trust /home/borg/ontology-tutorial/graph.ipynb
