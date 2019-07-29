@@ -95,7 +95,7 @@ RUN wget https://bio2vec.cbrc.kaust.edu.sa/data/pubmed_model/RepresentationModel
 RUN wget https://bio2vec.cbrc.kaust.edu.sa/data/pubmed_model/RepresentationModel_pubmed.txt.wv.syn0.npy
 
 # Test run to download grapes
-RUN groovy ProcessOntology.groovy
+RUN groovy ProcessOntology.groovy || true
 
 WORKDIR /home/borg/ontology-tutorial/
 
