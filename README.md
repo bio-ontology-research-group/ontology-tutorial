@@ -16,6 +16,24 @@ Parts of the material in this repository were taught at
  * ISMB 2018 (Michel Dumontier, Robert Hoehndorf)
  * University of Cambridge, Bioinformatics Training Program, 2018 (Robert Hoehndorf, Paul Schofield)
 
+## Preparations for ICBO 2019
+
+Please follow these steps *before* the tutorial:
+
+* Download and install [Docker](https://www.docker.com).
+* Pull the two docker images with:
+`docker pull coolmaksat/embeddings:latest`
+and
+`docker pull leechuck/ontology-ml:latest`
+
+You can then start the notebooks *during* the tutorial like this:
+
+* Run the image and jump directly into the Jupyter notebook:
+`docker run -i -t -p 8888:8888 coolmaksat/embeddings /bin/bash -c "jupyter notebook --notebook-dir=/usr/src/app/ --ip='0.0.0.0' --port=8888 --no-browser --allow-root"`
+and
+`docker run -i -t -p 8888:8888 leechuck/ontology-ml /bin/bash -c "jupyter notebook --notebook-dir=/home/borg/ontology-tutorial/ --ip='0.0.0.0' --port=8888 --no-browser --allow-root"`
+* After the notebook started, copy the address and the token and paste it into you web browser. The URL should look *similar* to the following: `127.0.0.1:8888/?token=f14e6316a48016b2cf4cbed5dd7b89d9dc524da49f553dc7`.
+* All is now set up. There is no need to download and install any additional packages or data files.
 
 ## Overview
 
