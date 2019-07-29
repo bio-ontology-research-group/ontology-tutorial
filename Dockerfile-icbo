@@ -53,11 +53,11 @@ RUN make
 
 WORKDIR /home/borg/ontology-tutorial
 
-RUN pip --user install pykeen
+RUN pip install --user pykeen
 
-RUN pip --user install jupyter matplotlib
+RUN pip install --user jupyter matplotlib
 
-RUN pip --user install cmake MulticoreTSNE
+RUN pip install --user cmake MulticoreTSNE || true
 
 RUN rm -rf opa2vec walking-rdf-and-owl
 
