@@ -1,0 +1,100 @@
+# We will use Ubuntu for our image
+FROM python:3.6
+
+# Updating Ubuntu packages
+# RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
+RUN apt-get update && yes|apt-get upgrade
+RUN apt-get install -y emacs
+
+
+# # Adding wget and bzip2 and python and pip
+RUN apt-get install -y wget bzip2 git
+
+# # Add sudo
+RUN apt-get -y install sudo
+
+# # Add user ubuntu with no password, add to sudo group
+RUN adduser --disabled-password --gecos '' borg
+RUN adduser borg sudo
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+USER borg
+WORKDIR /home/borg/
+RUN chmod a+rwx /home/borg/
+RUN echo `pwd`
+
+# install JDK
+# RUN sudo apt-get install -y default-jdk
+
+# Add the conda-forge channel
+# RUN conda config --add channels conda-forge
+
+# Create an isolated environment called `java_env` and install the kernel
+# RUN conda create --name java_env scijava-jupyter-kernel
+
+# # Activate the `java_env` environment
+# ak RUN source activate java_env
+
+# install groovy doxygen boost libraries
+RUN sudo apt-get install -y groovy doxygen graphviz libboost-all-dev
+
+
+# download tutorial 
+RUN git clone --recurse-submodules https://github.com/bio-ontology-research-group/ontology-tutorial.git
+
+# generally switch down to the right working directory
+WORKDIR /home/borg/ontology-tutorial
+
+# into the directory and update
+RUN git pull 
+
+WORKDIR /home/borg/ontology-tutorial/fastText
+
+RUN make
+
+WORKDIR /home/borg/ontology-tutorial
+
+RUN pip install pykeen
+
+RUN pip install jupyter matplotlib
+
+RUN rm -rf opa2vec walking-rdf-and-owl
+
+RUN git clone https://github.com/bio-ontology-research-group/opa2vec.git
+
+RUN git clone https://github.com/bio-ontology-research-group/walking-rdf-and-owl.git
+
+WORKDIR /home/borg/ontology-tutorial/walking-rdf-and-owl
+
+RUN wget "https://downloads.sourceforge.net/project/threadpool/threadpool/0.2.5%20%28Stable%29/threadpool-0_2_5-src.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fthreadpool%2Ffiles%2Fthreadpool%2F0.2.5%2520%2528Stable%2529%2Fthreadpool-0_2_5-src.zip%2Fdownload%3Fuse_mirror%3Dcfhcable%26download%3D&ts=1564404072" -O threadpool.zip
+
+RUN unzip threadpool.zip
+
+WORKDIR /home/borg/ontology-tutorial/walking-rdf-and-owl/threadpool-0_2_5-src/threadpool/
+
+RUN make
+
+WORKDIR /home/borg/ontology-tutorial/walking-rdf-and-owl/
+
+RUN mv threadpool-0_2_5-src/threadpool/boost/ .
+
+RUN make
+
+WORKDIR /home/borg/ontology-tutorial/opa2vec
+
+RUN wget https://bio2vec.cbrc.kaust.edu.sa/data/pubmed_model/RepresentationModel_pubmed.txt
+
+RUN wget https://bio2vec.cbrc.kaust.edu.sa/data/pubmed_model/RepresentationModel_pubmed.txt.syn1neg.npy
+
+RUN wget https://bio2vec.cbrc.kaust.edu.sa/data/pubmed_model/RepresentationModel_pubmed.txt.wv.syn0.npy
+
+
+
+
+# trust the notebook
+RUN jupyter trust /home/borg/ontology-tutorial/graph.ipynb
+
+# Launch in Juyter notebook
+
+# docker run -i -t -p 8888:8888  -v $PWD:/home/bioonto/ontology-tutorial/ altermeister/bio-ontology-ontology-tutorial-docker /bin/bash -c "source activate java_env && export JAVA_OPTS=-Xmx12G && _JAVA_OPTIONS=-Xmx12G jupyter notebook --notebook-dir=/home/bioonto/ontology-tutorial/ --ip='0.0.0.0' --port=8888 --no-browser"
+
+
