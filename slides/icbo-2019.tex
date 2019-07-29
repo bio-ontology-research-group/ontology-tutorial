@@ -1581,6 +1581,26 @@
 \subsection{Model-theoretic approaches}
 
 \begin{frame}
+  \frametitle{How to overcome the semantic gap?}
+  \begin{itemize}
+  \item none of the models discussed above are truly ``semantic''
+    \begin{itemize}
+    \item all syntactic
+    \item graph-based or based on axioms
+    \end{itemize}
+    \pause
+  \item what do we actually mean by ``semantics''?
+    \begin{itemize}
+    \pause
+    \item formal definition of ``truth'' relies on ``models''
+    \pause
+    \item universal algebra over formal languages (with signature
+      $\Sigma$)
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
   \frametitle{Description Logic EL++}
   \centering
   \resizebox{.8\textwidth}{!}{
@@ -1625,6 +1645,19 @@
     
   \end{tabular}
 }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Models}
+  \begin{itemize}
+  \item Interpretations and $\Sigma$-structures
+  \item Model $\mathfrak{A}$ of a formula $\phi$: $\phi$ is true in
+    $\mathfrak{A}$ ($\mathfrak{A} \models \phi$) 
+  \item Theory $T$: set of formulas
+  \item $\mathfrak{A}$ is a model of $T$ if $\mathfrak{A}$ is a model
+    of all formulas in $T$
+  \item Ontologies are (special kinds of) theories
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -1753,6 +1786,30 @@
   \end{equation}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Algorithm: loss functions}
+  \centerline{\includegraphics[width=1\textwidth]{ellosses.pdf}}
+\end{frame}
+
+\begin{frame}
+  \frametitle{EL Embeddings}
+  \begin{eqnarray}
+    & Male & \sqsubseteq Person \\
+    & Female & \sqsubseteq Person \\
+    & Father & \sqsubseteq Male \\
+    & Mother & \sqsubseteq Female \\
+    & Father & \sqsubseteq Parent \\
+    & Mother & \sqsubseteq Parent \\
+    & Female \sqcap Male & \sqsubseteq \bot \\
+    & Female \sqcap Parent & \sqsubseteq Mother \\
+    & Male \sqcap Parent & \sqsubseteq Father \\
+    & \exists hasChild.Person & \sqsubseteq Parent \\
+    & Parent & \sqsubseteq Person \\
+    & Parent & \sqsubseteq \exists hasChild.\top
+               \label{famlast}
+               % & Person & \sqsubseteq \top
+  \end{eqnarray}
+\end{frame}
 
 \begin{frame}
   \frametitle{EL Embeddings}
@@ -1766,7 +1823,42 @@
 
 \begin{frame}
   \frametitle{Jupyter excercise}
-  
+  \begin{itemize}
+  \item Run the new Docker image {\tt coolmaksat/embeddings:latest}
+  \item {\tt docker run -i -t -p 8888:8888 coolmaksat/embeddings
+      /bin/bash -c "jupyter notebook --notebook-dir=/usr/src/app/
+      --ip='0.0.0.0' --port=8888 --no-browser --allow-root"}
+  \end{itemize}
+\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}
+  \frametitle{Summary}
+  \begin{itemize}
+  \item ontologies contain background knowledge that is useful as
+    background knowledge:
+    \begin{itemize}
+    \item axioms
+    \item natural language (definitions, labels, synonyms)
+    \end{itemize}
+    \pause
+  \item feature learning (deep learning) on ontologies encodes this
+    background knowledge
+    \begin{itemize}
+    \item using ontology graphs, axioms, or model structures
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Open research questions}
+  Where is our semantics, in the machine learning model or the axioms?
+  \begin{itemize}
+  \item implicit or explicit?
+  \item example: transitive relations
+  \item ...
+  \end{itemize}
 \end{frame}
 
 % \begin{frame}
