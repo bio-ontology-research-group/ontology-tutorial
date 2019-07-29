@@ -47,25 +47,37 @@
 \newcommand<>{\cgray}[3]{\only<#1>{#3}\only<#2>{\textcolor{gray}{#3}}}
 \newcommand<>{\colorize}[4]{\only<#1>{#4}\only<#2>{\textcolor{#3}{#4}}}
 
+\setbeamertemplate{navigation symbols}{\insertslidenavigationsymbol}
 %\setbeamertemplate{navigation symbols}{}
-\addtobeamertemplate{navigation symbols}{}{%
-    \usebeamerfont{footline}%
-    \usebeamercolor[fg]{footline}%
-    \hspace{1em}%
-    \insertframenumber/\inserttotalframenumber
-}
-
-\renewcommand{\em}{\itshape}
-
-\mode<presentation>
-% {
-%   \usecolortheme{crane}
-% %  \usetheme{Frankfurt}
+% \addtobeamertemplate{navigation symbols}{}{%
+%     \usebeamerfont{footline}%
+%     \usebeamercolor[fg]{footline}%
+%     \hspace{1em}%
+%     \insertframenumber/\inserttotalframenumber
 % }
+
 \mode<presentation>
 {
-  \usecolortheme{dove}
+\usecolortheme{crane}
+%\useoutertheme{split}
+
+\expandafter\def\expandafter\insertshorttitle\expandafter{%
+  \insertshorttitle\hfill%
+  \insertframenumber\,/\,\inserttotalframenumber}
+
+\usefonttheme[onlysmall]{structurebold}
 }
+\renewcommand{\em}{\itshape}
+\usepackage{pifont}
+\definecolor{purple}{rgb}{1,0,1}
+\definecolor{dred}{rgb}{0.7,0,0}
+\definecolor{myred}{rgb}{1,0,0}
+\definecolor{dblue}{rgb}{0,0,0.7}
+\definecolor{dgreen}{rgb}{0,0.5,0}
+\definecolor{myyellow}{rgb}{1,1,0}
+\newcommand{\parents}[1]{parents(#1)}
+\setbeamertemplate{itemize item}[ball]
+
 
 % \mode<presentation>
 % {
@@ -86,6 +98,17 @@
 
 \begin{frame}
   \titlepage
+\end{frame}
+
+\begin{frame}
+  \frametitle{Before the tutorial}
+  See \url{https://github.com/bio-ontology-research-group/ontology-tutorial}:
+  \begin{itemize}
+  \item install Docker (e.g.: {\tt apt-get install docker})
+  \item {\tt docker pull coolmaksat/embeddings:latest}
+  \item {\tt docker pull leechuck/ontology-ml:latest}
+  \item {\tt docker run -i -t -p 8888:8888 leechuck/ontology-ml /bin/bash -c "jupyter notebook --notebook-dir=/home/borg/ontology-tutorial/ --ip='0.0.0.0' --port=8888 --no-browser --allow-root"}
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -204,6 +227,29 @@
   \item a ``knowledge graph'' is an ABox + RBox
   \end{itemize}
 \end{frame}
+
+\begin{frame}
+  \frametitle{Manchester OWL Syntax}
+  \begin{table}[ht]
+    \centering
+    \begin{tabular}{|l|l|l|}
+      DL Syntax & Manchester Syntax & Example \\
+      \hline
+      $C \sqcap D$ & C and D & Human and Male \\
+      $C \sqcup D$ & C or D & Male or Female \\
+      $\neg C$ & not C & not Male \\
+      $\exists R.C$ & R some C & hasChild some Human \\
+      $\forall R.C$ & R only C & hasChild only Human \\
+      $(\geq n R.C)$ & R min n C & hasChild min 1 Human \\
+      $(\leq n R.C)$ & R max n C & hasChild max 1 Human \\
+      $(= n R.C)$ & R exactly n C & hasChild exactly 1 Human \\
+      $\{a\} \sqcup \{b\} \sqcup ...$ & \{a b ...\} & \{John Robert
+                                                      Mary\} \\
+      \hline
+    \end{tabular}
+  \end{table}
+\end{frame}
+
 
 % \begin{frame}
 %   \frametitle{Description Logic ALC: syntax}
@@ -393,9 +439,9 @@
   \item role of background knowledge:
     \begin{itemize}
     \item statistical/distributional semantics, large corpora
-    \item ontologies: topology
+    \item ontologies: (graph) topology
     \end{itemize}
-  \item similarity measures: hand-crafted or data-driven
+  \item similarity measures: hand-crafted or data-driven?
   \end{itemize}
 \end{frame}
 
@@ -405,17 +451,12 @@
   \item Are cyclin dependent kinases {\em functionally} more similar
     to lipid kinases or to riboflavin kinases? How about {\em
       phenotypically}?
-    \pause
   \item Which protein in the {\em mouse} is functionally most similar
     to the zebrafish {\em gustducin} protein?
-    \pause
   \item Which mouse knockout resembles {\em Bardet-Biedl Syndrome 8}?
-    \pause
   \item Are there mouse knockouts that resemble the side effects of
     diclofenac?
-    \pause
   \item Which genetic disease produces similar symptoms to ebola?
-    \pause
   \item Does functional similarity correlate with phenotypic
     similarity?
   \end{itemize}
@@ -424,14 +465,15 @@
 \begin{frame}
   \frametitle{Semantic similarity or machine learning}
   \begin{itemize}
-  \item semantic similarity measures are hand-crafted
+  \item semantic similarity measures are mostly hand-crafted
     \begin{itemize}
     \item capture certain intuition about what constitutes
       ``similarity''
     \item different measures for different kinds of similarity
     \item usually interpretable (and explainable)
     \end{itemize}
-  \item machine learning methods are data-driven
+    \pause
+  \item machine learning methods are mostly data-driven
     \begin{itemize}
     \item the architecture of the model is still hand-crafted
     \item usually hard to interpret
@@ -444,6 +486,7 @@
   \begin{itemize}
   \item semantic similarity measures and machine learning models on
     ontologies can be graph-based, feature-based, or model-based
+    \pause
   \item we may need to generate graphs from ontologies
     \begin{itemize}
     \item {\em is-a} relations are easy (this is just {\tt owl:subClassOf})
@@ -512,7 +555,7 @@
 
 \begin{frame}
   \frametitle{Methods and tools}
-  OBO Format represents a graph:
+  OBO Format represents ontologies as graphs:
   \begin{itemize}
   \item Protege/OWLAPI: OBO export
   \item OBO toolsets (e.g., ROBOT)
@@ -521,6 +564,7 @@
     \pause
   \item a conversion of an ontologies into a graph will almost always
     lead to a loss of information
+    \pause
   \item edges should be ``meaningful'': not merely syntax
     \begin{itemize}
     \item the RDF serialization of OWL is a graph and contains all
@@ -532,7 +576,8 @@
 
 \begin{frame}
   \frametitle{An example: protein--protein interactions and GO functions}
-  whiteboard...
+  \centerline{\includegraphics[width=.49\textwidth]{YeastPPINetwork.png}
+    \includegraphics[width=.49\textwidth]{go-figure1.jpg}}
 \end{frame}
 
 \section{Machine learning and ontologies}
@@ -636,6 +681,7 @@
     $\vdash$. An ontology graph embedding is a function
     $f_\eta : L(V) \cup L(E) \mapsto \mathbf{R}^n$.
   \end{definition}
+  \pause
   \begin{itemize}
   \item key idea: preserve {\em some} structure of the graph in
     $\Re^n$ (under operations in $\Re^n$)
@@ -763,6 +809,7 @@
     \end{column}
     \begin{column}{.4\textwidth}
       \begin{itemize}
+      \item precompute the deductive closure:
       \item for all $\phi$: if $\mathcal{KG} \models \phi$, add $\phi$
         to $\mathcal{KG}$
       \end{itemize}
@@ -770,6 +817,74 @@
   \end{columns}
       
 \end{frame}
+
+\begin{frame}
+  \frametitle{Random walks}
+%  \frametitle{Neuro-symbolic feature learning}
+  \begin{columns}
+    \begin{column}{.6\textwidth}
+      \resizebox{1\textwidth}{!}{%
+        \begin{tikzpicture}
+%          \SetUpEdge[lw = 1pt, color = black]
+          \GraphInit[vstyle=Shade]
+          \tikzset{
+            LabelStyle/.style = { rectangle, rounded corners, draw,
+              minimum width = 2em, fill = yellow!50,
+              text = black },
+            VertexStyle/.append style = { inner sep=5pt,
+              font = \Large\bfseries},
+            EdgeStyle/.append style = {->} }
+          
+          \SetGraphUnit{5}
+          % \tikzset{VertexStyle/.append style={fill}}
+          % \tikzset{EdgeStyle/.style={->}}
+          \node[draw, color=cyan] (FOXP2) at (0,0) {FOXP2};
+          \node[draw] (MET) at (3,0) {MET};
+          \node[draw] (ST7) at (1.5,3) {ST7};
+          \node[draw] (MAPK3) at (3,-3) {MAPK3};
+          \node[draw] (GO0071625) at (-2,2.5) {GO:0071625};
+          \node[draw] (GO0044708) at (-1,4.5) {GO:0044708};
+          \node[draw] (TBR1) at (-3,1.5) {TBR1};
+          \node[draw] (NKX2-1) at (-3,-1.5) {NKX2-1};
+          \begin{scope}[/tikz/handle active characters in nodes=false]
+          \Edge[label=activates](MET)(MAPK3)
+          \Edge[label=hasFunction](FOXP2)(GO0071625)
+          \Edge[label=hasFunction](ST7)(GO0044708)
+          \Edge[label=$\sqsubseteq$](GO0071625)(GO0044708)
+
+          \tikzset{EdgeStyle/.append style={<->}}
+          \Edge[label=binds](FOXP2)(MET)
+          \Edge[label=binds](FOXP2)(MAPK3)
+          \Edge[label=coex](FOXP2)(TBR1)
+          \Edge[label=coex](FOXP2)(NKX2-1)
+          \Edge[label=coex](FOXP2)(ST7)
+          \Edge[label=coex](MET)(ST7)
+          \Edge[label=coex](NKX2-1)(TBR1)
+
+          \tikzset{EdgeStyle/.style={->}}
+          \Edge[label=hf, color=red, style=dashed](FOXP2)(GO0044708)
+          \end{scope}
+          % \tikzset{EdgeStyle/.style={->}}
+          % \Edge[label=hf](FOXP2)(GO0044708)
+          % \draw[label=binds] (FOXP2) to (MET);
+          % \Edge[label=binds](FOXP2)(MET)
+          % \Edge[label=activates](MET)(MAPK3)
+          % \Edge[label=coexpressed-with](FOXP2)(FOXP4)
+          
+        \end{tikzpicture}
+      }
+    \end{column}
+    \begin{column}{.4\textwidth}
+      \begin{itemize}
+      \item precompute the deductive closure:
+      \item for all $\phi$: if $\mathcal{KG} \models \phi$, add $\phi$
+        to $\mathcal{KG}$
+      \end{itemize}
+    \end{column}
+  \end{columns}
+      
+\end{frame}
+
 
 \begin{frame}
   \frametitle{Random walks}
@@ -827,6 +942,7 @@
     \end{column}
     \begin{column}{.4\textwidth}
       \begin{itemize}
+      \item Exploring the graph:
         \pause
       \item :FOXP2 :binds :MET :coex :ST7 :hasFunction GO:0044708
         \pause
@@ -864,21 +980,27 @@
   \item random walks ``flatten'' a graph
     \begin{itemize}
     \item walks capture node neighborhood
+    \item and generate a ``corpus''
+    \end{itemize}
+  \item random walks capture graph ``structure''
+    \begin{itemize}
+    \item hub-nodes, communities, etc.
+    \item determine ``importance'' of nodes
     \end{itemize}
   \item embeddings capture co-occurrence
     \begin{itemize}
     \item similar graph neighborhood $\Rightarrow$ similar
       co-occurrence $\Rightarrow$ similar vector
     \end{itemize}
-  \item random walks capture graph ``structure''
+  \item embeddings generate ``feature'' vectors
     \begin{itemize}
-    \item hub-nodes, communities, etc.
+    \item functions from symbols (words, labels) into $\Re^n$
     \end{itemize}
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{What to do with the vectors?}
+  \frametitle{What to do with embeddings?}
   \begin{itemize}
   \item useful for edge prediction, similarity, clustering, as feature
     vectors
@@ -892,6 +1014,7 @@
     \item unsupervised: clustering, similarity, visualization
       \begin{itemize}
       \item cosine similarity (for L2-normalized features)
+      \item Word2Vec embeddings capture similarity between co-occurrence vectors
       \end{itemize}
     \end{itemize}
   \end{itemize}
@@ -920,6 +1043,46 @@
   \frametitle{Visualizing feature vectors}
 %  \frametitle{Neuro-symbolic feature learning}
   \centerline{\includegraphics[width=\textwidth]{graph-tsne.png}}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Features: supervised learning}
+  \begin{itemize}
+  \item feature vectors represent graph neighborhood of nodes
+    \begin{itemize}
+    \item adjacent nodes and edges
+    \item ontology classes (asserted \& inferred)
+    \end{itemize}
+  \item useful in supervised prediction tasks
+  \item relation prediction:
+    \begin{itemize}
+    \item input: two features vectors (from embedding function)
+    \item output: $0$ or $1$ (relation or not)
+    \item training data: positive and negative cases
+      \begin{itemize}
+      \item $R(x,y)$ and $\neg R(x,y)$
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Features: supervised learning}
+  \resizebox{\textwidth}{!}{
+  \begin{tabular}{@{}lllcccc@{}}\toprule 
+      \multirow{2}{*}{Object property} 
+      & Source type & Target type &\multicolumn{2}{c}{Without reasoning}&\multicolumn{2}{c}{With reasoning}\\
+      &&& F-measure & AUC & F-measure & AUC \\
+      \midrule
+      has target & Drug & Gene/Protein & 0.94 & 0.97 & 0.94 & 0.98 \\
+      has disease annotation & Gene/Protein & Disease & 0.89 & 0.95 & 0.89 & 0.95 \\
+      has side-effect$^*$ & Drug & Phenotype & 0.86 & 0.93 & 0.87 & 0.94 \\
+      has interaction & Gene/Protein & Gene/Protein & 0.82 & 0.88 & 0.82 & 0.88\\
+      has function$^*$ & Gene/Protein & Function & 0.85 & 0.95 & 0.83 & 0.91 \\
+      has gene phenotype$^*$  & Gene/Protein & Phenotype & 0.84 & 0.91 & 0.82 & 0.90  \\
+      has indication & Drug & Disease & 0.72 & 0.79 & 0.76 & 0.83 \\
+      has disease phenotype$^*$  & Disease & Phenotype & 0.72 & 0.78 & 0.70 & 0.77 \\
+    \end{tabular}}
 \end{frame}
 
 \begin{frame}
@@ -958,11 +1121,11 @@
 \begin{frame}
   \frametitle{Tools and resources}
   \begin{itemize}
-  \item RDF2Vec: random walks on {\em RDF} + Word2Vec
-  \item RDF2Vec: Weisfeiler-Lehmann kernel on {\em RDF}
+  \item RDF2Vec: random walks on RDF + Word2Vec
+  \item RDF2Vec: Weisfeiler-Lehmann kernel on RDF
   \item \url{https://datalab.rwth-aachen.de/embedding/RDF2Vec/}
     \pause
-  \item Walking RDF+OWL: random walks on {\em RDF} + Elk + Word2Vec
+  \item Walking RDF+OWL: random walks on RDF + Elk + Word2Vec
     \begin{itemize}
     \item inference
     \end{itemize}
@@ -991,9 +1154,17 @@
 \begin{frame}
   \frametitle{Jupyter excercise}
   \begin{itemize}
-  \item Open the Jupyter notebook
+  \item Open the Jupyter notebook {\tt graph.ipynb}
   \item Follow the examples in the first part of the notebook (random
     walks)
+  \item If you don't have a powerful CPU in your laptop (with multiple
+    cores), you may want to lower the number of iterations ({\tt
+      n\_iter}) during TSNE
+  \item some of the code will take a while to run
+    \begin{itemize}
+    \item if things are too slow, you can keep it running while we
+      continue or complete this after the tutorial
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -1014,7 +1185,8 @@
   \pause
   Idea: $\mu (s) + \mu (p) \approx \mu (o)$\\
   \pause
-  Minimize: $\sum_t \norm{ \mu (s) + \mu (p) - \mu (o) }$ (chose your norm)
+  Minimize: $\sum_t \norm{ \mu (s) + \mu (p) - \mu (o) }$ (chose your
+  norm, usually L2)
 \end{frame}
 
 \begin{frame}
@@ -1076,10 +1248,15 @@
     \end{column}
     \begin{column}{.4\textwidth}
       \begin{itemize}
+        \pause
       \item FOXP2 + binds = MET
+        \pause
       \item MAP + activates = MAPK3
+        \pause
       \item MET + binds = FOXP2
+        \pause
       \item ST7 + hasFunction = {\tt GO:0044708}
+        \pause
       \item ...
       \end{itemize}
     \end{column}
@@ -1187,7 +1364,8 @@
 
 \begin{frame}
   \frametitle{Translating embeddings}
-  Overview of loss functions:
+  \centerline{\includegraphics[width=\textwidth]{loss-functions-kg.png}}
+  {\tiny Wang et al. Knowledge Graph Embedding: A Survey ofApproaches and Applications.}
 \end{frame}
 
 \begin{frame}
@@ -1196,7 +1374,7 @@
   \item Python package to generate knowledge graph embeddings
   \item supports many different graph embedding types: TransE, TransR,
     TransD, RESCAL, etc.
-  \item hyperparameter optimization and evaluation
+  \item hyperparameter optimization (``HPO'') and evaluation included
   \item \url{https://github.com/SmartDataAnalytics/PyKEEN}
   \end{itemize}
 \end{frame}
@@ -1204,7 +1382,7 @@
 \begin{frame}
   \frametitle{Some limitations}
   \begin{itemize}
-  \item graph-based:
+  \item graph-based (same as random walks):
     \begin{itemize}
     \item ontologies are not graphs!
     \item converting ontologies to graphs loses information
@@ -1215,7 +1393,16 @@
 
 \begin{frame}
   \frametitle{Jupyter excercise}
-  
+  \begin{itemize}
+  \item run the PyKEEN part of {\tt graph.ipynb}
+  \item again: this may take a while
+  \item you can also explore
+    \url{https://github.com/SmartDataAnalytics/PyKEEN}
+  \item try to expand the notebook to predict ``new'' relations
+    \begin{itemize}
+    \item using numpy directly, or PyKEEN's predictions methods
+    \end{itemize}
+  \end{itemize}
 \end{frame}
 
 \subsection{Syntactic approaches}
@@ -1272,8 +1459,8 @@
   \frametitle{Predicting PPIs: trainable similarity measures}
   \centerline{\includegraphics[width=.45\textwidth]{YSTUnsuper1.png}\includegraphics[width=.45\textwidth]{YstUnsup2.png}}
 
-  % {\tiny Smaili et al. Onto2Vec: joint vector-based representation of
-  %   biological entities and their ontology-based annotations, Bioinformatics, 2018.}
+   {\tiny Smaili et al. Onto2Vec: joint vector-based representation of
+     biological entities and their ontology-based annotations.}
 \end{frame}
 
 \begin{frame}
@@ -1305,7 +1492,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Axioms contribute to prediction tasks}
+  \frametitle{Axioms contribute to prediction tasks: GO and GO-PLUS}
     % \processtable
     % \caption{AUC values of ROC curves for PPI prediction for
     %   GO-Plus and GO using Onto2Vec (cosine similiarity) and
@@ -1380,7 +1567,15 @@
 
 \begin{frame}
   \frametitle{OPA2Vec Jupyter excercise}
-  
+  \begin{itemize}
+  \item open the notebook {\tt OPA2Vec.ipynb}
+  \item run the whole notebook
+    \begin{itemize}
+    \item this should be relatively fast and not take too much time on
+      a modern laptop
+    \end{itemize}
+  \item play with the prediction methods (cosine similarity)
+  \end{itemize}
 \end{frame}
 
 \subsection{Model-theoretic approaches}
