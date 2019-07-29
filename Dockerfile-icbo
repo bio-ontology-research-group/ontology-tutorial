@@ -57,6 +57,8 @@ RUN pip install pykeen
 
 RUN pip install jupyter matplotlib
 
+RUN pip install cmake MulticoreTSNE
+
 RUN rm -rf opa2vec walking-rdf-and-owl
 
 RUN git clone https://github.com/bio-ontology-research-group/opa2vec.git
@@ -79,6 +81,9 @@ RUN mv threadpool-0_2_5-src/threadpool/boost/ .
 
 RUN make
 
+# test run to download grapes
+RUN groovy RDFWrapper.groovy
+
 WORKDIR /home/borg/ontology-tutorial/opa2vec
 
 RUN wget https://bio2vec.cbrc.kaust.edu.sa/data/pubmed_model/RepresentationModel_pubmed.txt
@@ -87,14 +92,18 @@ RUN wget https://bio2vec.cbrc.kaust.edu.sa/data/pubmed_model/RepresentationModel
 
 RUN wget https://bio2vec.cbrc.kaust.edu.sa/data/pubmed_model/RepresentationModel_pubmed.txt.wv.syn0.npy
 
+# Test run to download grapes
+RUN groovy ProcessOntology.groovy
 
-
+# Download tutorial data package
+RUN wget http://aber-owl.net/aber-owl/diseasephenotypes/ontology/embeddings-data.tar.gz
 
 # trust the notebook
 RUN jupyter trust /home/borg/ontology-tutorial/graph.ipynb
+RUN jupyter trust /home/borg/ontology-tutorial/OPA2Vec.ipynb
 
 # Launch in Juyter notebook
 
-# docker run -i -t -p 8888:8888  -v $PWD:/home/bioonto/ontology-tutorial/ altermeister/bio-ontology-ontology-tutorial-docker /bin/bash -c "source activate java_env && export JAVA_OPTS=-Xmx12G && _JAVA_OPTIONS=-Xmx12G jupyter notebook --notebook-dir=/home/bioonto/ontology-tutorial/ --ip='0.0.0.0' --port=8888 --no-browser"
+# docker run -i -t -p 8888:8888  -v $PWD:/home/borg/ontology-tutorial/ altermeister/bio-ontology-ontology-tutorial-docker /bin/bash -c "source activate java_env && export JAVA_OPTS=-Xmx12G && _JAVA_OPTIONS=-Xmx12G jupyter notebook --notebook-dir=/home/bioonto/ontology-tutorial/ --ip='0.0.0.0' --port=8888 --no-browser"
 
 
