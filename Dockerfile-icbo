@@ -53,6 +53,8 @@ RUN make
 
 WORKDIR /home/borg/ontology-tutorial
 
+ENV PATH="/home/borg/.local/bin:${PATH}"
+
 RUN pip install --user pykeen
 
 RUN pip install --user jupyter matplotlib
