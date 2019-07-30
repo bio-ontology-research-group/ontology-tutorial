@@ -1856,289 +1856,49 @@
   Where is our semantics, in the machine learning model or the axioms?
   \begin{itemize}
   \item implicit or explicit?
+  \item hidden or interpretable?
   \item example: transitive relations
-  \item ...
+  \item combination of both?
   \end{itemize}
 \end{frame}
 
-% \begin{frame}
-%   \frametitle{Hands-on part}
-%   \begin{itemize}
-%   \item run the machine learning with ontologies part
-%   \item explore the different similarity measures
-%   \item repeat what you have done with semantic similarity using the
-%     ontology embeddings
-%   \end{itemize}
-% \end{frame}
+\begin{frame}
+  \frametitle{Open research questions}
+  How do we evaluate our models and methods?
+  \begin{itemize}
+  \item random splits (standard in machine learning)
+  \item time-based splits
+  \item other?
+  \end{itemize}
+\end{frame}
 
-% \section{Applications}
+\begin{frame}
+  \frametitle{Open research questions}
+  What is the interface between knowledge representation and learning?
+  \begin{itemize}
+  \item {\em How} to represent knowledge affects learning outcomes
+  \item representation patterns and learning $\Rightarrow$ specific
+    algorithms?
+  \end{itemize}
+\end{frame}
 
-% \begin{frame}
-%   \frametitle{How to measure similarity?}
-%   \begin{itemize}
-%   \item vector-based similarity measure
-%   \item cosine similarity: $sim(X,Y) = \frac{\sum_{i=1}^n X_i
-%       Y_i}{\sqrt{\sum_{i=1}^n X_i^2} \sqrt{\sum_{i=1}^n Y_i^2}} $
-%     \begin{itemize}
-%     \item bounded between $[-1,1]$
-%     \end{itemize}
-%   \item Euclidean distance: $sim(X,Y) = \sqrt{\sum_{i=1}^n (X_i - Y_i)^2}$
-%     \begin{itemize}
-%     \item not bounded (and rarely used)
-%     \end{itemize}
-%   \item any other kind of function
-%     \begin{itemize}
-%     \item Neural Networks can approximate {\em any} function
-%       (universal approximation theorem)
-%     \item ``trainable'' semantic similarity measures
-%     \item will need training data
-%     \end{itemize}
-%   \end{itemize}
-% \end{frame}
-
-
-
-% \begin{frame}
-%   \frametitle{Applications of semantic similarity}
-%   \centerline{\includegraphics[height=\textheight]{vision1.pdf}}
-% \end{frame}
-
-% \begin{frame}
-%   \frametitle{Applications of semantic similarity}
-%   \centerline{\includegraphics[height=\textheight]{similarity.eps}}
-% \end{frame}
-
-% \begin{frame}
-%   \frametitle{Applications of semantic similarity}
-%   \begin{itemize}
-%   \item same kind of entity, same ontology:
-%     \begin{itemize}
-%     \item $x$ is associated with $y$
-%     \item $z$ is similar to $x$
-%     \item therefore: $z$ may {\em also} be associated with $y$
-%     \end{itemize}
-%   \item candidate genes (polygenic disease):
-%     \begin{itemize}
-%     \item FunSimMat: similar function $\Rightarrow$ similar/same
-%       disease
-%     \item side effect similarity: similar side effects $\Rightarrow$
-%       similar targets/indications
-%     \end{itemize}
-%   \end{itemize}
-% \end{frame}
-
-% \begin{frame}
-%   \frametitle{Applications of semantic similarity}
-%   \begin{itemize}
-%   \item different kind of entity, same ontology:
-% %  \item candidate genes (monogenic and polygenic disease):
-%     \begin{itemize}
-%     \item Phenomizer: genotype $x$ associated with phenotypes $a$;
-%       patient $y$ has symptoms $b$; $a$ is similar to $b$; therefore:
-%       $x$ causes the symptoms in $b$
-%     \item PhenomeNET: similar to Phenomizer but using model organism
-%       phenotypes (knockouts)
-%     \item PhenomeDrug: knockout of gene $x$ causes phenotypes $a$;
-%       drug $y$ causes side effects $b$; $a$ is similar to $b$;
-%       therefore: drug $y$ inhibits $x$ (or: phenotypes $b$ are caused
-%       by inhibition of $x$)
-%     \item needs to compare model organism phenotypes and human
-%       phenotypes $\Rightarrow$ ontology alignment/integration/mapping
-%     \end{itemize}
-%   \end{itemize}
-% \end{frame}
-
-% \begin{frame}
-%   \frametitle{Applications of semantic similarity}
-%   semantic similarity and text mining:
-%   \begin{itemize}
-%   \item find all occurrences of classes of one (or more) ontologies in text
-%     \begin{itemize}
-%     \item using lexical matching or semantic annotations
-%       of text
-%     \item TextPresso (\url{http://www.textpresso.org/}), NCBO
-%       Annotator (\url{https://bioportal.bioontology.org/annotator}),
-%       WhatIzIt (\url{http://www.ebi.ac.uk/webservices/whatizit/info.jsf})
-%     \item ontology-specific text normalization tools
-%       \begin{itemize}
-%       \item DNorm (diseases), GNorm (gene names), OSCAR (chemicals), ...
-%       \end{itemize}
-%     \end{itemize}
-%   \item use for database construction (automatic annotation), relation
-%     extraction, network construction (co-occurrence network), etc.
-%   \end{itemize}
-% \end{frame}
-
-% \begin{frame}
-%   \frametitle{Applications of semantic similarity}
-%   \centerline{http://aber-owl.net/aber-owl/diseasephenotypes/}
-%   \begin{itemize}
-%   \item find phenotypes (signs and symptoms) associated with common
-%     diseases
-%     \begin{itemize}
-%     \item no resource available for comparison
-%     \end{itemize}
-%   \item pattern-based mining of literature with Aber-OWL: PubMed
-%   \item evaluation (of genetically based disease phenotypes) with
-%     experimentally validated disease genes
-%   \end{itemize}
-% \end{frame}
-
-% \begin{frame}
-%   \frametitle{Applications of semantic similarity}
-%   \framesubtitle{http://aber-owl.net/aber-owl/diseasephenotypes/}
-%   \centerline{\includegraphics[width=1\textwidth]{aber-owl-plague.png}}
-% \end{frame}
-
-% \begin{frame}
-%   \frametitle{Applications of semantic similarity}
-%   \framesubtitle{http://aber-owl.net/aber-owl/diseasephenotypes/}
-%   \centerline{\includegraphics[width=1\textwidth]{pmi-auc-plot.pdf}}
-% \end{frame}
-
-% \begin{frame}[plain]
-%   \frametitle{Applications of semantic similarity}
-%   \centerline{\includegraphics[height=1\textheight]{network.eps}}
-% \end{frame}
-
-% \begin{frame}
-%   \frametitle{Applications of semantic similarity}
-%   \begin{itemize}
-%   \item semantic similarity can be used as features in machine
-%     learning models
-%     \begin{itemize}
-%     \item when annotation space is too large
-%       \begin{itemize}
-%       \item e.g., GO: 50,000 classes
-%       \item replace binary representation
-%       \end{itemize}
-%     \item to incorporate background knowledge
-%       \begin{itemize}
-%       \item semantic similarity encodes {\em implicitly} for ontology
-%         structure and axioms
-%       \item encodes for {\em specificity} of classes
-%       \end{itemize}
-%     \item negative: reduce all annotations to single value
-%       \begin{itemize}
-%       \item leads to loss of information
-%       \item but is easier to use by many machine learning methods
-%       \end{itemize}
-%     \end{itemize}
-%   \end{itemize}
-% \end{frame}
-
-% \begin{frame}
-%   \frametitle{Applications of semantic similarity}
-%   \begin{tikzpicture}[remember picture,overlay]
-%     \node[at=(current page.center)] {
-%       \centerline{\includegraphics[height=1\textheight]{pvp.pdf}}
-%     };
-%   \end{tikzpicture}
-% \end{frame}
-
-% {
-% \setbeamercolor{background canvas}{bg=}
-% \includepdf[pages=1-3]{hh-pvp2.pdf}
-% }
-
-% \begin{frame}
-%   \frametitle{Summary}
-%   \begin{itemize}
-%   \item many semantic similarity measures
-%     \begin{itemize}
-%     \item graph-based
-%     \item feature-based
-%     \end{itemize}
-%   \item useful for similarity-based prediction
-%     \begin{itemize}
-%     \item similar entities $\Rightarrow$ guilt-by-association
-%     \item different entities
-%     \end{itemize}
-%   \item combine with data and text mining
-%   \item features in machine learning methods
-%   \end{itemize}
-% \end{frame}
-
-% \begin{frame}
-%   \frametitle{Acknowledgements}
-%   \begin{itemize}
-%   \item Sarah Alghamdi
-%   \item Mona Alsharani
-%   \item Imene Boudellioua
-%   \item Senay Kafkas
-%   \item Maxat Kulmanov
-%   \item Fatima Zohra Smaili
-%   \end{itemize}
-% \end{frame}
-
-% \begin{frame}
-%   \frametitle{Hands-on: semantic similarity}
-%   \begin{itemize}
-%   \item if you have not done so {\em before} the tutorial, don't start
-%     now
-%     \begin{itemize}
-%     \item you need to download {\em a lot} of data
-%     \item you can just follow our demonstration and try later
-%     \item (unless Internet is exceptionally fast for a conference
-%       Wifi, then just go ahead and do everything now)
-%     \end{itemize}
-%   \item Jupyter Notebook
-%     \begin{itemize}
-%     \item notebooks consist of code and rich text fragments
-%     \item human readable (with nice figures) {\em and} executable
-%     \item need to install the SciJava kernel (default: iPython)
-%     \item very widely used
-%     \end{itemize}
-%   \item
-%     \url{https://github.com/bio-ontology-research-group/ontology-tutorial}
-%   \end{itemize}
-% \end{frame}
-
-% \begin{frame}
-%   \frametitle{Hands-on: semantic similarity}
-%   In the tutorial, we will
-%   \begin{itemize}
-%   \item download an ontology
-%   \item explore the ontology with OWLAPI
-%   \item classify the ontology with an OWL reasoner
-%     \begin{itemize}
-%     \item and query using an OWL reasoner
-%     \end{itemize}
-%   \item store the inferred version locally
-%   \item use the Semantic Measures Library to:
-%     \begin{itemize}
-%     \item explore the ontology as graph
-%     \item compute similarity between classes
-%     \item use different similarity measures
-%     \item compare patients to mice
-%     \end{itemize}
-%   \item learn to use Onto2Vec and OPA2Vec
-%   \item you can build on this and extend for your own research!
-%   \end{itemize}
-% \end{frame}
-
-% \begin{frame}
-%   \frametitle{Hands-on: semantic similarity}
-%   Do the tutorial...
-% \end{frame}
-
-% \begin{frame}
-%   \frametitle{Hands-on: semantic similarity}
-%   \begin{itemize}
-%   \item now play with the Notebook:
-%     \begin{itemize}
-%     \item look at the results list (check MGI)
-%     \item try another disease (check OMIM)
-%     \item or a drug effect (check SIDER)
-%     \end{itemize}
-%   \item you can also test another ontology
-%     \begin{itemize}
-%     \item GO for functional similarity
-%     \item ChEBI for chemical (structural) similarity
-%     \item or yeast phenotypes
-%     \end{itemize}
-%   \end{itemize}
-% \end{frame}
+\begin{frame}
+  \frametitle{Acknowledgements}
+  Lots of help from my students:
+  \begin{itemize}
+  \item Mona Alshahrani
+  \item Maxat Kulmanov
+  \item Fatima Smaili
+  \end{itemize}
+  and colleagues:
+  \begin{itemize}
+  \item Mehdi Ali (PyKEEN)
+  \item Michel Dumontier
+  \item Andreas Karwath
+  \item Paul Schofield
+  \end{itemize}
+  and KAUST (Bio2Vec grant, award no URF/1/3454-01-01).
+\end{frame}
 
 \end{document}
 %%% Local Variables:
