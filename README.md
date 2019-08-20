@@ -28,7 +28,6 @@ https://github.com/bio-ontology-research-group/ontology-tutorial/blob/master/sli
 
 Next events based on the materials in this tutorial:
 
- * 29 July 2019, Bufallo, NY, USA: [ICBO 2019](https://sites.google.com/view/icbo2019/home): Machine learning with ontologies, Robert Hoehndorf
  * 23 September 2019, Graz, Austria: [JOWO 2019](https://www.iaoa.org/jowo/2019/): Semantic similarity and machine learning with ontologies, Robert Hoehndorf, Maxat Kulmanov
 
 ## Past events
@@ -38,6 +37,8 @@ Parts of the material in this repository were taught at
  * ISMB 2017 (Michel Dumontier, Robert Hoehndorf)
  * ISMB 2018 (Michel Dumontier, Robert Hoehndorf)
  * University of Cambridge, Bioinformatics Training Program, 2018 (Robert Hoehndorf, Paul Schofield)
+ * [ICBO 2019](https://sites.google.com/view/icbo2019/home), 2019 (Robert Hoehndorf)
+
 
 
 ## Overview
