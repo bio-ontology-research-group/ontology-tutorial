@@ -3,8 +3,10 @@ astor==0.8.0
 attrs==19.1.0
 backcall==0.1.0
 bleach==3.1.0
+cffi==1.12.3
 Click==7.0
 click-default-group==1.2.1
+cmake==3.13.3
 cycler==0.10.0
 dataclasses==0.6
 decorator==4.4.0
@@ -33,6 +35,7 @@ Markdown==3.1.1
 MarkupSafe==1.1.1
 matplotlib==3.1.1
 mistune==0.8.4
+MulticoreTSNE==0.1
 nbconvert==5.5.0
 nbformat==4.4.0
 notebook==6.0.0
@@ -43,10 +46,12 @@ parso==0.5.1
 pexpect==4.7.0
 pickleshare==0.7.5
 Pillow==6.1.0
+pkg-resources==0.0.0
 prometheus-client==0.7.1
 prompt-toolkit==2.0.9
 protobuf==3.9.0
 ptyprocess==0.6.0
+pycparser==2.19
 Pygments==2.4.2
 pykeen==0.0.25
 pyparsing==2.4.0
