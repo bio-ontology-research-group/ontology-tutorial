@@ -148,7 +148,7 @@
   \item not covered:
     \begin{itemize}
     \item learning ontologies (axioms, definitions) from data
-    \item natural language processing
+    \item (most) natural language processing
     \item reasoning with ontologies
     \item learning on ``knowledge graphs''
     \item machine learning theory
@@ -221,7 +221,7 @@
   \item RBox: axioms holding for relations
   \item Reasoning: derive implicitly represented knowledge (e.g.,
     subsumption)
-  \item a ``knowledge graph'' is an ABox + RBox
+  \item NB: a ``knowledge graph'' is an ABox + RBox
   \end{itemize}
 \end{frame}
 
@@ -429,6 +429,23 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Semantic similarity: some examples}
+  \begin{itemize}
+  \item Are cyclin dependent kinases {\em functionally} more similar
+    to lipid kinases or to riboflavin kinases? How about {\em
+      phenotypically}?
+  \item Which protein in the {\em mouse} is functionally most similar
+    to the zebrafish {\em gustducin} protein?
+  \item Which mouse knockout resembles {\em Bardet-Biedl Syndrome 8}?
+  \item Are there mouse knockouts that resemble the side effects of
+    diclofenac?
+  \item Which genetic disease produces similar symptoms to ebola?
+  \item Does functional similarity correlate with phenotypic
+    similarity?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
   \frametitle{Semantic similarity}
   semantic similarity measures:
   \begin{itemize}
@@ -441,23 +458,6 @@
   \item similarity measures: hand-crafted or data-driven?
   \end{itemize}
 \end{frame}
-
-% \begin{frame}
-%   \frametitle{Semantic similarity: some examples}
-%   \begin{itemize}
-%   \item Are cyclin dependent kinases {\em functionally} more similar
-%     to lipid kinases or to riboflavin kinases? How about {\em
-%       phenotypically}?
-%   \item Which protein in the {\em mouse} is functionally most similar
-%     to the zebrafish {\em gustducin} protein?
-%   \item Which mouse knockout resembles {\em Bardet-Biedl Syndrome 8}?
-%   \item Are there mouse knockouts that resemble the side effects of
-%     diclofenac?
-%   \item Which genetic disease produces similar symptoms to ebola?
-%   \item Does functional similarity correlate with phenotypic
-%     similarity?
-%   \end{itemize}
-% \end{frame}
 
 \begin{frame}
   \frametitle{Semantic similarity or machine learning}
@@ -481,8 +481,15 @@
 \begin{frame}
   \frametitle{Ontologies and graphs}
   \begin{itemize}
-  \item semantic similarity measures and machine learning models on
+  \item semantic similarity measures {\em and machine learning models} on
     ontologies can be graph-based, feature-based, or model-based
+    \begin{itemize}
+    \item graph-based: ontology as a graph
+    \item feature-based: extract (or obtain) features for
+      classes/relations
+    \item model-based: define similarity within (special) $\Sigma$ algebras
+    \end{itemize}
+
     \pause
   \item we may need to generate graphs from ontologies
     \begin{itemize}
@@ -495,9 +502,7 @@
     \pause
   \item relational patterns are implicit in OWL axioms
     \begin{itemize}
-    \item in first order logic
-    \item needs to translate them into OWL
-    \item defined in OBO Relation Ontology
+    \item design patterns as ``relations'' between classes
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -535,7 +540,9 @@
   \item {\tt X SubClassOf: part-of some Y}: $X \xrightarrow{\text{part-of}} Y$
   \item {\tt X SubClassOf: regulates some Y}: $X \xrightarrow{\text{regulates}} Y$
   \item {\tt X DisjointWith: Y}: $X \xleftrightarrow{\text{disjoint}} Y$
-  \item {\tt X EquivalentTo: Y}: $X \xleftrightarrow{\equiv} Y$, $\{X,Y\}$
+  \item {\tt X EquivalentTo: Y}: $X \xleftrightarrow{\equiv} Y$,
+    $\{X,Y\}$
+  \item ...
   \end{itemize}
 \end{frame}
 
