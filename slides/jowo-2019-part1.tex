@@ -554,27 +554,49 @@
   \item {\tt Y SubClassOf: part-of some Z}
   \item {\tt part-of o part-of SubPropertyOf: part-of}
   \item $\vdash$ {\tt X SubClassOf: part-of some Z}
+  \item Therefore: $X \xrightarrow{\text{part-of}} Z$ 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Tree models}
+  \begin{itemize}
+  \item some languages have the {\em finite model} and {\em tree
+      model} properties
+    \begin{itemize}
+    \item such as the Description Logic $\mathcal{ALC}$
+    \item generated through a tableaux algorithm
+    \end{itemize}
+  \item nodes: individuals
+    \begin{itemize}
+    \item node labels: concept names, concept descriptions
+    \end{itemize}
+  \item edges: relations between individuals
+  \item can be extended to more expressive languages (with blocking,
+    cycles, etc.)
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Methods and tools}
-  OBO Format represents ontologies as graphs:
   \begin{itemize}
-  \item Protege/OWLAPI: OBO export
-  \item OBO toolsets (e.g., ROBOT)
-  \item
-    \url{https://github.com/bio-ontology-research-group/Onto2Graph}
-    \pause
-  \item a conversion of an ontologies into a graph will almost always
-    lead to a loss of information
-    \pause
   \item edges should be ``meaningful'': not merely syntax
     \begin{itemize}
     \item the RDF serialization of OWL is a graph and contains all
       information but is a bad idea for semantic similarity or machine
       learning (more later)
+    \item conceptual graphs?
     \end{itemize}
+  \item OBO Format represents ontologies as graphs:
+    \begin{itemize}
+    \item Protege/OWLAPI: OBO export
+    \item OBO toolsets (e.g., ROBOT)
+    \item
+      \url{https://github.com/bio-ontology-research-group/Onto2Graph}
+    \end{itemize}
+    \pause
+  \item a conversion of an ontologies into a graph will almost always
+    lead to a loss of information
   \end{itemize}
 \end{frame}
 
