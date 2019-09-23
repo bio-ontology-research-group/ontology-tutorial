@@ -55,11 +55,7 @@ WORKDIR /home/borg/ontology-tutorial
 
 ENV PATH="/home/borg/.local/bin:${PATH}"
 
-RUN pip install --user pykeen
-
-RUN pip install --user jupyter matplotlib
-
-RUN pip install --user cmake MulticoreTSNE || true
+RUN pip install --user --no-cache-dir -r requirements.txt
 
 RUN rm -rf opa2vec walking-rdf-and-owl
 
@@ -100,13 +96,14 @@ RUN groovy ProcessOntology.groovy || true
 WORKDIR /home/borg/ontology-tutorial/
 
 # Download tutorial data package
-RUN wget http://jagannath.pdn.cam.ac.uk/tutorial/data-light.tar.gz
+RUN wget http://aber-owl.net/aber-owl/diseasephenotypes/ontology/embeddings-data.tar.gz
 
-RUN tar xvjf data-light.tar.gz
+RUN tar xvzf data-light.tar.gz
 
 # trust the notebook
 RUN jupyter trust /home/borg/ontology-tutorial/graph.ipynb
 RUN jupyter trust /home/borg/ontology-tutorial/OPA2Vec.ipynb
+RUN jupyter trust /home/borg/ontology-tutorial/elembedding.ipynb
 
 # Launch in Juyter notebook
 
