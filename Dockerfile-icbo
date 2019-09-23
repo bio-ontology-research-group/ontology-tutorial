@@ -51,11 +51,13 @@ WORKDIR /home/borg/ontology-tutorial/fastText
 
 RUN make
 
-WORKDIR /home/borg/ontology-tutorial
-
 ENV PATH="/home/borg/.local/bin:${PATH}"
 
+WORKDIR /usr/src/app
+COPY requirements.txt ./
 RUN pip install --user --no-cache-dir -r requirements.txt
+
+WORKDIR /home/borg/ontology-tutorial
 
 RUN rm -rf opa2vec walking-rdf-and-owl
 
@@ -98,7 +100,7 @@ WORKDIR /home/borg/ontology-tutorial/
 # Download tutorial data package
 RUN wget http://aber-owl.net/aber-owl/diseasephenotypes/ontology/embeddings-data.tar.gz
 
-RUN tar xvzf data-light.tar.gz
+RUN tar xvzf embeddings-data.tar.gz
 
 # trust the notebook
 RUN jupyter trust /home/borg/ontology-tutorial/graph.ipynb
