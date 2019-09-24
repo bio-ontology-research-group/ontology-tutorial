@@ -18,8 +18,8 @@ You can then start the notebooks *during* the tutorial like this:
 
 ### JOWO 2019 Slides
 
-https://github.com/bio-ontology-research-group/ontology-tutorial/blob/master/slides/jowo-2019-part1.pdf
-https://github.com/bio-ontology-research-group/ontology-tutorial/blob/master/slides/jowo-2019-part2.pdf
+* [Part 1](https://github.com/bio-ontology-research-group/ontology-tutorial/blob/master/slides/jowo-2019-part1.pdf)
+* [Part 2](https://github.com/bio-ontology-research-group/ontology-tutorial/blob/master/slides/jowo-2019-part2.pdf)
 
 
 ## Past events
