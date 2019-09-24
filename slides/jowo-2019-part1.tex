@@ -119,7 +119,7 @@
 \section{Ontologies and graphs}
 
 \begin{frame}
-  \frametitle{Ontologies, axioms, and bioinformatics}
+  \frametitle{Ontologies, machine learning, and AI}
   \begin{itemize}
   \item ontologies are ubiquitous
   \item rich formal characterization (axioms)
@@ -140,6 +140,7 @@
   \item unsupervised or supervised:
     \begin{itemize}
     \item here: mostly unsupervised {\em feature} learning
+    \item ``deep'' learning
     \end{itemize}
   \item focus on existing tools and methods
     \begin{itemize}
@@ -405,10 +406,9 @@
 \begin{frame}
   \frametitle{Using background knowledge}
   \begin{block}{Problem statement (first attempt):}
-    Given a set of biological entities and their ontology-based
-    annotations. Can we discover {\em new} relations between the
-    biological entities, or between entities and classes in the
-    ontology?
+    Given a set of entities (instances) within an ontology (DL
+    theory). Can we discover/predict {\em new} relations between the
+    entities, or between entities and classes in the ontology?
   \end{block}
   \pause
   \begin{itemize}
@@ -422,8 +422,9 @@
   \item finding new facts is only one (minor?) use case
     \begin{itemize}
     \item other uses: encode background knowledge for machine learning
-      models (e.g., function prediction); add new classes; expand
-      definition; constrained learning; etc.
+      models; add new classes; expand definition; constrained
+      learning; etc.
+    \item computing ``similarity''
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -487,9 +488,8 @@
     \item graph-based: ontology as a graph
     \item feature-based: extract (or obtain) features for
       classes/relations
-    \item model-based: define similarity within (special) $\Sigma$ algebras
+    \item model-based: define similarity within (special) $\Sigma$-structures
     \end{itemize}
-
     \pause
   \item we may need to generate graphs from ontologies
     \begin{itemize}
@@ -512,26 +512,26 @@
   \centerline{\includegraphics[height=.8\textheight]{plant-ontology-sample.png}}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Relations as patterns}
-  \begin{itemize}
-  \item OBO Relation Ontology (RO):
-    \begin{itemize}
-    \item \url{https://github.com/oborel/obo-relations}
-    \end{itemize}
-  \item Basic Formal Ontology (BFO):
-    \begin{itemize}
-    \item provides top-level classes
-      \begin{itemize}
-      \item Continuant, Process, Function, Material object, etc.
-      \end{itemize}
-    \item used for some OBO Foundry ontologies
-    \end{itemize}
-  \item RO and BFO provide a top-level system of classes and relations
-    shared across many biomedical ontologies
-  \item this system may define patterns used to generate graphs
-  \end{itemize}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Relations as patterns}
+%   \begin{itemize}
+%   \item OBO Relation Ontology (RO):
+%     \begin{itemize}
+%     \item \url{https://github.com/oborel/obo-relations}
+%     \end{itemize}
+%   \item Basic Formal Ontology (BFO):
+%     \begin{itemize}
+%     \item provides top-level classes
+%       \begin{itemize}
+%       \item Continuant, Process, Function, Material object, etc.
+%       \end{itemize}
+%     \item used for some OBO Foundry ontologies
+%     \end{itemize}
+%   \item RO and BFO provide a top-level system of classes and relations
+%     shared across many biomedical ontologies
+%   \item this system may define patterns used to generate graphs
+%   \end{itemize}
+% \end{frame}
 
 \begin{frame}
   \frametitle{Relations as patterns}
@@ -544,6 +544,8 @@
     $\{X,Y\}$
   \item ...
   \end{itemize}
+  NB: in bio-ontologies, the OBO Relation Ontology defines these
+  patterns
 \end{frame}
 
 \begin{frame}
@@ -554,7 +556,9 @@
   \item {\tt Y SubClassOf: part-of some Z}
   \item {\tt part-of o part-of SubPropertyOf: part-of}
   \item $\vdash$ {\tt X SubClassOf: part-of some Z}
-  \item Therefore: $X \xrightarrow{\text{part-of}} Z$ 
+  \item Therefore: $X \xrightarrow{\text{part-of}} Z$
+  \item $\Rightarrow$ we should use deductive inference to generate
+    these patterns
   \end{itemize}
 \end{frame}
 
@@ -580,7 +584,7 @@
 \begin{frame}
   \frametitle{Methods and tools}
   \begin{itemize}
-  \item edges should be ``meaningful'': not merely syntax
+  \item edges should be ``meaningful'': not merely syntax (why?)
     \begin{itemize}
     \item the RDF serialization of OWL is a graph and contains all
       information but is a bad idea for semantic similarity or machine
@@ -595,8 +599,8 @@
       \url{https://github.com/bio-ontology-research-group/Onto2Graph}
     \end{itemize}
     \pause
-  \item a conversion of an ontologies into a graph will almost always
-    lead to a loss of information
+  \item but: a conversion of an ontologies into a graph will almost
+    always lead to a loss of information
   \end{itemize}
 \end{frame}
 
@@ -1342,8 +1346,8 @@
   \item no obvious choice of similarity measure
   \item depends on application
     \begin{itemize}
-    \item predicting PPIs in different organisms may benefit from a
-      different similarity measure!
+    \item e.g., predicting PPIs in different organisms through
+      similarity may benefit from a different similarity measure!
     \end{itemize}
   \item different similarity measures may react differently to biases
     in data
