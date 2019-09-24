@@ -20,6 +20,13 @@ and
 * After the notebook started, copy the address and the token and paste it into you web browser. The URL should look *similar* to the following: `127.0.0.1:8888/?token=f14e6316a48016b2cf4cbed5dd7b89d9dc524da49f553dc7`.
 * All is now set up. There is no need to download and install any additional packages or data files.
 
+### JOWO 2019 Slides
+
+https://github.com/bio-ontology-research-group/ontology-tutorial/blob/master/slides/jowo-part1.pdf
+and
+https://github.com/bio-ontology-research-group/ontology-tutorial/blob/master/slides/jowo-part2.pdf
+
+
 ### ICBO 2019 Slides
 
 https://github.com/bio-ontology-research-group/ontology-tutorial/blob/master/slides/icbo-2019.pdf
