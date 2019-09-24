@@ -1,34 +1,26 @@
 
-# Tutorial: Ontologies for biomedical data analysis
+# Tutorial: Machine Learning with Ontologies
 
-## Preparations for ICBO 2019
+## Preparations for JOWO 2019
 
 Please follow these steps *before* the tutorial:
 
 * Download and install [Docker](https://www.docker.com).
-* Pull the two docker images with:
+* Pull the docker image with:
 `docker pull coolmaksat/embeddings:latest`
-and
-`docker pull leechuck/ontology-ml:latest`
 
 You can then start the notebooks *during* the tutorial like this:
 
 * Run the image and jump directly into the Jupyter notebook:
-`docker run -i -t -p 8888:8888 coolmaksat/embeddings /bin/bash -c "jupyter notebook --notebook-dir=/usr/src/app/ --ip='0.0.0.0' --port=8888 --no-browser --allow-root"`
-and
-`docker run -i -t -p 8888:8888 leechuck/ontology-ml /bin/bash -c "jupyter notebook --notebook-dir=/home/borg/ontology-tutorial/ --ip='0.0.0.0' --port=8888 --no-browser --allow-root"`
+`docker run -i -t -p 8888:8888 coolmaksat/embeddings:latest /bin/bash -c "jupyter notebook --notebook-dir=/home/borg/ontology-tutorial/ --ip='0.0.0.0' --port=8888 --no-browser --allow-root"`
 * After the notebook started, copy the address and the token and paste it into you web browser. The URL should look *similar* to the following: `127.0.0.1:8888/?token=f14e6316a48016b2cf4cbed5dd7b89d9dc524da49f553dc7`.
 * All is now set up. There is no need to download and install any additional packages or data files.
 
-### ICBO 2019 Slides
+### JOWO 2019 Slides
 
-https://github.com/bio-ontology-research-group/ontology-tutorial/blob/master/slides/icbo-2019.pdf
+https://github.com/bio-ontology-research-group/ontology-tutorial/blob/master/slides/jowo-2019-part1.pdf
+https://github.com/bio-ontology-research-group/ontology-tutorial/blob/master/slides/jowo-2019-part2.pdf
 
-## Upcoming dates
-
-Next events based on the materials in this tutorial:
-
- * 23 September 2019, Graz, Austria: [JOWO 2019](https://www.iaoa.org/jowo/2019/): Semantic similarity and machine learning with ontologies, Robert Hoehndorf, Maxat Kulmanov
 
 ## Past events
 
@@ -38,7 +30,6 @@ Parts of the material in this repository were taught at
  * ISMB 2018 (Michel Dumontier, Robert Hoehndorf)
  * University of Cambridge, Bioinformatics Training Program, 2018 (Robert Hoehndorf, Paul Schofield)
  * [ICBO 2019](https://sites.google.com/view/icbo2019/home), 2019 (Robert Hoehndorf)
-
 
 
 ## Overview
@@ -102,15 +93,6 @@ Detailed instructions:
 * After the notebook started, copy the address and the token and paste it into you web browser. The URL should look *similar* to the following: `127.0.0.1:8888/?token=f14e6316a48016b2cf4cbed5dd7b89d9dc524da49f553dc7`.
 * All is now set up. There is no need to download and install any additional packages or data files.  Just step through the Groovy boxes. 
 
-## Using the Docker image for embeddings tutorial:
-
-* Download and install [Docker](https://www.docker.com).
-* Pull the docker image with:
-`docker pull coolmaksat/embeddings:latest` 
-* Run the image and jump directly into the Jupyter notebook:
-`docker run -i -t -p 8888:8888 coolmaksat/embeddings /bin/bash -c "jupyter notebook --notebook-dir=/usr/src/app/ --ip='0.0.0.0' --port=8888 --no-browser --allow-root"`
-* After the notebook started, copy the address and the token and paste it into you web browser. The URL should look *similar* to the following: `127.0.0.1:8888/?token=f14e6316a48016b2cf4cbed5dd7b89d9dc524da49f553dc7`.
-* All is now set up. There is no need to download and install any additional packages or data files. 
 
 ### To copy a file from or to a running docker image:
 
