@@ -1,5 +1,5 @@
 
-# Tutorial: Machine Learning with Ontologies
+# Tutorial: Semantic Similarity and Machine Learning with Ontologies
 
 ## Preparations for JOWO 2019
 
