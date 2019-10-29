@@ -30,6 +30,8 @@ Parts of the material in this repository were taught at
  * ISMB 2018 (Michel Dumontier, Robert Hoehndorf)
  * University of Cambridge, Bioinformatics Training Program, 2018 (Robert Hoehndorf, Paul Schofield)
  * [ICBO 2019](https://sites.google.com/view/icbo2019/home), 2019 (Robert Hoehndorf)
+ * [JOWO 2019](https://www.iaoa.org/jowo/2019/), 2019 (Robert Hoehndorf, Maxat Kulmanov)
+ * [CCBOT 2019](https://www.iaoa.org/jowo/2019/), 2019 (Robert Hoehndorf)
 
 
 ## Overview
