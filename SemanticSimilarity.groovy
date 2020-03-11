@@ -29,8 +29,8 @@ def cli = new CliBuilder()
 cli.with {
     usage: 'Self'
     h longOpt:'help', 'this information'
-    is longOpt:'input-string', 'input STRING file', args:1, required:true
-    ia longOpt:'input-annotations', 'input annotations file', args:1, required:true
+    i longOpt:'input-annotations', 'input annotations file', args:1, required:true
+    s longOpt:'similarity-id', 'similarity id (0-3)', args:1, required:true
     o longOpt:'output-proteins', 'output file containing proteins and similarity', args:1, required:true
 }
 def opt = cli.parse(args)
@@ -68,61 +68,37 @@ rooting.addParameter("root_uri", virtualRoot.stringValue())
 GraphActionExecutor.applyAction(factory, rooting, graph)
 
 
-// Load proteins
 def proteins = new HashMap<String, Set<String> >()
-new File(opt.is).splitEachLine('\t') { items ->
-    if (!proteins.containsKey(items[0])) {
-	proteins[items[0]] = new HashSet<String>()
-    }
-    if (!proteins.containsKey(items[1])) {
-	proteins[items[1]] = new HashSet<String>()
-    }
-    
-}
-// Load protein annotations
-new File(opt.ia).splitEachLine('\t') { items ->
-    protID = items[0] + "." + items[1]
-    if (proteins.containsKey(protID)) {
-	protURI = factory.getURI("http://" + protID)
-	goURI = getURIfromGO(items[3])
-	if (graph.containsVertex(goURI)) {
-	    proteins[protID].add(goURI)
-	    // Add annotations to graph
-	    Edge e = new Edge(protURI, RDF.TYPE, goURI);
-	    graph.addE(e);
-	}
-    }
-}
 
-def sim_id = 2 //this.args[0].toInteger()
+// Load protein annotations
+new File(opt.i).splitEachLine('\t') { items ->
+    protID = items[0]
+    if (!proteins.containsKey(protID)) {
+	proteins.put(protID, new HashSet<URI>());
+    }
+    protURI = factory.getURI("http://" + protID)
+    goURI = getURIfromGO(items[1])
+    if (graph.containsVertex(goURI)) {
+	proteins[protID].add(goURI)
+	// Add annotations to graph
+	Edge e = new Edge(protURI, RDF.TYPE, goURI);
+	graph.addE(e);
+    }
+}
 
 SM_Engine engine = new SM_Engine(graph)
 
-// BMA+Resnik, BMA+Schlicker2006, BMA+Lin1998, BMA+Jiang+Conrath1997,
-// DAG-GIC, DAG-NTO, DAG-UI
-
-String[] flags = [
-    // SMConstants.FLAG_SIM_GROUPWISE_AVERAGE,
-    // SMConstants.FLAG_SIM_GROUPWISE_AVERAGE_NORMALIZED_GOSIM,
-    SMConstants.FLAG_SIM_GROUPWISE_BMA,
-    SMConstants.FLAG_SIM_GROUPWISE_BMM,
-    SMConstants.FLAG_SIM_GROUPWISE_MAX,
-    SMConstants.FLAG_SIM_GROUPWISE_MIN,
-    SMConstants.FLAG_SIM_GROUPWISE_MAX_NORMALIZED_GOSIM
-]
-
-// List<String> pairFlags = new ArrayList<String>(SMConstants.PAIRWISE_MEASURE_FLAGS);
 String[] pairFlags = [
     SMConstants.FLAG_SIM_PAIRWISE_DAG_NODE_RESNIK_1995,
-    SMConstants.FLAG_SIM_PAIRWISE_DAG_NODE_SCHLICKER_2006,
     SMConstants.FLAG_SIM_PAIRWISE_DAG_NODE_LIN_1998,
+    SMConstants.FLAG_SIM_PAIRWISE_DAG_NODE_SCHLICKER_2006,
     SMConstants.FLAG_SIM_PAIRWISE_DAG_NODE_JIANG_CONRATH_1997_NORM
 ]
 
-// ICconf icConf = new IC_Conf_Topo("Sanchez", SMConstants.FLAG_ICI_SANCHEZ_2011);
 ICconf icConf = new IC_Conf_Corpus("ResnikIC", SMConstants.FLAG_IC_ANNOT_RESNIK_1995_NORMALIZED);
-String flagGroupwise = flags[sim_id.intdiv(pairFlags.size())];
-String flagPairwise = pairFlags[sim_id % pairFlags.size()];
+String flagGroupwise = SMConstants.FLAG_SIM_GROUPWISE_BMA;
+String flagPairwise = pairFlags[Integer.parseInt(opt.s)];
+println("Computing: " + flagGroupwise + " " + flagPairwise);
 SMconf smConfGroupwise = new SMconf(flagGroupwise);
 SMconf smConfPairwise = new SMconf(flagPairwise);
 smConfPairwise.setICconf(icConf);
@@ -144,7 +120,8 @@ for (int i = 0; i < index.size(); i++) {
     index[i] = i
 }
 
-def c = 0
+def c = 0;
+def lock = new Object();
 
 GParsPool.withPool {
     index.eachParallel { val ->
@@ -159,8 +136,14 @@ GParsPool.withPool {
 		    proteins[proteinsList[x]],
 		    proteins[proteinsList[y]])
 		result[y][x] = result[x][y]
-		if (c % 100000 == 0) println(c)
-		c++
+	    }
+	    synchronized(lock) {
+		c++;
+		if (c % 100000 == 0) {
+		    def progress = (c / (n * (n + 1) / 2)) * 10000;
+		    progress = (int)progress / 100;
+		    println(progress + "%");
+		}
 	    }
 	}
     }
